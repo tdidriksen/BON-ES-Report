@@ -1,0 +1,23 @@
+\documentclass[12pt,a4paper]{report}
+\author{Author 1 (email address cpr number) \\ Author 2 \\ 
+		ITU, \\
+		HUFL, \\
+		Supervisor}
+\title{Title of your project}
+\date{\today} %or a specific date
+\usepackage{amsmath,amstext,amsthm,import}
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{lscape}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\begin{document}
+\maketitle
+\tableofcontents
+\include{introduction}
+\import{./}{conclusion}
+\bibliography{bibliography}
+\bibliographystyle{plain}
+\end{document}
