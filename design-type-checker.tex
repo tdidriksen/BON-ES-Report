@@ -1,1 +1,35 @@
 \section{Type checker}
+\subsection{Design decisions}
+The design of the textual \textsc{bon} type checker is based on a combination of patterns and pragmatic decisions
+\subsubsection{Type checking patterns}
+When discussing the overall structure and design of the type checker, two patterns were considered; the visitor pattern, and a procedural pattern inspired by a more functional approach.
+
+\paragraph{The visitor pattern} %The visitor pattern
+The visitor pattern provides a way to add a new feature to a hierarchy of classes without having to implement the feature in the class itself \cite{martin2002}. Instead, the functionality is implemented in a feature in a visitor class, the content of which is unknown to the visited object. The main idea of the pattern is the technique called \textit{dual dispatch}, called as such due to the two polymorphic dispatches happening when executing the visitor: 
+\begin{enumerate}
+\item Each class in the hierarchy must have an \textit{accept} feature that accepts a general (often deferred) visitor type as its argument, and the first dispatch resolves the general type into a concrete subtype of the visitor,
+\item The actual feature called on the concrete visitor is determined (via overloading) by the input type passed to the \textit{visit} feature of the visitor, which is resolved by the second dispatch.  
+\end{enumerate}
+In the above, it is implied that the concrete visitor class has an implemented \textit{visit} feature for each of the types in the hierarchy that is to be visited. Since feature overloading is not supported in Eiffel, the second dispatch would not actually be implemented as described; instead, one would create a separate feature for each of the types to be visited, and call this on the visitor.
+\paragraph{}
+% REWRITE PRACTICAL IMPLICATIONS
+%The practical implications of implementing the visitor pattern would be the creation of a class \textsc{type}\textunderscore\textsc{checking}\textunderscore\textsc{visitor} with visit features for each textual \textsc{bon} element, for instance \textit{visit}\textunderscore\textit{class}\textunderscore\textit{chart}. In turn, the class \textsc{class}\textunderscore\textsc{chart} would have a feature \textit{visit} (\textit{visitor:}  \textsc{visitor}), where the visitor for type checking is a subtype of \textsc{visitor}.
+
+\paragraph{The procedural approach} %The procedural pattern
+The more procedural approach is inspired by the visitor pattern, but differs from it in a number of important ways. In this approach, type checking is done by defining a feature of the following form for each \textsc{bon} element:
+\begin{center}
+\textit{type}\textunderscore\textit{check}\textunderscore\textit{bon}\textunderscore\textit{element}: \textsc{bon}\textunderscore\textsc{element} $\rightarrow$  \textsc{boolean}\\
+\end{center}
+Each of these features takes a \textsc{bon} element as argument and produces a True or False answer, depending on the semantic correctness of the input.
+
+
+\paragraph{}
+%We don't have to implement a visit feature in all the MOG classes.
+%Context argument
+
+\paragraph{Phases of the type checker}
+
+\paragraph{Variance}
+
+\paragraph{Inheritance}
+\cite[section~5.2]{appel2004}
