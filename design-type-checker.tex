@@ -15,6 +15,11 @@ In the above, it is implied that the concrete visitor class has an implemented \
 % REWRITE PRACTICAL IMPLICATIONS
 %The practical implications of implementing the visitor pattern would be the creation of a class \textsc{type}\textunderscore\textsc{checking}\textunderscore\textsc{visitor} with visit features for each textual \textsc{bon} element, for instance \textit{visit}\textunderscore\textit{class}\textunderscore\textit{chart}. In turn, the class \textsc{class}\textunderscore\textsc{chart} would have a feature \textit{visit} (\textit{visitor:}  \textsc{visitor}), where the visitor for type checking is a subtype of \textsc{visitor}.
 
+\begin{centering}
+\textit{accept}: \textsc{visitor} $\rightarrow$ ()\\
+\textit{visit}\textunderscore\textit{bon}\textunderscore\textit{element}: \textsc{bon}\textunderscore\textsc{element} $\rightarrow$  ()\\
+\end{centering}
+
 \paragraph{The procedural approach} %The procedural pattern
 The more procedural approach is inspired by the visitor pattern, but differs from it in a number of important ways. In this approach, type checking is done by defining a feature of the following form for each \textsc{bon} element:
 \begin{center}
@@ -24,12 +29,18 @@ Each of these features takes a \textsc{bon} element as argument and produces a T
 
 
 \paragraph{}
-%We don't have to implement a visit feature in all the MOG classes.
+%We don't have to implement a visit feature in all the MOG classes. (Would be necessary in Eiffel due to lack of overloading)
 %Context argument
 
-\paragraph{Phases of the type checker}
+\subsubsection	{Phases of the type checker}
+As suggested by Appel and Palsberg in \cite[section~5.2]{appel2004} for type checking MiniJava, type checking of textual \textsc{bon} also happens in two phases. Just as for MiniJava, this is done because classes and clusters in textual \textsc{bon} are mutually recursive.
+\paragraph{The first phase} During the first phase, the context is built; i.e. the type checker stores information about all defined elements in the AST in appropriate data structures. Informally, the first phase answers the question: ''What do we know?''. An element is considered to be defined when a specification for it appears in the AST. For instance, a class in a formal specification is defined when a class specification for it exists. If the class is merely mentioned in an inheritance clause of another class or in a cluster, it is not defined.
+\paragraph{} To avoid the rather substantial amount of symbol tables hinted at in \cite{appel2004} (e.g. mapping from classes to features, from features to type, from features to arguments etc.), the aforementioned 'appriopriate data structures' is made as a class hierarchy, in which a \textsc{bon} class is represented by a context class with references to features, ancestors, generics, and so forth. These will be explained in greater in detail in section \ref{implementation-context-class-structure}.
 
-\paragraph{Variance}
+\paragraph{The second phase} During the second phase, the relationships between the defined elements are checked. Most of the actual type checking happens in this phase, as only a few rules can be checked without knowledge of the entire context. Specifically, if a type checking feature for an element returns \textsc{true} in the second phase, then the element in question is well-typed. If the opposite is the case, an error message is emitted and \textsc{false} is returned.
 
+\subsubsection {Type system}
+\subsubsubsection{Variance}
+When type checking features and feature arguments, the legal types of variance has to be implemented in the type checker in order to determine the well-typedness of these elements. Seeing as Eiffel implements covariance for both feature types and feature argument types  \cite[the~Covariance~rule]{meyer2001}, the same is supported in the type checker for feature types and feature argument types in formal specifications of textual \textsc{bon}. This is mainly due to the fact that the primary objective of the textual \textsc{bon} type checker is to type check specifications extracted from Eiffel source code in EiffelStudio.
+\paragraph{} However, in a future version of the type checker, it might be desirable to be able to customize the legal types of variance during type checking, in order to consistently type check bon specifications extracted from other programming languages than Eiffel. This is left as an option for further development, and is not prohibited by the current design of the type checker.
 \paragraph{Inheritance}
-\cite[section~5.2]{appel2004}

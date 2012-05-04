@@ -14,6 +14,10 @@
 \usepackage{hyperref}
 \usepackage{lscape}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+%new commands
+\newcommand{\subsubsubsection}[1]{\textbf{\small{#1}}\newline\vspace{5 mm}\newline}
+
 \begin{document}
 \maketitle
 \include{abstract}
@@ -23,6 +27,6 @@
 \include{implementation}
 \import{./}{conclusion}
 \include{appendix}
-\bibliographystyle{plain}
+\bibliographystyle{alpha}
 \bibliography{bibliography}
 \end{document}
