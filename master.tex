@@ -16,16 +16,18 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 %new commands
-\newcommand{\subsubsubsection}[1]{\textbf{\small{#1}}\newline\vspace{5 mm}\newline}
+\newcommand{\bon}{\textsc{bon}}
+\newcommand{\subsubsubsection}[1]{\newline\newline\textbf{\small{#1}}\newline}
 
 \begin{document}
 \maketitle
 \include{abstract}
 \tableofcontents
+\listoffigures
 \include{introduction}
 \include{background-and-design}
 \include{implementation}
-\import{./}{conclusion}
+\include{conclusion}
 \include{appendix}
 \bibliographystyle{alpha}
 \bibliography{bibliography}
