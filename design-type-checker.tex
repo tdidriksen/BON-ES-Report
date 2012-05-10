@@ -54,6 +54,7 @@ In both approaches, all of the type checking code is placed in a single class. T
 \paragraph{} For the structure of the type checker, the procedural approach has been chosen, as the lack of generality seems acceptable when compared to the drawbacks of the visitor pattern. The added generality of the visitor pattern does not justify the extra overhead it would impose on the implementation of the type checker.
 
 \subsubsection	{Phases of the Type Checker}
+\label{design-phases}
 As suggested by Appel and Palsberg in \cite[section~5.2]{appel2004} for type checking MiniJava, type checking of textual \textsc{bon} also happens in two phases. Just as for MiniJava, this is done because classes and clusters in textual \textsc{bon} are mutually recursive.
 \subsubsubsection{The First Phase}
 During the first phase, the context is built; i.e. the type checker stores information about all defined elements in the AST in appropriate data structures. Informally, the first phase answers the question: ''What do we know?''. An element is considered to be defined when a specification for it appears in the AST. For instance, a class in a formal specification is defined when a class specification for it exists. If the class is merely mentioned in an inheritance clause of another class or in a cluster, it is not defined.
