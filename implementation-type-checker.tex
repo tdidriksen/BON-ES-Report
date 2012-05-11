@@ -5,11 +5,15 @@
 \newcommand{\tbongeneric}{\textsc{tbon}\textunderscore \textsc{tc}\textunderscore \textsc{generic}}
 
 \section{Type Checker}
-Test
 \label{implementation-def-boolean-type}
 \label{implementation-set-expressions}
-
 \subsection{Parsing and Lexing}
+\begin{figure}[H]
+    \centerline{\scalebox{0.75}{\includegraphics{images/mog2.png}}}
+    \caption[MOG hierarchy]{First three levels of the inheritance hierarchy of the MOG}
+    \label{fig:mog-hierarchy}
+\end{figure}
+
 %explain what a bon element is
 
 \subsection{Building the Context}
@@ -26,7 +30,7 @@ A context, be it informal or formal, is built as a set of instances of \tbonclas
 
 %Transitional paragraph about phases and contexts here
 \paragraph{}
-Types defined in the abstract syntax is primarily added to the context in the first phase of the type checker, whereas most of the relations between the types in the context are established and checked in the second phase. The implementation of these phases will now be explained in greater detail.
+Types defined in the abstract syntax is primarily added to the context in the first phase of the type checker, whereas most of the relations between the types in the context are established and checked in the second phase. The idea and implementation of the phases is elaborated upon in the next section.
 
 \subsection{Going Through the Phases}
 As presented in section \ref{design-phases}, the type checker operates in two phases; in the first phase, the context is built from the abstract syntax obtained from the parser, and in the second phase, the abstract syntax is checked against the context and the rules of the type system (for a specification of the type system, see appendix \ref{appendix-type-system}).
@@ -36,7 +40,7 @@ The need for implementing a two-phased type checking algorithm arises from 1) th
 The phases are implemented using two simple boolean flags, respectively \textit{first\textunderscore phase} and \textit{second\textunderscore phase}, indicating the current phase of execution of the type checker. The invariant of the type checking class ensures that the two flags can never have equivalent values.
 
 \paragraph{}
-In the point of entry, the feature \textit{check$\textunderscore$bon$\textunderscore$specification}, the transition between the two phases is handled by a recursive call, ensuring that the abstract syntax is traversed once for each phase, and that transitional code between the phases is run at the appropriate time. This is realized by performing type checking in the following steps:
+In the point of entry, the feature \textit{check\textunderscore bon\textunderscore specification}, the transition between the two phases is handled by a recursive call, ensuring that the abstract syntax is traversed once for each phase, and that transitional code between the phases is run at the appropriate time. This is realized by performing type checking in the following steps:
 
 % Steps of the type checker
 \begin{enumerate}
@@ -52,19 +56,20 @@ In the point of entry, the feature \textit{check$\textunderscore$bon$\textunders
 Traversing the abstract syntax more than once means that the type checking features for each of the elements in the abstract syntax must implement the notion of the phases as well (otherwise, the exact same code would be run twice). This notion is implemented by a conditional statement, checking against the current phase of execution.
 
 % Type checker is optimistic
-In cases where a type checking feature is called, but has no checking to do for the current phase, \textsc{true} is returned. As the type checker can be characterized as being \textit{optimistic}, a textual \textsc{bon} element is determined to be well-typed until it violates one of the rules pertaining to it (at which point an error message is emitted and \textsc{false} is returned). However, there are cases for which the well-typedness of a \textsc{bon} element cannot be determined at the time of the call to the checking feature; for these cases, the element in question is marked as unresolved. The element is then resolved at the end of the current phase.
-
+In cases where a type checking feature is called, but has no checking to do for the current phase, \textsc{true} is returned. As the type checker can be characterized as being \textit{optimistic}, a textual \textsc{bon} element is determined to be well-typed until it violates one of the rules pertaining to it (at which point an error message is emitted and \textsc{false} is returned). However, there are cases for which the well-typedness of a \textsc{bon} element cannot be determined at the time of the call to the checking feature; for these cases, the element in question is marked as unresolved. The element is then resolved at the end of the current phase (if possible).
 \subsubsection{Unresolved Elements}
 \label{implementation-unresolved-elements}
-%\subsubsubsection{Class features} %features
-%generics
-%\subsubsubsection{Generics}
-%inheritance relations
-%\subsubsubsection{Inheritance relations}
-%static references
-%\subsubsubsection{Static References}
-%dynamic references
-%\subsubsubsection{Dynamic References}
+Unresolved elements are textual \textsc{bon} elements which are gathered and stored in an appropriate data structure during either the first or the second traversal of the abstract syntax, because their types cannot be resolved at the time they are encountered. The unresolved \textsc{bon} elements are then resolved at the appropriate time by iterating through the gathered elements.
+\subsubsubsection{Features} %features
+Features of a class specification, along with their arguments, are marked as unresolved in the first phase, as their types cannot be resolved when they are encountered in the first traversal (due to fact that the entire context has not been built yet). Because the type of a feature (and a feature argument) has to covariantly conform to the type of its precursor (see section \ref{design-type-system}, Variance), the type of a feature must be known prior to the second phase, in order to be able to check this conformance relation in the second phase. Thus, the features and feature arguments of all classes are resolved by giving them references to types in the context at the end of the first phase, before the second phase is entered.
+\subsubsubsection{Generics} %generics
+The formal generics 	of a class specification cannot be resolved during the first traversal, as they might refer to unknown types, that are yet to be added to the type context. The resolution of the formal generics cannot be deferred to the second phase, however, as other elements such as features and feature arguments need to be able to refer to instances of the generic classes. Furthermore, it should be possible to check the validity of these instances according to the bounding types of the type parameters in the class specification in the second traversal. Thus, the formal generics of a class specification are resolved in the first phase, after the first traversal, in which the bounding types to which the type parameters refer are coupled with type instances from the context.
+\subsubsubsection{Inheritance Relations} %inheritance relations
+Inheritance relations are checked at the end of the second phase (after the traversal of the abstract syntax). Such relations cannot be resolved prior to this point, for the reason that not all relations between a class and its ancestors in the context can be expected to be known earlier than after the second traversal.
+\subsubsubsection{Static References} %static references
+Static references used in client relations cannot be resolved in either the first or the second traversal of the abstract syntax, as the entire cluster structure has to be known before a static reference can be determined to be well-typed. The relations between a cluster and its classes and subclusters is not known until the second phase, and consequently, static references must be checked at the end of the second phase, when all of these relations have been established in the context.
+\subsubsubsection{Dynamic References}%dynamic references
+Comparable to the situation for static references, all the defined object groups and the relations between object groups and objects and other object groups must be known before a dynamic reference can be type checked. As these relations are explored in the second phase, a dynamic reference cannot be type checked before the end of the second phase.
 
 %Generics - explain association between bounding type and actual type.
 \subsection{Generics}
