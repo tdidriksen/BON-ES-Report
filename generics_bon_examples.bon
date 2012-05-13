@@ -1,0 +1,24 @@
+static_diagram
+component
+	class MAP [K -> INTEGER, V]
+	class MAP_CLIENT
+		feature
+			string_map: MAP [INTEGER, STRING]
+		end
+end
+
+static_diagram
+component
+  class SEQUENCE [G -> INTEGER]
+  class CLIENT_CLASS [H -> STRING]
+    feature
+      seq: SEQUENCE [H]
+    end
+end
+
+static_diagram
+component
+    class SEQUENCE[G]
+    class A [E -> SEQUENCE[REAL]]
+    class B [M -> SEQUENCE[INTEGER], N -> CONTAINER[M]] 
+end

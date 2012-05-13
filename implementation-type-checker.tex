@@ -71,10 +71,6 @@ Static references used in client relations cannot be resolved in either the firs
 \subsubsubsection{Dynamic References}%dynamic references
 Comparable to the situation for static references, all the defined object groups and the relations between object groups and objects and other object groups must be known before a dynamic reference can be type checked. As these relations are explored in the second phase, a dynamic reference cannot be type checked before the end of the second phase.
 
-%Generics - explain association between bounding type and actual type.
-\subsection{Generics}
-\label{implementation-generics}
-
 \subsection{Inheritance}
 An important part of type checking textual \textsc{bon} is checking the inheritance hierarchy. Apart from the obvious things such as checking whether an ancestor class actually exists, it is also important to check for circular inheritance. A class cannot inherit from itself, even through other classes. This means that the type checker has to check not only the direct ancestors of the class in question, but also all their direct ancestors and so. This is implemented with a recursive algorithm. Before implementing it the algorithm was written in pseudocode, as seen in figure \ref{fig:check_ancestors_pseudocode}.
 \begin{figure}[h]
@@ -111,8 +107,10 @@ In the first iteration \textit{main}\textunderscore\textit{class} and \textit{cu
 \paragraph{}
 In figure \ref{fig:eiffel_check_ancestors} the actual implementation in Eiffel is shown. The most notable difference between the implementation and the pseudocode is that when the it is iterating through the ancestors to call \textit{check}\textunderscore\textit{ancestors} on the ancestors, it is \textbf{and}'ed with \textbf{Result}. This does not change how the program works, due to the conditional statement ensuring that \textbf{Result} always is \textbf{True} at that point. It is done to express that the value of \textbf{Result} does not only depend on the returned value of the expression, but also on the previous evaluation of the direct ancestors. This means that the conditional statement could have been excluded, but as it stops the algorithm from further unnecessary iterations when a type error has been found, it is included.
 
-Lastly, the error handling is done by the type checkers error handling section. This will be further described in section \ref{implementation-error-handling}.
+Lastly, the error handling is done by the type checker's error handling section. This will be further described in section \ref{implementation-error-handling}.
 \import{./}{implementation-informal-bon}
+
+\import{./}{implementation-formal-bon}
 
 \subsection{Error handling}
 \label{implementation-error-handling}
