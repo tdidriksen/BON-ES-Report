@@ -1,6 +1,10 @@
 \section{Type Checker}
+[Introduction to type checker]
 \subsection{Parsing and Lexing}
 The parser and lexer upon which the type checker has been built is based on the textual \textsc{bon} lexer and parser created by Joseph Kiniry for the Extended \textsc{bon} Tool Suite \cite{ebon} (henceforth denoted \textsc{ebon}). At the outset of this project, the rule part of the parser was already finished (although some minor alterations were made to it to fit the implementation of the type checker), while the semantic actions were partially implemented. The implementation of these actions have now been completed. No alterations were made to the lexer.
+
+\paragraph{}
+[short high level description of parser/lexer]
 \paragraph{} The parser generating the abstract syntax tree is a tree parser, creating a model object graph of textual \textsc{bon} elements (or a parse error) as a result. Like the parser, these model classes were also partially implemented initially, but have now been completed.
 
 %Add paragraph with a more design-oriented view on the parser

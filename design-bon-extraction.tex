@@ -6,6 +6,7 @@ The textual \textsc{bon} extractor is a static analysis tool that allows the use
 \caption{BON Extraction Model 1}
 \label{fig:bon_extraction_1}
 \end{figure}
+\label{design-bon-extraction}
 Conceptually, the objective of the extractor is to bridge the gap between the Eiffel universe and the textual \textsc{bon} universe, as shown in figure \ref{fig:bon_extraction_1}. It does that by allowing the user to switch from an Eiffel-related view to either a formal or in informal textual \textsc{bon} view. When switching view, the user is presented to a textual \textsc{bon} representation of the Eiffel code. To add further overview over the system, the extractor also analyzes the descendants of the chosen class.
 
 \subsection{Overall architecture}
@@ -15,7 +16,7 @@ The textual \textsc{bon} extractor has two main parts. One is the interface to E
 For generating textual \textsc{bon},  an internal representation of \textsc{bon} has been made. This representation has a MOG-like structure with classes representing most of the \textsc{bon} elements defined in the grammar in \cite{walden1995}, with a few exceptions (See section \ref{deviations_from_bon}).  Each of these classes contains meta-information about the element, and knows how to format textual \textsc{bon} (both formal and informal) based on this information.
 
 \subsubsection{From EiffelStudio to BON}
-To bridge the aforementioned gap between EiffelStudio and the internal \textsc{bon} representation, an interface linking the two parts is needed. This interface needs be able to take input from EiffelStudio, and hand over the abstract Eiffel syntax to the \textsc{bon} modeling section. It also needs to take care of determining whether the current view is showing informal or formal textual \textsc{bon}. While the latter could be handled by the \textsc{bon} modeling section, it is not. In the implementation section (See section \ref{why_interface_takes_care_of_formal_and_informal}),  it will be discussed why this is not a practical solution.
+To bridge the aforementioned gap between EiffelStudio and the internal \textsc{bon} representation, an interface linking the two parts is needed. This interface needs be able to take input from EiffelStudio, and hand over the abstract Eiffel syntax to the \textsc{bon} modeling section. It also needs to take care of determining whether the current view is showing informal or formal textual \textsc{bon}.
 
 \paragraph{}
 With this interface there now is a link between Eiffel and \textsc{bon}, however the chain is not complete. There is still a missing link in making an internal representation of \textsc{bon} from the abstract Eiffel syntax.
@@ -27,7 +28,7 @@ With this interface there now is a link between Eiffel and \textsc{bon}, however
 \end{figure}
 
 \paragraph{}
-To create the \textsc{bon} representation, a link (the missing link in figure \ref{fig_bon_extraction_2}) between the abstract syntax and the internal representation is needed. Creating a meta-object that instantiates the modeling classes based on the abstract Eiffel syntax provides this functionality. This meta-object will inspect the abstract Eiffel syntax and instantiate the textual \textsc{bon} objects based on the extracted information.
+To create the \textsc{bon} representation, a link (the missing link in figure \ref{fig:bon_extraction_2}) between the abstract syntax and the internal representation is needed. Creating a meta-object that instantiates the modeling classes based on the abstract Eiffel syntax provides this functionality. This meta-object will inspect the abstract Eiffel syntax and instantiate the textual \textsc{bon} objects based on the extracted information.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{images/BON-extraction-model-3.png}
@@ -57,7 +58,7 @@ An alternative solution would be to only have one centralized class taking care 
 \label{deviations_from_bon}There are some deviations from the original \textsc{bon} grammar \cite[pp.~352-359]{walden1995}, both in the internal \textsc{bon} representation, but also in the generated textual \textsc{bon}. This section will discuss the most important ones, and attempt to justify their existence. 
 
 \paragraph{}
-The only major difference in in the generated \textsc{bon} is the omission of the \textit{part} keyword. There are two uses of \textit{part}. One is that one class in \textsc{bon} can exist over multiple documents. The extractor will never try to split a class up over more than one document, thus this use of the keyword will not be needed. The other is the ability to have partial classes. This feature is seen in some languages (like C\#, \cite{msdn2009}), but since Eiffel does not support this there is no need for it in this implementation. Therefore the \textit{Part} keyword is not included in the generated \textsc{bon} nor modeled in the internal representation.
+The only major difference in in the generated \textsc{bon} is the omission of the \textit{part} keyword. There are two uses of \textit{part}. One is that one class in \textsc{bon} can exist over multiple documents. The extractor will never try to split a class up over more than one document, thus this use of the keyword will not be needed. The other is the ability to have partial classes. This feature is seen in some languages (like C\#, \cite{msdn2009}), but since Eiffel does not support this there is no need for it in this implementation. Therefore the \textit{part} keyword is not included in the generated \textsc{bon} nor modeled in the internal representation.
 
 \paragraph{}
 Lastly, some elements such as scenario charts and event chart are also not included. Some of these elements were excluded because they only hold semantic value and therefore require the static analysis to gather semantic information from the abstract syntax. Others have been excluded, not because they did not feel relevant or useful for this tool, but because they felt out of scope, such as creation chart. This, however, does not mean that these elements could not be included in future versions of the extractor.
