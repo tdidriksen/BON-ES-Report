@@ -1,7 +1,55 @@
 \subsection{Formal BON}
 \subsubsection{Variance}
 \label{implementation-variance}
+\begin{figure}[H]
+{\footnotesize
+\begin{verbatim}
+ 1| conforms_to (other): BOOLEAN
+ 2|  do
+ 3|    Result := name of Current is equal to ANY
+ 4|    if not Result and name of other is not NONE then
+ 5|       if name of Current is equal to name of other then
+ 6|          if Current.generic_count = other.generic_count then
+ 7|              if Current.has_actual_type and other.has_actual_type
+ 8|                 Result := Current.instance_equality (other)
+ 9|              elseif Current.has_actual_type xor other.has_actual_type then
+10|                 Result := False
+11|               else
+12|                  Result := Current.generics = other.generics
+13|               e nd
+14|           end
+15|        else
+16|         Result := exists an ancestor a' of Current such that a'.conforms_to(other)
+17|        end
+18|    end
+19|  end
+\end{verbatim}
+}
+\caption{Example of a generic class specification with type bounds}
+\label{fig:generic_class_specification_bounded}
+\end{figure}
+
 \textit{conforms\textunderscore to}
+
+\subsubsection{Features}
+At the heart of a class specification are its features, the relations of which are discussed in this section. Features are represented in the type checker by the class \textsc{tbon\textunderscore tc\textunderscore feature}. As mentioned in section \ref{implementation-context-class-structure}, a class in the type context is associated with a set of instances of these. In turn, a feature is associated with its arguments through a list of instances of \textsc{tbon\textunderscore tc\textunderscore feature\textunderscore argument}. 
+\subsubsubsection{Feature Status}
+Whenever a feature exists in a class specification in which ancestors are specified, it can potentially have a precursor. Luckily, because features repeatedly effect, undefine, and redefine each other all the way down the inheritance hierarchy, only the nearest precursor feature needs to be considered when determining whether a feature specification is well-typed. The status of a feature is implemented by simple boolean flags in \textsc{tbon\textunderscore tc\textunderscore feature}; and as specified in the grammar in \cite{walden1995}, only one (or none) of these can be set at any given time.
+\begin{figure}[H]
+    \centerline{\scalebox{0.75}{\includegraphics{images/feature_status.png}}}
+    \caption[Feature status matrix]{Allowed status relations between a feature and its precursor}
+    \label{fig:feature_status}
+\end{figure}
+Figure \ref{fig:feature_status} shows the allowed relations between the status of the precursor and the status of the current feature (i.e. the feature whose well-typedness is being determined). Notably, what it shows is that it is always possible to undefine an inherited feature by creating a \textit{deferred} version of it in the current class, regardless of the status of the precursor. This becomes relevant in any situation in which one wants to ensure that all concrete descendants of the current class redefines (or, more precisely, effects) the undefined feature.
+
+As for the \textit{effective} status, the restrictions for it may seem overly constraining at first, when considering that the original specification of it states that "[the effective marker] may also be used just to emphasize that the feature will have an implementation," \cite[p.~40]{walden1995}. However, figure \ref{fig:feature_status} only status that \emph{if} a precursor exists for an \textit{effective} feature, then it must be \textit{deferred}; if no precursor exists, one may use it freely.
+
+The \textit{redefined} status is defined as one would expect from the definition in \cite[p.~40]{walden1995}. The only noteworthy aspect is that if a precursor is \textit{deferred}, the current feature must be marked as \textit{effective}, as conceptually, one cannot redefine something that has yet to be defined.
+
+For unclassified features, the definition is straightforward: an unclassified feature defined in the current class can never have a precursor. An unclassified feature inherited from an ancestor can be redefined and undefined as expected, though.
+\subsubsubsection{Prefix and Infix Features}
+For regular features, having two features with identical names in the same class (either directly defined in the class or inherited) is not allowed; this is not true for prefix and infix features. For instance, it should be possible to define the operator ''+'' as both a unary and a binary operator on an object, e.g. an integer. The really interesting aspects of prefix and infix features arises when they are used, though, which will be described in the formal assertions section.
+
 \subsubsection{Generics}
 \label{implementation-generics}
 In textual \textsc{bon}, formal specifications can involve generics in several different ways:
@@ -104,3 +152,8 @@ Now, is the example then well-typed? No, because the concrete type parameter of 
 Firstly, the differences between the three instantiations of the class \textsc{sequence} should be noted (also note that in this example, the type parameter of \textsc{sequence} has no bounding type). Secondly, the example shows a type parameter \textsc{n} that is bounded by a generic class \textsc{a} instantiated with the first parameter of class \textsc{b},  \textsc{m}. Instantiating a bounding type with another type parameter is permitted, as long the type parameter used in the instantiation is declared at the time of its use (i.e. the type parameter appears to the left of the type parameter that uses it in its specification).
 
 What happens in this case is that \textsc{m} is considered to be a sequence of \textsc{integer}, while the type parameter of \textsc{a} is bounded by a sequence of {real}. At the time of the instantiation of class \textsc{a} for the bound of type parameter \textsc{n}, the bounding type of \textsc{m} has to conform to the bounding type of \textsc{a} in order for the instantiation to be well-typed. But, as already defined in section \ref{design-type-system}, the type checker does not consider a sequence of \textsc{real} to conform to a sequence of \textsc{integer}, even though \textsc{integer} might be a subtype of \textsc{real}. Consequently, to make this situation well-typed, one would have to change the bounding type of either type parameter \textsc{e} or \textsc{m}, such that they become equal.
+
+\subsubsection{Formal Assertions}
+\label{implementation-formal-assertions}
+\label{implementation-def-boolean-type}
+\label{implementation-set-expressions}
