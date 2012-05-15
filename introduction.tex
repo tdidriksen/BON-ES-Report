@@ -1,4 +1,8 @@
 \chapter{Introduction}
 \label{sec:introduction}
+\section{Problem definition}
+\section{Ongoing work}
+\section{The product}
+Writing specifications can be a lot of work. A lot of developers want to shortcut this work by generating the specification with tools of different sorts. However, there are no tools to extract \textsc{bon} from Eiffel, even with these two being very alike. This is exactly what the product of this project is. A tool to extract Eiffel from \textsc{bon}, in the main Eiffel development environment, EiffelStudio. The idea is that a user at any given time can switch from writing Eiffel code, to reading a textual \bon{ } specification for his work. But the extracted \bon{ } shouldn't just be blindly based on one class, but also give an overview of other relations of the class.
 
-
+To ensure that the extracted textual \bon{ } is accurate a type checker is also implemented. This type checker will receive the \bon{ } through an extended version of the \textsc{ebon} parser/lexer (\cite{ebon}). A this point this type checker is not yet integrated in EiffelStudio, but as it is fully implemented in Eiffel it is the next logical step. 
