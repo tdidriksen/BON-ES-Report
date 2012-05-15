@@ -1,0 +1,28 @@
+conforms_to (other): BOOLEAN
+  do
+    Result := name of Current is equal to ANY
+    if not Result and name of other is not NONE then
+        if name of Current is equal to name of other then
+          if Current.generic_count = other.generic_count then
+            if Current.has_actual_type and other.has_actual_type
+              Result := Current.instance_equality (other)
+            elseif Current.has_actual_type xor other.has_actual_type then
+              Result := False
+            else
+              Result := Current.generics = other.generics
+            end
+          end
+        else
+          Result := exists an ancestor a' of Current such that a'.conforms_to(other)
+        end
+    end
+  end
+
+conforms_to (other): BOOLEAN
+  do
+    Result := Current.name.is_equal(other.name) or 
+              Current.name.is_equal("ANY")
+    if Result then
+      
+    end
+  end

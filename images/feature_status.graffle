@@ -1,0 +1,2227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ActiveLayerIndex</key>
+	<integer>0</integer>
+	<key>ApplicationVersion</key>
+	<array>
+		<string>com.omnigroup.OmniGrafflePro</string>
+		<string>138.9.0.117994</string>
+	</array>
+	<key>AutoAdjust</key>
+	<true/>
+	<key>BackgroundGraphic</key>
+	<dict>
+		<key>Bounds</key>
+		<string>{{0, 0}, {559, 783}}</string>
+		<key>Class</key>
+		<string>SolidGraphic</string>
+		<key>ID</key>
+		<integer>2</integer>
+		<key>Style</key>
+		<dict>
+			<key>shadow</key>
+			<dict>
+				<key>Draws</key>
+				<string>NO</string>
+			</dict>
+			<key>stroke</key>
+			<dict>
+				<key>Draws</key>
+				<string>NO</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>CanvasOrigin</key>
+	<string>{0, 0}</string>
+	<key>ColumnAlign</key>
+	<integer>1</integer>
+	<key>ColumnSpacing</key>
+	<real>36</real>
+	<key>CreationDate</key>
+	<string>2012-05-14 09:49:02 +0200</string>
+	<key>Creator</key>
+	<string>Thomas Didriksen</string>
+	<key>DisplayScale</key>
+	<string>1 0/72 in = 1 0/72 in</string>
+	<key>GraphDocumentVersion</key>
+	<integer>6</integer>
+	<key>GraphicsList</key>
+	<array>
+		<dict>
+			<key>Bounds</key>
+			<string>{{126, 258}, {67, 17}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>30</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\b\fs28 \cf0 Precursor}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>TextRotation</key>
+			<real>270</real>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{318, 148}, {102, 17}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>29</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\b\fs28 \cf0 Current feature}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{438.5, 181}, {63, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>28</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\fs24 \cf0 unclassified}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{377.5, 181}, {51, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>27</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\fs24 \cf0 redefined}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{322.5, 181}, {45, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>26</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\fs24 \cf0 effective}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{261.5, 181}, {45, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>25</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\fs24 \cf0 deferred}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>TableGroup</string>
+			<key>Graphics</key>
+			<array>
+				<dict>
+					<key>Bounds</key>
+					<string>{{249.5, 203}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>9</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs28 \cf0 \uc0\u10003 }</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{312.5, 203}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>10</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs28 \cf0 \uc0\u10003 }</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{375.5, 203}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>11</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 \'97}</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{438.5, 203}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>12</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 \'97}</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{249.5, 239}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>13</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs28 \cf0 \uc0\u10003 }</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{312.5, 239}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>14</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 \'97}</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{375.5, 239}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>15</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs28 \cf0 \uc0\u10003 }</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{438.5, 239}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>16</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 \'97}</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{312.5, 275}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>17</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 \'97}</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{249.5, 275}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>18</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs28 \cf0 \uc0\u10003 }</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{438.5, 275}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>19</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 \'97}</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{375.5, 275}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>20</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs28 \cf0 \uc0\u10003 }</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{312.5, 311}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>21</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 \'97}</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{438.5, 311}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>22</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 \'97}</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{249.5, 311}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>23</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs28 \cf0 \uc0\u10003 }</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{375.5, 311}, {63, 36}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>24</integer>
+					<key>Magnets</key>
+					<array>
+						<string>{1, 1}</string>
+						<string>{1, -1}</string>
+						<string>{-1, -1}</string>
+						<string>{-1, 1}</string>
+						<string>{0, 1}</string>
+						<string>{0, -1}</string>
+						<string>{1, 0}</string>
+						<string>{-1, 0}</string>
+						<string>{-0.5, -0.233518}</string>
+						<string>{-0.491442, 0.260063}</string>
+						<string>{0.507118, -0.224086}</string>
+						<string>{0.507118, 0.267179}</string>
+						<string>{-0.27431, -0.474028}</string>
+						<string>{0.27978, -0.478478}</string>
+						<string>{0.293938, 0.543044}</string>
+						<string>{-0.286232, 0.553804}</string>
+					</array>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs28 \cf0 \uc0\u10003 }</string>
+						<key>VerticalPad</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+			</array>
+			<key>GridH</key>
+			<array>
+				<array>
+					<integer>9</integer>
+					<integer>10</integer>
+					<integer>11</integer>
+					<integer>12</integer>
+				</array>
+				<array>
+					<integer>13</integer>
+					<integer>14</integer>
+					<integer>15</integer>
+					<integer>16</integer>
+				</array>
+				<array>
+					<integer>17</integer>
+					<integer>18</integer>
+					<integer>19</integer>
+					<integer>20</integer>
+				</array>
+				<array>
+					<integer>21</integer>
+					<integer>22</integer>
+					<integer>23</integer>
+					<integer>24</integer>
+				</array>
+				<array/>
+			</array>
+			<key>GridV</key>
+			<array>
+				<array>
+					<integer>9</integer>
+					<integer>13</integer>
+					<integer>18</integer>
+					<integer>23</integer>
+				</array>
+				<array>
+					<integer>10</integer>
+					<integer>14</integer>
+					<integer>17</integer>
+					<integer>21</integer>
+				</array>
+				<array>
+					<integer>11</integer>
+					<integer>15</integer>
+					<integer>20</integer>
+					<integer>24</integer>
+				</array>
+				<array>
+					<integer>12</integer>
+					<integer>16</integer>
+					<integer>19</integer>
+					<integer>22</integer>
+				</array>
+				<array/>
+			</array>
+			<key>ID</key>
+			<integer>8</integer>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{175, 326}, {63, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>6</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\fs24 \cf0 unclassified}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{190, 288}, {51, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>5</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\fs24 \cf0 redefined}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{193, 250}, {45, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>4</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\fs24 \cf0 effective}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{193, 212}, {45, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>3</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc\pardirnatural
+
+\f0\fs24 \cf0 deferred}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+	</array>
+	<key>GridInfo</key>
+	<dict/>
+	<key>GuidesLocked</key>
+	<string>NO</string>
+	<key>GuidesVisible</key>
+	<string>YES</string>
+	<key>HPages</key>
+	<integer>1</integer>
+	<key>ImageCounter</key>
+	<integer>1</integer>
+	<key>KeepToScale</key>
+	<false/>
+	<key>Layers</key>
+	<array>
+		<dict>
+			<key>Lock</key>
+			<string>NO</string>
+			<key>Name</key>
+			<string>Layer 1</string>
+			<key>Print</key>
+			<string>YES</string>
+			<key>View</key>
+			<string>YES</string>
+		</dict>
+	</array>
+	<key>LayoutInfo</key>
+	<dict>
+		<key>Animate</key>
+		<string>NO</string>
+		<key>circoMinDist</key>
+		<real>18</real>
+		<key>circoSeparation</key>
+		<real>0.0</real>
+		<key>layoutEngine</key>
+		<string>dot</string>
+		<key>neatoSeparation</key>
+		<real>0.0</real>
+		<key>twopiSeparation</key>
+		<real>0.0</real>
+	</dict>
+	<key>LinksVisible</key>
+	<string>NO</string>
+	<key>MagnetsVisible</key>
+	<string>NO</string>
+	<key>MasterSheets</key>
+	<array/>
+	<key>ModificationDate</key>
+	<string>2012-05-14 10:32:08 +0200</string>
+	<key>Modifier</key>
+	<string>Thomas Didriksen</string>
+	<key>NotesVisible</key>
+	<string>NO</string>
+	<key>Orientation</key>
+	<integer>2</integer>
+	<key>OriginVisible</key>
+	<string>NO</string>
+	<key>PageBreaks</key>
+	<string>YES</string>
+	<key>PrintInfo</key>
+	<dict>
+		<key>NSBottomMargin</key>
+		<array>
+			<string>float</string>
+			<string>41</string>
+		</array>
+		<key>NSLeftMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+		<key>NSPaperSize</key>
+		<array>
+			<string>size</string>
+			<string>{595, 842}</string>
+		</array>
+		<key>NSRightMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+		<key>NSTopMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+	</dict>
+	<key>PrintOnePage</key>
+	<false/>
+	<key>QuickLookPreview</key>
+	<data>
+	JVBERi0xLjMKJcTl8uXrp/Og0MTGCjUgMCBvYmoKPDwgL0xlbmd0aCA2IDAgUiAvRmls
+	dGVyIC9GbGF0ZURlY29kZSA+PgpzdHJlYW0KeAGtWMtu2zAQvPMrtjflYIVPPa412kNO
+	DWKgh6KHQLWBBE2K2Gn/sz/Qb+nyTUu0RMOGYUOw1tzZ3RmK4ze4hzeg+FKqh7YTsN/C
+	V3iF2/WBwXAAZl6HAVa0VqDfSeBOh3EdRgmGvGGsXmrFgDOlQxsJwwt83ADj7g6HFee1
+	kG3TgITNC9x+ZjXFH2528A2qHzc6ESfV1l5AtbvBrBziF/t9uIfR32FzB582poxxdt5g
+	doLZaU0p5bAZxji46DFojKPaYtLN8+llybQoxmspuegmi2FRkxKGd1fU0w3R5UL1B2ua
+	KUV2Xa6RqqasVyLJSXwjj5pkc4S2/SvLRbJtk3Xfd1S2SVI7vep1i/PItY02yAWpaKZt
+	gtVCUaTeeAbYtt+eAq/+Yvjprx594w6HJ//dybJ8ftfCbFmsQ47wHntJjklZpVVNVCFa
+	zXMpGmgE4CeqZ4ftuMP3s9EQWT8Y5lN4WKcCoUZsyCO7gmAsrvCAbA7CgmNhSYqdV9K3
+	UjpZSVgpVFXPOAONyNTAa61eFFb1IQ5mXALhsp+WkEg5ILWBp5GOt4COaaSet+cgJUbQ
+	Y6TY5q4MqQ0MSAlOZbanLU2RJluVqBtKVRe2CFFTq7Dq7+mOgsDNYEKKTEeJDQw4NXvm
+	cAopF3Fa9iJON/lZnJa8LY/U2004qplmOcpbFQPncBqO9nRh8hZpEUf95JeR2smXI9WT
+	j0izkz+no05LyzhtYDFOrrUUcZ7Q0jkddRxdRmoDi5EajkakF3fUDlTRLlIvz1E3edHH
+	wFmO4uSVOSCMjydR8+dM3kqkAKfTUjFO3O8TnFebfAlSs43hEamso3ryCdKLJ28lUoDT
+	aakUp9ZSgvMKHXUcxfqTQ8B4v9f7qOMoFTFwkaMNnq8nR+iLOLqM03G0GKfm6DVxGuKp
+	ApyWoaU4DUMjzitM3nF0GanjaClSw9FLkCbs4x3qslcZFkUjZne6jBFLfNfExWSNGNF+
+	MhgxIdEEhtzZg7e2g1kbhh4wb8OOF02dJdIha8LIggkznnPGhEmcmy1Du8k0I59aMHvw
+	wozzFoxk7V7MpB9L2YZlDJg7k54yYFI/68IUUvgZ+xUc5Lz9ci0rsF8uu3Ms2ZKi+Rr9
+	I3BkvlJeNfhQ4mgrcz4I/6RolMSJeR8k/WkYh7L2bhHLM85777/Ye0sZfDL6ThPyDu5i
+	F249+l+9T9bRTp7EPyX0QVzrgSltsxTTXtht6MkGJPDE3nKO++gYtObulwAyABg8gEn+
+	g7/zK1bouIbivP8PczjHhgplbmRzdHJlYW0KZW5kb2JqCjYgMCBvYmoKOTU4CmVuZG9i
+	agozIDAgb2JqCjw8IC9UeXBlIC9QYWdlIC9QYXJlbnQgNCAwIFIgL1Jlc291cmNlcyA3
+	IDAgUiAvQ29udGVudHMgNSAwIFIgL01lZGlhQm94IFswIDAgNTU5IDc4M10KPj4KZW5k
+	b2JqCjcgMCBvYmoKPDwgL1Byb2NTZXQgWyAvUERGIC9UZXh0IF0gL0NvbG9yU3BhY2Ug
+	PDwgL0NzMiA5IDAgUiAvQ3MxIDggMCBSID4+IC9Gb250IDw8Ci9GMi4xIDEyIDAgUiAv
+	RjMuMCAxMyAwIFIgL0YxLjAgMTAgMCBSIC9GNC4wIDE0IDAgUiA+PiA+PgplbmRvYmoK
+	MTUgMCBvYmoKPDwgL0xlbmd0aCAxNiAwIFIgL04gMSAvQWx0ZXJuYXRlIC9EZXZpY2VH
+	cmF5IC9GaWx0ZXIgL0ZsYXRlRGVjb2RlID4+CnN0cmVhbQp4AYVST0gUURz+zTYShIhB
+	hXiIdwoJlSmsrKDadnVZlW1bldKiGGffuqOzM9Ob2TXFkwRdojx1D6JjdOzQoZuXosCs
+	S9cgqSAIPHXo+83s6iiEb3k73/v9/X7fe0RtnabvOylBVHNDlSulp25OTYuDHylFHdRO
+	WKYV+OlicYyx67mSv7vX1mfS2LLex7V2+/Y9tZVlYCHqLba3EPohkWYAH5mfKGWAs8Ad
+	lq/YPgE8WA6sGvAjogMPmrkw09GcdKWyLZFT5qIoKq9iO0mu+/m5xr6LtYmD/lyPZtaO
+	vbPqqtFM1LT3RKG8D65EGc9fVPZsNRSnDeOcSEMaKfKu1d8rTMcRkSsQSgZSNWS5n2pO
+	nXXgdRi7XbqT4/j2EKU+yWCoibXpspkdhX0AdirL7BDwBejxsmIP54F7Yf9bUcOTwCdh
+	P2SHedatH/YXrlPge4Q9NeDOFK7F8dqKH14tAUP3VCNojHNNxNPXOXOkiO8x1BmY90Y5
+	pgsxd5aqEzeAO2EfWapmCrFd+67qJe57AnfT4zvRmzkLXKAcSXKxFdkU0DwJWBR9i7BJ
+	Djw+zh5V4HeomMAcuYnczSj3HtURG2ejUoFWeo1Xxk/jufHF+GVsGM+Afqx213t8/+nj
+	FXXXtj48+Y163DmuvZ0bVWFWcWUL3f/HMoSP2Sc5psHToVlYa9h25A+azEywDCjEfwU+
+	l/qSE1Xc1e7tuEUSzFA+LGwluktUbinU6j2DSqwcK9gAdnCSxCxaHLhTa7o5eHfYInpt
+	+U1XsuuG/vr2evva8h5tyqgpKBPNs0RmlLFbo+TdeNv9ZpERnzg6vue9ilrJ/klFED+F
+	OVoq8hRV9FZQ1sRvZw5+G7Z+XD+l5/VB/TwJPa2f0a/ooxG+DHRJz8JzUR+jSfCwaSHi
+	EqCKgzPUTlRjjQPiKfHytFtkkf0PQBn9ZgplbmRzdHJlYW0KZW5kb2JqCjE2IDAgb2Jq
+	CjcwNAplbmRvYmoKOSAwIG9iagpbIC9JQ0NCYXNlZCAxNSAwIFIgXQplbmRvYmoKMTcg
+	MCBvYmoKPDwgL0xlbmd0aCAxOCAwIFIgL04gMyAvQWx0ZXJuYXRlIC9EZXZpY2VSR0Ig
+	L0ZpbHRlciAvRmxhdGVEZWNvZGUgPj4Kc3RyZWFtCngBhVTPaxNBFP42bqnQIghaaw6y
+	eJAiSVmraEXUNv0RYmsM2x+2RZBkM0nWbjbr7ia1pYjk4tEq3kXtoQf/gB568GQvSoVa
+	RSjeqyhioRct8c1uTLal6sDOfvPeN+99b3bfAA1y0jT1gATkDcdSohFpbHxCavyIAI6i
+	CUE0JVXb7E4kBkGDc/l759h6D4FbVsN7+3eyd62a0raaB4T9QOBHmtkqsO8XcQpZEgKI
+	PN+hKcd0CN/j2PLsjzlOeXjBtQ8rPcRZInxANS3Of024U80l00CDSDiU9XFSPpzXi5TX
+	HQdpbmbGyBC9T5Cmu8zuq2KhnE72DpC9nfR+TrPePsIhwgsZrT9GuI2e9YzVP+Jh4aTm
+	xIY9HBg19PhgFbcaqfg1whRfEE0nolRx2S4N8Ziu/VbySoJwkDjKZGGAc1pIT9dMbvi6
+	hwV9JtcTr+J3VlHheY8TZ97U3e9F2gKvMA4dDBoMmg1IUBBFBGGYsFBAhjwaMTSycj8j
+	qwYbk3sydSRqu3RiRLFBezbcPbdRpN08/igicZRDtQiS/EH+Kq/JT+V5+ctcsNhW95St
+	m5q68uA7xeWZuRoe19PI43NNXnyV1HaTV0eWrHl6vJrsGj/sV5cx5oI1j8RzsPvxLV+V
+	zJcpjBTF41Xz6kuEdVoxN9+fbH87PeIuzy611nOtiYs3VpuXZ/1qSPvuqryT5lX5T171
+	8fxnzcRj4ikxJnaK5yGJl8Uu8ZLYS6sL4mBtxwidlYYp0m2R+iTVYGCavPUvXT9beL1G
+	fwz1UZQZzNJUifd/wipkNJ25Dm/6j9vH/Bfk94rnnygCL2zgyJm6bVNx7xChZaVuc64C
+	F7/RffC2bmujfjj8BFg8qxatUjWfILwBHHaHeh7oKZjTlpbNOVKHLJ+TuunKYlLMUNtD
+	UlLXJddlSxazmVVi6XbYmdMdbhyhOUL3xKdKZZP6r/ERsP2wUvn5rFLZfk4a1oGX+m/A
+	vP1FCmVuZHN0cmVhbQplbmRvYmoKMTggMCBvYmoKNzM3CmVuZG9iago4IDAgb2JqClsg
+	L0lDQ0Jhc2VkIDE3IDAgUiBdCmVuZG9iago0IDAgb2JqCjw8IC9UeXBlIC9QYWdlcyAv
+	TWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ291bnQgMSAvS2lkcyBbIDMgMCBSIF0gPj4K
+	ZW5kb2JqCjE5IDAgb2JqCjw8IC9UeXBlIC9DYXRhbG9nIC9PdXRsaW5lcyAyIDAgUiAv
+	UGFnZXMgNCAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL0xhc3QgMjAgMCBSIC9GaXJz
+	dCAyMSAwIFIgPj4KZW5kb2JqCjIxIDAgb2JqCjw8IC9QYXJlbnQgMjIgMCBSIC9Db3Vu
+	dCAwIC9EZXN0IFsgMyAwIFIgL1hZWiAwIDc4MyAwIF0gL1RpdGxlIChDYW52YXMgMSkK
+	Pj4KZW5kb2JqCjIyIDAgb2JqCjw8ID4+CmVuZG9iagoyMCAwIG9iago8PCAvUGFyZW50
+	IDIyIDAgUiAvQ291bnQgMCAvRGVzdCBbIDMgMCBSIC9YWVogMCA3ODMgMCBdIC9UaXRs
+	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
+	T5hhaGkNpGpLAze4dgan41ex6pYEZeGTVHwnk2DJ3gQ1TRjC72zSNasgbq2WZd+6JgyI
+	xhXVYExzo7a8GrkpUj+gBMUnycJITBbJH8G0dISgPRasQb4uC+C8xFc1bs0bdKWr7cHg
+	XNi5UtiBCrrHgrCw3rQA1Fk1f0KnQHULTqrJ/gAO22gTEr1JbGFMdwS7akTMWEwkmPYU
+	Ht+wrtT0eQV8Dk6DfKVhBbkahYlgLCZsLgsoSPNYzBXDPMw2vuE5l+E1GQkSKpi4L8Gi
+	fugCFP3+wKe4FRH5YBOGugpxT51S+O3x2yO8Ku03NK+Bt6v0CId+oAiHv0uEV3+nCLel
+	PR0V4Qh8bhMRbh87whqf/C0xPjukXiOk3jFCumZUSNd+e0g70o7Cq3Vwr0MP6fofKKQb
+	vktIr/1OId2Y9nRUSDfB540ipJvHDun/RdJ2jorwdd8e4S1pv+FkF7zdoke4+weK8Nbv
+	EuFt3ynC16c9HRXh7fD5ehHhHf9/Ed55VoTxwyYj6wQ8ZxIqTH8Es4FpQ038k8HgEMn4
+	TgM/sYpmBl74mWQcFT1h5RYSVPPSay/pxayZ7nx3fhUKhufCr71S9OtoBn1FXksUmrC2
+	K/l2xsP4fqmIKryOzIJMa46FHHj0yqGMAmvNiyX1JIqaWTMzJtfwyVPm1M4uLikonMdq
+	Z5dYiG+/evYFU2++fUnz8r1rugfaDkebImeSZ16s+uXlyy5+sbdxTz9+FFma6HG+/Kfn
+	8GOPfiXr8Ew81gU541ltHe1tGzaGt2xAF4Yf9435WqmQqNV/ecuVC9VLt7ati4R/tCW8
+	KaI/6qciQvgHCdH4pHmJIdJ1NgX6RP8DphelBwplbmRzdHJlYW0KZW5kb2JqCjI0IDAg
+	b2JqCjQ4ODAKZW5kb2JqCjI1IDAgb2JqCjw8IC9UeXBlIC9Gb250RGVzY3JpcHRvciAv
+	QXNjZW50IDk2NyAvQ2FwSGVpZ2h0IDg1OSAvRGVzY2VudCAtMjExIC9GbGFncyA0Ci9G
+	b250QkJveCBbLTEwNjcgLTczNyAxNjQxIDExNjJdIC9Gb250TmFtZSAvVFBPS1dJK0x1
+	Y2lkYUdyYW5kZSAvSXRhbGljQW5nbGUKMCAvU3RlbVYgMCAvTWF4V2lkdGggMTY0MCAv
+	WEhlaWdodCA2NDUgL0ZvbnRGaWxlMiAyMyAwIFIgPj4KZW5kb2JqCjI2IDAgb2JqClsg
+	NzY0IF0KZW5kb2JqCjI3IDAgb2JqCjw8IC9MZW5ndGggMjggMCBSIC9GaWx0ZXIgL0Zs
+	YXRlRGVjb2RlID4+CnN0cmVhbQp4AV2QsW7EIBBEe75iy0txwr4UaRBSdNFJLnIXxckH
+	YFhbSPGC1rjw3weIc5FSbMHMPBhWnruXjnwC+cbB9phg9OQYl7CyRRhw8iTaEzhv036q
+	mp1NFDLD/bYknDsaAyglAOR7RpbEGxyeXRjwoWg3dsieJjh8nvuq9GuMXzgjJWiE1uBw
+	zNe9mng1M4Ks6LFz2fdpO2bqL/GxRYTcKBPtTyUbHC7RWGRDEwrVNFpdLloguX/WDgzj
+	njy1WtV5ah9r/tcpaPnivZJdmXObuodatBTwhPdVxRDLg3W+AXGLcB0KZW5kc3RyZWFt
+	CmVuZG9iagoyOCAwIG9iagoyMjUKZW5kb2JqCjEyIDAgb2JqCjw8IC9UeXBlIC9Gb250
+	IC9TdWJ0eXBlIC9UcnVlVHlwZSAvQmFzZUZvbnQgL1RQT0tXSStMdWNpZGFHcmFuZGUg
+	L0ZvbnREZXNjcmlwdG9yCjI1IDAgUiAvV2lkdGhzIDI2IDAgUiAvRmlyc3RDaGFyIDMz
+	IC9MYXN0Q2hhciAzMyAvVG9Vbmljb2RlIDI3IDAgUiA+PgplbmRvYmoKMjkgMCBvYmoK
+	PDwgL0xlbmd0aCAzMCAwIFIgL0xlbmd0aDEgNDMzMiAvRmlsdGVyIC9GbGF0ZURlY29k
+	ZSA+PgpzdHJlYW0KeAF9WA10FNUVvm9msrvhLwsGskkIM8vkB5LdJIDQGPKzkN0ESAkh
+	CbrrEd1NWBJ+ApEEKhZosHBql9izrWCx+FMNVTSeOtkg3QDaiD/VVKrY9vSo7TkgWkuP
+	nqJHPCgk0+/NJFGodibv3Xfv/d6999333ry36diyNUwTqZNEqr011LaWjMc+AOJqag21
+	mXySBprWtK1DMXnLQSLxi7Vtza0mPy5KlOBo3rh9pH/SXyA/3BIOrTH1dBV0QQsEJs9u
+	BM1sae24y+STjoDaNm5uGtEnvQHe0hq6a8Q//R28sinUGjbx9l9zvm1ze8cIz+3MatsS
+	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
+	Qhf8pXkmsJkkpCVQqqS4uMkP7P+kguVDcwpvmO+cWiWVCfYdO3iMxqP34fz5tofr+wwF
+	oynG4sSlEP+poIbaFdW3LM1bvnlTqGkz9z364OcSTddHHi4cazMlmfP/BanIf2cKZW5k
+	c3RyZWFtCmVuZG9iagozMCAwIG9iagoyOTQyCmVuZG9iagozMSAwIG9iago8PCAvVHlw
+	ZSAvRm9udERlc2NyaXB0b3IgL0FzY2VudCAxMDAwIC9DYXBIZWlnaHQgODg5IC9EZXNj
+	ZW50IC0yNTAgL0ZsYWdzCjMyIC9Gb250QkJveCBbLTYxMCAtNDIxIDgwNCAxMjIzXSAv
+	Rm9udE5hbWUgL1RQT0tXSStNb25hY28gL0l0YWxpY0FuZ2xlIDAKL1N0ZW1WIDAgL0xl
+	YWRpbmcgODMgL01heFdpZHRoIDYwNiAvWEhlaWdodCA2NjcgL0ZvbnRGaWxlMiAyOSAw
+	IFIgPj4KZW5kb2JqCjMyIDAgb2JqClsgNjAwIF0KZW5kb2JqCjEzIDAgb2JqCjw8IC9U
+	eXBlIC9Gb250IC9TdWJ0eXBlIC9UcnVlVHlwZSAvQmFzZUZvbnQgL1RQT0tXSStNb25h
+	Y28gL0ZvbnREZXNjcmlwdG9yCjMxIDAgUiAvV2lkdGhzIDMyIDAgUiAvRmlyc3RDaGFy
+	IDIwOSAvTGFzdENoYXIgMjA5IC9FbmNvZGluZyAvTWFjUm9tYW5FbmNvZGluZwo+Pgpl
+	bmRvYmoKMzMgMCBvYmoKPDwgL0xlbmd0aCAzNCAwIFIgL0xlbmd0aDEgODg2OCAvRmls
+	dGVyIC9GbGF0ZURlY29kZSA+PgpzdHJlYW0KeAHdWnt4VNW1X/s855FMZiYzmXdmDpOZ
+	yeT9II8hgQxhJiRAQkh4JEg0CQkkSGqEEMUWbhRsSVQUKQ/Fq6JenkWGJIUB1Jt6QfTW
+	VrSKj3pbrWj9/MyHt1d7WyGZu86ZJJJY/fjDr3/c2Vl777Wfa//22muds0+61m1ohVjo
+	ARqqlzd1rgLpJ3QBkKyVHU2dUV77BfK6ld1djijPJgPQa1d1ru6I8rKfAyhsq9duHOuv
+	SwKI+byttaklWg/XMM1vw4IoT6ZjmtTW0XVnlNcOYlq89raVY/U6BnlHR9OdY/PD+yL/
+	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
+	rptvw5T67sn8VQnH/wNIFM+1CmVuZHN0cmVhbQplbmRvYmoKMzQgMCBvYmoKNTQ0OApl
+	bmRvYmoKMzUgMCBvYmoKPDwgL1R5cGUgL0ZvbnREZXNjcmlwdG9yIC9Bc2NlbnQgNzcw
+	IC9DYXBIZWlnaHQgNjg0IC9EZXNjZW50IC0yMzAgL0ZsYWdzIDMyCi9Gb250QkJveCBb
+	LTk1MSAtNDgxIDE0NDUgMTEyMl0gL0ZvbnROYW1lIC9USUtNQ08rSGVsdmV0aWNhIC9J
+	dGFsaWNBbmdsZSAwCi9TdGVtViAwIC9NYXhXaWR0aCAxNTAwIC9YSGVpZ2h0IDUxMyAv
+	Rm9udEZpbGUyIDMzIDAgUiA+PgplbmRvYmoKMzYgMCBvYmoKWyA1NTYgMCA1MDAgNTU2
+	IDU1NiAyNzggMCAwIDIyMiAwIDAgMjIyIDAgNTU2IDAgMCAwIDMzMyA1MDAgMjc4IDU1
+	NiA1MDAgMAowIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAw
+	IDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwCjAgMCAwIDAgMCAwIDAgMCAwIDAg
+	MCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAw
+	IDAKMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAg
+	MCAwIDAgMCA1MDAgXQplbmRvYmoKMTAgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5
+	cGUgL1RydWVUeXBlIC9CYXNlRm9udCAvVElLTUNPK0hlbHZldGljYSAvRm9udERlc2Ny
+	aXB0b3IKMzUgMCBSIC9XaWR0aHMgMzYgMCBSIC9GaXJzdENoYXIgOTcgL0xhc3RDaGFy
+	IDIyMiAvRW5jb2RpbmcgL01hY1JvbWFuRW5jb2RpbmcKPj4KZW5kb2JqCjM3IDAgb2Jq
+	Cjw8IC9MZW5ndGggMzggMCBSIC9MZW5ndGgxIDgwNzYgL0ZpbHRlciAvRmxhdGVEZWNv
+	ZGUgPj4Kc3RyZWFtCngBvVkLdFTltd77nDPvyWQmyTyTyZnJTN6TN5nJSzIJM3kQAiEv
+	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
+	ywxW7pi6yFU/O5CxgOgj+1ZH3qYzuwBkk0du8y5RaKVp5hhWwdlVqgZlvarW7rPVZb7J
+	yq0pNrWSM2RzBovLFSfjXBkqlytWr7RZDY0pMn2OrDHVkqsGa2NsDjRmm3Nyr4pck7RN
+	CU4wMUl7LQUuWqRRoqfGteM6I/nDjd03YjeKy5I4pyM6CmXF89xC3Iruv2JQExavPkHq
+	sKUVI/Yqkovvbu3NyAhHji5aNPHmy4jx4b9IzXnru5dkZUUOt7V+fCUc+YQOMLsW2UoL
+	C/PN5uty/b6hfX947AWPrawsvcBgLMlY2rzl0fE/PM6SM9G6jfyVuVXST76+8IjWFcur
+	Xbpf4HrgsMtrkEGXFKUmMk2sdJJTpMO9ZCdTCDVj9h7BPCcrzkxVTFYI9vlbo/iSM1E5
+	NXmmID++WHjPERaf8Abh9uhlUvptOv1+tIyMpFwfY9Xs/N3CfHbgJcwPv/LS1PEFdsQ3
+	JLLGgpXMQbLP1shZro3Wn5miwiJvrtJgMWQZSgztsj6Z1CJTgtSgiVFKaO+wxCjTLSaV
+	JQndJnNi0hcLUPDtuNLGqZMi58KuUSksQKT9UoyCxcLiK9agTENeJEBLxUcM6RvuddMR
+	cfgcZzMs2Nr6j9Y8PM9VT63rzmvZ5F3FLL387AFJYXyF66meY8w9VsIpXhHhRPzLLg0V
+	spAGRXSmXwN1UE/n5810It8O19M5unAhxFESLqkQP5f6WhbWNWbX9a3Z1LdxVW8gp3rd
+	mhVCq88vL2UWUaJ/ZOn/WYBvUbqL0kOUfkrpl5RepnSa0nlKV6izOjJ9kQ4zeQTbHF1c
+	GlfVN82pD8zRe+foIgdX9Rf/175KXzun/bo5+oY5+s1zdPF/66vGu0Wo/xcTgnYpCmVu
+	ZHN0cmVhbQplbmRvYmoKMzggMCBvYmoKNTAzMwplbmRvYmoKMzkgMCBvYmoKPDwgL1R5
+	cGUgL0ZvbnREZXNjcmlwdG9yIC9Bc2NlbnQgNzcwIC9DYXBIZWlnaHQgNzIwIC9EZXNj
+	ZW50IC0yMzAgL0ZsYWdzIDMyCi9Gb250QkJveCBbLTEwMTggLTQ4MSAxNDM2IDExNTld
+	IC9Gb250TmFtZSAvUURTSkhNK0hlbHZldGljYS1Cb2xkIC9JdGFsaWNBbmdsZQowIC9T
+	dGVtViAwIC9NYXhXaWR0aCAxNTAwIC9YSGVpZ2h0IDY0NCAvRm9udEZpbGUyIDM3IDAg
+	UiA+PgplbmRvYmoKNDAgMCBvYmoKWyAyNzggMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAg
+	MCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMAo3MjIgMCAw
+	IDAgMCAwIDAgMCAwIDAgMCAwIDAgNjY3IDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAg
+	MCAwIDAgNTU2IDAgNTU2CjAgNTU2IDMzMyAwIDAgMCAwIDAgMCAwIDYxMSA2MTEgMCAw
+	IDM4OSA1NTYgMzMzIDYxMSBdCmVuZG9iagoxNCAwIG9iago8PCAvVHlwZSAvRm9udCAv
+	U3VidHlwZSAvVHJ1ZVR5cGUgL0Jhc2VGb250IC9RRFNKSE0rSGVsdmV0aWNhLUJvbGQg
+	L0ZvbnREZXNjcmlwdG9yCjM5IDAgUiAvV2lkdGhzIDQwIDAgUiAvRmlyc3RDaGFyIDMy
+	IC9MYXN0Q2hhciAxMTcgL0VuY29kaW5nIC9NYWNSb21hbkVuY29kaW5nCj4+CmVuZG9i
+	ago0MSAwIG9iagooVW50aXRsZWQpCmVuZG9iago0MiAwIG9iagooTWFjIE9TIFggMTAu
+	Ni44IFF1YXJ0eiBQREZDb250ZXh0KQplbmRvYmoKNDMgMCBvYmoKKFRob21hcyBEaWRy
+	aWtzZW4pCmVuZG9iago0NCAwIG9iagooT21uaUdyYWZmbGUgUHJvZmVzc2lvbmFsKQpl
+	bmRvYmoKNDUgMCBvYmoKKEQ6MjAxMjA1MTQxNjMzNDJaMDAnMDAnKQplbmRvYmoKMSAw
+	IG9iago8PCAvVGl0bGUgNDEgMCBSIC9BdXRob3IgNDMgMCBSIC9Qcm9kdWNlciA0MiAw
+	IFIgL0NyZWF0b3IgNDQgMCBSIC9DcmVhdGlvbkRhdGUKNDUgMCBSIC9Nb2REYXRlIDQ1
+	IDAgUiA+PgplbmRvYmoKeHJlZgowIDQ2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAy
+	NDkzNiAwMDAwMCBuIAowMDAwMDAzMjM1IDAwMDAwIG4gCjAwMDAwMDEwNzMgMDAwMDAg
+	biAKMDAwMDAwMzA4NiAwMDAwMCBuIAowMDAwMDAwMDIyIDAwMDAwIG4gCjAwMDAwMDEw
+	NTQgMDAwMDAgbiAKMDAwMDAwMTE3NyAwMDAwMCBuIAowMDAwMDAzMDUwIDAwMDAwIG4g
+	CjAwMDAwMDIxNTQgMDAwMDAgbiAKMDAwMDAxODc4OSAwMDAwMCBuIAowMDAwMDAwMDAw
+	IDAwMDAwIG4gCjAwMDAwMDkwNTUgMDAwMDAgbiAKMDAwMDAxMjUzMiAwMDAwMCBuIAow
+	MDAwMDI0NTU3IDAwMDAwIG4gCjAwMDAwMDEzMjYgMDAwMDAgbiAKMDAwMDAwMjEzNCAw
+	MDAwMCBuIAowMDAwMDAyMTkwIDAwMDAwIG4gCjAwMDAwMDMwMzAgMDAwMDAgbiAKMDAw
+	MDAwMzE2OSAwMDAwMCBuIAowMDAwMDAzMzk4IDAwMDAwIG4gCjAwMDAwMDMyODMgMDAw
+	MDAgbiAKMDAwMDAwMzM3NiAwMDAwMCBuIAowMDAwMDAzNDkxIDAwMDAwIG4gCjAwMDAw
+	MDg0NjEgMDAwMDAgbiAKMDAwMDAwODQ4MiAwMDAwMCBuIAowMDAwMDA4NzEwIDAwMDAw
+	IG4gCjAwMDAwMDg3MzQgMDAwMDAgbiAKMDAwMDAwOTAzNSAwMDAwMCBuIAowMDAwMDA5
+	MjIyIDAwMDAwIG4gCjAwMDAwMTIyNTQgMDAwMDAgbiAKMDAwMDAxMjI3NSAwMDAwMCBu
+	IAowMDAwMDEyNTA4IDAwMDAwIG4gCjAwMDAwMTI3MDUgMDAwMDAgbiAKMDAwMDAxODI0
+	MyAwMDAwMCBuIAowMDAwMDE4MjY0IDAwMDAwIG4gCjAwMDAwMTg0ODkgMDAwMDAgbiAK
+	MDAwMDAxODk2NCAwMDAwMCBuIAowMDAwMDI0MDg3IDAwMDAwIG4gCjAwMDAwMjQxMDgg
+	MDAwMDAgbiAKMDAwMDAyNDMzOSAwMDAwMCBuIAowMDAwMDI0NzM3IDAwMDAwIG4gCjAw
+	MDAwMjQ3NjQgMDAwMDAgbiAKMDAwMDAyNDgxNiAwMDAwMCBuIAowMDAwMDI0ODUxIDAw
+	MDAwIG4gCjAwMDAwMjQ4OTQgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA0NiAvUm9v
+	dCAxOSAwIFIgL0luZm8gMSAwIFIgL0lEIFsgPGQ5NDJlOTRkMTUxNWYxMTJkZjU0NmQ2
+	NjFlZDNjNDBhPgo8ZDk0MmU5NGQxNTE1ZjExMmRmNTQ2ZDY2MWVkM2M0MGE+IF0gPj4K
+	c3RhcnR4cmVmCjI1MDU2CiUlRU9GCjEgMCBvYmoKPDwvQXV0aG9yIChUaG9tYXMgRGlk
+	cmlrc2VuKS9DcmVhdGlvbkRhdGUgKEQ6MjAxMjA1MTQwNzQ5MDBaKS9DcmVhdG9yIChP
+	bW5pR3JhZmZsZSBQcm9mZXNzaW9uYWwgNS4yKS9Nb2REYXRlIChEOjIwMTIwNTE0MDgz
+	MjAwWikvUHJvZHVjZXIgNDIgMCBSIC9UaXRsZSA0MSAwIFIgPj4KZW5kb2JqCnhyZWYK
+	MSAxCjAwMDAwMjYxMzQgMDAwMDAgbiAKdHJhaWxlcgo8PC9JRCBbPGQ5NDJlOTRkMTUx
+	NWYxMTJkZjU0NmQ2NjFlZDNjNDBhPiA8ZDk0MmU5NGQxNTE1ZjExMmRmNTQ2ZDY2MWVk
+	M2M0MGE+XSAvSW5mbyAxIDAgUiAvUHJldiAyNTA1NiAvUm9vdCAxOSAwIFIgL1NpemUg
+	NDY+PgpzdGFydHhyZWYKMjYzMTEKJSVFT0YK
+	</data>
+	<key>QuickLookThumbnail</key>
+	<data>
+	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
+	aFRXAAAADgAAAfRkZURFAAAAEAAAAgJmaUZJAAAAEAAAAhJpdElUAAAAFAAAAiJrb0tS
+	AAAADAAAAjYASwBsAGUAdQByAGUAbgAtAEwAQwBEAEwAQwBEAC0AZgBhAHIAdgBlAHMA
+	awDmAHIAbQBLAG8AbABvAHIAIABMAEMARABDAG8AbABvAHIAIABMAEMARABGAGEAcgBn
+	AGUALQBMAEMARABMAEMARAAgAGMAbwB1AGwAZQB1AHIATABDAEQAIABDAG8AbABvAHIA
+	aQBkAG8ATABDAEQAIABhACAAQwBvAHIAZQBzX2mCcgAgAEwAQwBEAEwAQwBEACAAYwBv
+	AGwAbwByMKsw6TD8ACAATABDAEQEJgQyBDUEQgQ9BD4EOQAgBBYEGgAtBDQEOARBBD8E
+	OwQ1BDkARgDkAHIAZwAtAEwAQwBEX2mCcm2yZnaYb3k6VmgARgBhAHIAYgAtAEwAQwBE
+	AFYA5AByAGkALQBMAEMARABMAEMARAAgAGMAbwBsAG8AcgBpzuy37AAgAEwAQwBEAAB0
+	ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAxMgAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAWFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAadYAADaxAAAB2FhZWiAAAAAA
+	AABnVAAAuuIAAAlMWFlaIAAAAAAAACWsAAAObgAAyAljdXJ2AAAAAAAABAAAAAAFAAoA
+	DwAUABkAHgAjACgALQAyADYAOwBAAEUASgBPAFQAWQBeAGMAaABtAHIAdwB8AIEAhgCL
+	AJAAlQCaAJ8AowCoAK0AsgC3ALwAwQDGAMsA0ADVANsA4ADlAOsA8AD2APsBAQEHAQ0B
+	EwEZAR8BJQErATIBOAE+AUUBTAFSAVkBYAFnAW4BdQF8AYMBiwGSAZoBoQGpAbEBuQHB
+	AckB0QHZAeEB6QHyAfoCAwIMAhQCHQImAi8COAJBAksCVAJdAmcCcQJ6AoQCjgKYAqIC
+	rAK2AsECywLVAuAC6wL1AwADCwMWAyEDLQM4A0MDTwNaA2YDcgN+A4oDlgOiA64DugPH
+	A9MD4APsA/kEBgQTBCAELQQ7BEgEVQRjBHEEfgSMBJoEqAS2BMQE0wThBPAE/gUNBRwF
+	KwU6BUkFWAVnBXcFhgWWBaYFtQXFBdUF5QX2BgYGFgYnBjcGSAZZBmoGewaMBp0GrwbA
+	BtEG4wb1BwcHGQcrBz0HTwdhB3QHhgeZB6wHvwfSB+UH+AgLCB8IMghGCFoIbgiCCJYI
+	qgi+CNII5wj7CRAJJQk6CU8JZAl5CY8JpAm6Cc8J5Qn7ChEKJwo9ClQKagqBCpgKrgrF
+	CtwK8wsLCyILOQtRC2kLgAuYC7ALyAvhC/kMEgwqDEMMXAx1DI4MpwzADNkM8w0NDSYN
+	QA1aDXQNjg2pDcMN3g34DhMOLg5JDmQOfw6bDrYO0g7uDwkPJQ9BD14Peg+WD7MPzw/s
+	EAkQJhBDEGEQfhCbELkQ1xD1ERMRMRFPEW0RjBGqEckR6BIHEiYSRRJkEoQSoxLDEuMT
+	AxMjE0MTYxODE6QTxRPlFAYUJxRJFGoUixStFM4U8BUSFTQVVhV4FZsVvRXgFgMWJhZJ
+	FmwWjxayFtYW+hcdF0EXZReJF64X0hf3GBsYQBhlGIoYrxjVGPoZIBlFGWsZkRm3Gd0a
+	BBoqGlEadxqeGsUa7BsUGzsbYxuKG7Ib2hwCHCocUhx7HKMczBz1HR4dRx1wHZkdwx3s
+	HhYeQB5qHpQevh7pHxMfPh9pH5Qfvx/qIBUgQSBsIJggxCDwIRwhSCF1IaEhziH7Iici
+	VSKCIq8i3SMKIzgjZiOUI8Ij8CQfJE0kfCSrJNolCSU4JWgllyXHJfcmJyZXJocmtybo
+	JxgnSSd6J6sn3CgNKD8ocSiiKNQpBik4KWspnSnQKgIqNSpoKpsqzysCKzYraSudK9Es
+	BSw5LG4soizXLQwtQS12Last4S4WLkwugi63Lu4vJC9aL5Evxy/+MDUwbDCkMNsxEjFK
+	MYIxujHyMioyYzKbMtQzDTNGM38zuDPxNCs0ZTSeNNg1EzVNNYc1wjX9Njc2cjauNuk3
+	JDdgN5w31zgUOFA4jDjIOQU5Qjl/Obw5+To2OnQ6sjrvOy07azuqO+g8JzxlPKQ84z0i
+	PWE9oT3gPiA+YD6gPuA/IT9hP6I/4kAjQGRApkDnQSlBakGsQe5CMEJyQrVC90M6Q31D
+	wEQDREdEikTORRJFVUWaRd5GIkZnRqtG8Ec1R3tHwEgFSEtIkUjXSR1JY0mpSfBKN0p9
+	SsRLDEtTS5pL4kwqTHJMuk0CTUpNk03cTiVObk63TwBPSU+TT91QJ1BxULtRBlFQUZtR
+	5lIxUnxSx1MTU19TqlP2VEJUj1TbVShVdVXCVg9WXFapVvdXRFeSV+BYL1h9WMtZGllp
+	WbhaB1pWWqZa9VtFW5Vb5Vw1XIZc1l0nXXhdyV4aXmxevV8PX2Ffs2AFYFdgqmD8YU9h
+	omH1YklinGLwY0Njl2PrZEBklGTpZT1lkmXnZj1mkmboZz1nk2fpaD9olmjsaUNpmmnx
+	akhqn2r3a09rp2v/bFdsr20IbWBtuW4SbmtuxG8eb3hv0XArcIZw4HE6cZVx8HJLcqZz
+	AXNdc7h0FHRwdMx1KHWFdeF2Pnabdvh3VnezeBF4bnjMeSp5iXnnekZ6pXsEe2N7wnwh
+	fIF84X1BfaF+AX5ifsJ/I3+Ef+WAR4CogQqBa4HNgjCCkoL0g1eDuoQdhICE44VHhauG
+	DoZyhteHO4efiASIaYjOiTOJmYn+imSKyoswi5aL/IxjjMqNMY2Yjf+OZo7OjzaPnpAG
+	kG6Q1pE/kaiSEZJ6kuOTTZO2lCCUipT0lV+VyZY0lp+XCpd1l+CYTJi4mSSZkJn8mmia
+	1ZtCm6+cHJyJnPedZJ3SnkCerp8dn4uf+qBpoNihR6G2oiailqMGo3aj5qRWpMelOKWp
+	phqmi6b9p26n4KhSqMSpN6mpqhyqj6sCq3Wr6axcrNCtRK24ri2uoa8Wr4uwALB1sOqx
+	YLHWskuywrM4s660JbSctRO1irYBtnm28Ldot+C4WbjRuUq5wro7urW7LrunvCG8m70V
+	vY++Cr6Evv+/er/1wHDA7MFnwePCX8Lbw1jD1MRRxM7FS8XIxkbGw8dBx7/IPci8yTrJ
+	uco4yrfLNsu2zDXMtc01zbXONs62zzfPuNA50LrRPNG+0j/SwdNE08bUSdTL1U7V0dZV
+	1tjXXNfg2GTY6Nls2fHadtr724DcBdyK3RDdlt4c3qLfKd+v4DbgveFE4cziU+Lb42Pj
+	6+Rz5PzlhOYN5pbnH+ep6DLovOlG6dDqW+rl63Dr++yG7RHtnO4o7rTvQO/M8Fjw5fFy
+	8f/yjPMZ86f0NPTC9VD13vZt9vv3ivgZ+Kj5OPnH+lf65/t3/Af8mP0p/br+S/7c/23/
+	/3BhcmEAAAAAAAMAAAACZmYAAPKnAAANWQAAE9AAAAoOdmNndAAAAAAAAAAAAAMBAAAC
+	AAAAVgEuAesCxANzBCUE6gWhBl8HIQfbCKIJagoyCvwLzwyfDXQOTg8pEAYQ4hHFEqYT
+	iRRvFVYWRRdXGG0ZhhqgG7oc0h3sHwkgJCFBImAjfSSbJbkm2if6KRsqPitiLIMtqS7P
+	L/MxGDI/M2M0izWxNtE37jkNOio7RjxiPX4+mj+0QM5B50L+RBhFLkZER1dIa0l8So5L
+	nkyuTb1OzE/aUOZR9FMBVAxVF1YcVx9YI1knWixbMlw6XUNeS19VYGNhb2J+Y41kn2Wx
+	ZsVn2mjwaghrIGw5bVNub2+KcKVxwXLec/t1GHY1d1R4cXmQeq97z3zvfhB/M4BVgXiC
+	nIPBhOaGDIcziFqJgoqpi9OM/I4mj0+QeZGkks2T75UPljGXVZh4mZyawZvnnQ2eNZ9c
+	oIOhqqLRo/elHKZBp2Woh6moqser5Kz/rhivMLBHsVyycrOJtJ61sLa8t8O4xrnDuru7
+	rbyavYG+Y79AwBfA6sG5woHDR8QJxMrFhsZBxvvHtMhrySLJ2sqRy0zMDMzRzZbOWs8e
+	z+LQpNFm0ijS6dOq1GrVKtXr1qvXa9gs2O3Zr9px2zTb+Ny83YHeRt8N39TgmuFe4iLi
+	6eO15IflX+Y95yPoEOkF6gLrCuwb7TfuW++H8Lrx9PM09Hj1vvcH+FH5nPrm/C79df66
+	//8AAABWASMBsAJZAxEDsgRbBQoFrQZYBwcHrwhhCRgJywqEC0IMBQzDDYUOSQ8OD9gQ
+	ohFsEjcTBxPdFMwVxhbAF70YuBmzGrAbrBynHaQeox+jIKIhoSKiI6QkpyWpJq0nsSi0
+	KboqwSvFLMot0i7YL90w3jHdMtwz2jTXNdU20zfPOMo5xTrBO7s8tD2tPqQ/mkCPQYNC
+	d0NqRF1FTkZARzFIIEkQSgBK8EvcTMVNrE6TT3tQYlFJUjBTGVQBVOlV0la7V6VYj1l6
+	WmVbT1w8XSdeE18BX+5g22HJYrdjpWSTZYRmgWeCaINpg2qCa4Nsgm2DboNvgnCCcYJy
+	gnOCdIF1gHaAd394f3l+en17fHx8fXt+en95gHiBeIKPg6WEvIXUhuuIA4kaijKLSIxg
+	jXeOjI+kkLqR0JLmk/yVEZYnlz2YUZlmmnybkZyknbqez5/joPeiDKMhpDalSqZep3Ko
+	h6mbqq6rwazUreeu+rAMsR6yL7NBtFK1Y7Zzt4S4lLmlurW7xLzTveO+6r/QwK3BisJn
+	w0TEIMT8xdjGs8eOyGnJQ8odyvbLz8ynzX/OVs8t0ATQ2tGx0obTXNQx1QXV29ax14rY
+	adlL2jLbH9wT3Q/eE98h4DvhYOKT49TlKOaM6ADpiesi7M3uifBR8ij0C/X49+/56vvt
+	/fP//wAAACsAxAFLAdgCWwLtA2sD+ASCBRgFogY1BssHYQf9CJsJPgngCocLMgvfDIsN
+	PA3sDp0PUhALEMURjhJfEzEUBBTUFaUWeBdNGB8Y9RnKGqEbeBxPHSgeAR7aH7MgjyFq
+	IkYjIyP+JNoluCaWJ3QoUCkoKfwq0SulLHktTS4hLvEvwTCRMWAyLjL5M8I0izVTNhg2
+	2zefOGE5IjnhOp87XjwbPNc9kz5PPw0/0kCaQWNCLELzQ7tEhEVMRhRG20ejSGtJMkn5
+	SsBLh0xPTRZN3E6iT2lQLlD0UbpSf1NFVApUzlWRVlRXF1faWJ5ZYlooWu5btlyAXUpe
+	Fl7kX7NghGFXYixjAmPaZLRlkGZtZ0toK2kLae1q0Gu0bJZtd25YbzpwG3D9cd9ywXOj
+	dIZ1aXZNdzF4Fnj7eeJ6ynuyfJt9hX5wf1yASYE2giODEoQBhPGF5oblh+mI7onyivaL
+	+oz+jgKPBpAJkQ2SEJMUlBeVGpYelyGYJJknmiqbLZwxnTSeN587oD6hQaJLo2OkgaWf
+	pr6n2qj4qharNKxRrW2uiq+nsMSx4LL8tBe1M7ZPt2q4hbmhury71rzxvgy/JsBAwV3C
+	e8OXxK7Fxsbdx/TJD8ovy1XMhc2+zwbQX9HH00vU4tac2Hfaetym3wnhrOSX59Hrde+P
+	9ED5rP//AABuZGluAAAAAAAABjYAAKU/AABWZgAAU6IAAKO8AAAlOAAADaUAAFANAABU
+	OQACVHoAAd64AAFZmQADAQAAAgAAAAEABAAIABAAGQAlADMARABWAGsAggCaALUA0QDv
+	AQ8BMQFUAXoBoQHKAfUCGwJCAmoCkwK+AuoDGANHA3cDqQPcBBAERgR9BLYE8AUrBWgF
+	pgXlBiUGaAarBu8HNQd9B8YIEAhcCKkI9wlICZwJ8gpJCqIK/QtaC7gMGAx6DN4NRA2s
+	DhYOgQ7vD18P0hBGEL0RNhGxEi4SrhMvE7MUORTCFUsV2BZnFvgXkBgqGMUZYhoBGqEb
+	QhvlHIodMB3WHn8fKB/TIH4hKyHZIogjOSPqJJ0lUSYHJr4ndigwKOwpqSpnKycr6iyt
+	LXMuOS8CL8wwmDFkMjMzAzPUNKY1ejZQNyY3/jjXObI6jjtrPEo9Kj4MPu4/00C4QaBC
+	iUN0RGBFTUZDRz5IOUk0SjFLMEwwTTFOMk82UDtRQVJJU1NUX1VtVn1XkFilWbxa11v1
+	XRZeOl9jYI5hvmLyZChlY2agZ99pHmpja61tAG5bb79xLXKldCp1u3dZeQZ6w3yQfmyA
+	XIJbhGeGhIisit2NGI9WkZuT0pX4mCCaT5yGnsShCKNRpaKn96pTrLKvFbF8s+O2T7i7
+	uym9mcAKwnzE9cd+yf/Mcc7S0SPTYdWP16zZudu03aLfgOFU4x7k3+aa6E/p/+us7Vjv
+	BPCu8lj0BPWx92H5FPrJ/IP+Qf//AAAAAQAFAAsAFAAgAC8AQQBWAG0AhwCjAMEA4gEF
+	ASsBUgF8AakB1wIGAjECXQKLAroC7AMfA1QDiwPEA/4EOgR3BLcE+AU7BX8FxQYNBlYG
+	ogbvBz0HjQfgCDQIiQjhCTsJmQn5ClsKwAsnC48L+gxoDNgNSg2+DjYOrw8sD6sQLRCy
+	EToRxBJREuETcxQIFKEVOxXYFngXHRfIGHYZJRnYGo0bRRv+HLsdeh47Hv4fxCCMIVYi
+	IyLxI8MkliVrJkMnHSf6KNkpuyqeK3csTy0qLgcu6C/JMK4xlDJ9M2k0VzVHNjk3Ljgm
+	OSA6HDsaPBs9Hz4lPy1AN0FEQlRDZkR6RY9GkEeUSJhJnkqnS7FMvk3MTt1P8VEFUhxT
+	N1RRVXBWkFeyWNZZ/VsnXFFdf16vX+FhFWJLY4Vkv2X7ZztofGm/awRsTG2VbuFwMHGB
+	ctN0KHWAdtt4N3mWevh8XH3DfyyAmIIGg3eE64Zhh9mJVIrRjFCN1I9ZkOCSaZQ9liaY
+	E5oDm/md8p/vofKj+aYEqBWqKqxErmSwh7KwtN+3EblIu4S9xcALwlTEnsbfyRbLRc1o
+	z33RhNN/1WjXQ9kN2sncdd4U36LhJOKb5AflZua+6A3pU+qV687tBO4272LwjPGw8tTz
+	8/US9i33R/hh+Xv6kvup/L/91v7q//8AAAACAAgAEgAhADMASgBkAIIAogDGAOwBFQFB
+	AXABogHWAgwCPwJ1Aq0C6AMmA2UDqAPsBDMEfATIBRYFZgW5Bg4GZQa/BxsHegfbCD4I
+	pAkNCXsJ7gpjCtwLWAvXDFsM4g1tDfwOkA8pD8YQaREREb0SbxMmE+EUohVnFjIW/RfC
+	GIoZVRolGvgbzhypHYceaR9PIDghJiIXIwwkBiUDJgUnCigUKSEqMytLLGktiS6tL9Qw
+	/DImM1E0fjWrNtk4CDk3OmU7lTzFPfU/JkBYQYtCwEP2RSxGaEeqSO1KM0t9TMlOGE9q
+	UL5SFFNtVMdWJFeCWOFaQ1ulXQleb1/WYT5iqWQWZYNm82hlacdrIWx9bdtvPHChcgdz
+	b3Tbdkl3unkteqN8G32WfxOAk4IVg5qFIoasiDeJxotWjOqOgJAZkbKTQZS7ljWXspkw
+	mrOcNp28n0OgzaJao+mleqcNqKOqO6vWrXOvErCzslez/rWmt1C4/bqtvF6+Er/JwYLD
+	PMT0xqzIbMo2zAHNzs+d0WnTM9T11q7YXdoE25zdJt6k4Bfhd+LM5BjlUOaD56Xov+nL
+	6s/ryOy97aHuhu9Y8Cjw9PGx8m7zJfPQ9Hv1JPW99lb28PeB+An4kfka+Zv6EvqK+wH7
+	efvl/E38tf0d/YX96f5B/pr+8/9N/6b//wAAc2YzMgAAAAAAAQxCAAAF3v//8yYAAAeS
+	AAD9kf//+6L///2jAAAD3AAAwGxtbW9kAAAAAAAABhAAAJzHAAAAAMbEt4AAAAAAAAAA
+	AAAAAAAAAAAA
+	</data>
+	<key>ReadOnly</key>
+	<string>NO</string>
+	<key>RowAlign</key>
+	<integer>1</integer>
+	<key>RowSpacing</key>
+	<real>36</real>
+	<key>SheetTitle</key>
+	<string>Canvas 1</string>
+	<key>SmartAlignmentGuidesActive</key>
+	<string>YES</string>
+	<key>SmartDistanceGuidesActive</key>
+	<string>YES</string>
+	<key>UniqueID</key>
+	<integer>1</integer>
+	<key>UseEntirePage</key>
+	<false/>
+	<key>VPages</key>
+	<integer>1</integer>
+	<key>WindowInfo</key>
+	<dict>
+		<key>CurrentSheet</key>
+		<integer>0</integer>
+		<key>ExpandedCanvases</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Canvas 1</string>
+			</dict>
+		</array>
+		<key>Frame</key>
+		<string>{{32, 4}, {733, 774}}</string>
+		<key>ListView</key>
+		<true/>
+		<key>OutlineWidth</key>
+		<integer>142</integer>
+		<key>RightSidebar</key>
+		<false/>
+		<key>ShowRuler</key>
+		<true/>
+		<key>Sidebar</key>
+		<true/>
+		<key>SidebarWidth</key>
+		<integer>120</integer>
+		<key>VisibleRegion</key>
+		<string>{{-12, 0}, {584, 620}}</string>
+		<key>Zoom</key>
+		<real>1</real>
+		<key>ZoomValues</key>
+		<array>
+			<array>
+				<string>Canvas 1</string>
+				<real>1</real>
+				<real>1</real>
+			</array>
+		</array>
+	</dict>
+	<key>saveQuickLookFiles</key>
+	<string>YES</string>
+</dict>
+</plist>
