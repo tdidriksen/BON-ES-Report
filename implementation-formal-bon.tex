@@ -125,6 +125,7 @@ The \textit{redefined} status is defined as one would expect from the definition
 
 For unclassified features, the definition is straightforward: an unclassified feature defined in the current class can never have a precursor. An unclassified feature inherited from an ancestor can be redefined and undefined as expected, though.
 \subsubsubsection{Detecting Duplicate Features}
+[IN PROGRESS]
  This interface is accumulated by traversing the inheritance hierarchy from the bottom up, adding to the interface set any feature with a unique name, or any feature that could lead to duplicate feature names in the interface. The latter are added to give the type checker an opportunity to emit error messages 
 \begin{itemize}
 \item Has a name that is not already in the interface, or
@@ -133,7 +134,7 @@ For unclassified features, the definition is straightforward: an unclassified fe
 \end{itemize}
 The features at level 0 are the local features of the class in question - all other features have a level greater than 0, and are inherited. While the first point should make sense, the two other require some explanation. Because the type checker needs to be able to emit error messages for duplicate features in the inheritance hierarchy, features with identical names on the same level are included. Likewise, if a feature is higher up in the inheritance hierarchy and has a type that does not conform to the type of the already known feature with the same name, it is also included in the interface. This allows the type checker to detect that the inherited feature is not a precursor to an already existing feature, and thus must be a duplicate.
 \subsubsubsection{Aggregation}
-\cite{ostroff2001}
+As specified in \cite{ostroff2001}, a feature cannot introduce aggregation with its enclosing class. Allowing this would lead to an infinitely recursive definition of the class in question, making the class specification inconsistent. Also, such a specification would never be able to run as intended when converted into actual code, as a compile-time or run-time error would most likely occur. Checking this aspect is quite simple: whenever aggregation is used, the type checker makes sure that the feature type is not equal to the enclosing class.
 \subsubsubsection{Prefix and Infix Features}
 For regular features, having two features with identical names in the same class (either directly defined in the class or inherited) is not allowed; this is not true for prefix and infix features. For instance, it should be possible to define the operator ''+'' as both a unary and a binary operator on an object, e.g. an integer. The really interesting aspects of prefix and infix features arises when they are used, though, which will be described in the Formal Assertions subsection of the section.
 
@@ -241,9 +242,9 @@ Firstly, the differences between the three instantiations of the class \textsc{s
 What happens in this case is that \textsc{m} is considered to be a sequence of \textsc{integer}, while the type parameter of \textsc{a} is bounded by a sequence of {real}. At the time of the instantiation of class \textsc{a} for the bound of type parameter \textsc{n}, the bounding type of \textsc{m} has to conform to the bounding type of \textsc{a} in order for the instantiation to be well-typed. But, as already defined in section \ref{design-type-system}, the type checker does not consider a sequence of \textsc{real} to conform to a sequence of \textsc{integer}, even though \textsc{integer} might be a subtype of \textsc{real}. Consequently, to make this situation well-typed, one would have to change the bounding type of either type parameter \textsc{e} or \textsc{m}, such that they become equal.
 
 \subsubsection{Formal Assertions}
+With formal assertions, an immense amount of expressive power is added to the textual \bon{} language. They make detailed specifications and contracts possible, adding extra formality to formal specifications. Interestingly, this part of the language is very underspecified, making it impossible to type check without imposing quite an amount of restrictions on it. While some of these have already been presented in section \ref{design-type-system}, other are presented for the first time here, as they need to be accompanied by detailed explanations.
 \label{implementation-formal-assertions}
-% variable context
-TEXT
+% variable context 
 \subsubsubsection{Variable Context and Scope}
 For keeping track of the variables introduced in a quantification, a variable context is introduced. This context is implemented as a hash table mapping a variable name to an instance of \textsc{tbon\_tc\_class\_type}.
 
@@ -258,10 +259,10 @@ For the reason that the grammar in \cite{walden1995} specifies that variables ca
  5|     list_one: LIST[INTEGER]
  6|     list_two: LIST[INTEGER]
  7|   invariant
- 8|     for_all i member_of list_one such_that i: INTEGER it_holds 
- 9|       exists i member_of list_two such_that i: INTEGER it_holds i = i; 
+ 8|     for_all i: INTEGER; i member_of list_one it_holds 
+ 9|       exists i: INTEGER; i member_of list_two it_holds i = i; 
 10|         -- The above introduces ambiguity;
-11|     exists i member_of list_one such_that i: INTEGER it_holds i = 7; 
+11|     exists i: INTEGER; i member_of list_one it_holds i = 7; 
 12|         -- This is fine
 13| end
 \end{verbatim}
@@ -342,12 +343,40 @@ Besides the uses that have already been shown, calls can also participate in set
 % set expressions
 \subsubsubsection{Set Expressions}
 \label{implementation-set-expressions}
+Set expressions are introduced in the grammar in member range expressions of quantifications, an example of which is shown in figure \ref{fig:variable_scoping} as the right operand of the \textit{member\_of} operator. Basically, two types of sets can appear in set expressions in textual \bon{}: enumerated sets and enumerable types.
 \paragraph{Enumerated sets}
+Enumerated sets are explicitly defined sets in which all the elements are explicitly listed. An example of such is shown below.
+{\footnotesize
+\begin{center}
+\{ 7.5,  10, 117, 3.14159 \}
+\end{center}}
+To check the type correctness of such a set, the type checker enforces that the all the types represented by the elements of the set must conform to the same common type. This common type has to be the type of an element in the set. To clarify, all of the elements in the example set above must conform to the same type, \textsc{real} in this instance, assuming that numbers with a decimal component are represented by this type. Further assuming that \textsc{integer} is a subtype of \textsc{real}, the rule holds for the example, as the first and the last element are of type \textsc{real} (which trivially conforms to itself), and the second and third element are of type \textsc{integer}. Thus, all the elements conform to \textsc{real}, and the enumerated set is well-typed.
+
+This is only half the story, though, because as already mentioned, set expressions are only used in member range expressions. As such, the type of the enumerated set must conform to the type of the variable defined as the left operand of the \textit{member\_of} operator -- the user should not be able to iterate through a set with a variable whose type does not match the types of the elements in the set. Also, to avoid placing unnecessary burdens on the user, the left operand of the member range expression will automatically be assigned the type of the enumerated set, if it does not have a type prior to that point.
 \paragraph{Calls and operator expressions}
-TEXT
+As calls and operator expressions used in set expressions are handled in almost the exact same way in the type checker, they will both be described here. If a set expression is not an explicitly defined enumerated set, it must be a reference to an expression (either a call or an operator expression) whose type is enumerable. An example of this is shown in figure \ref{fig:variable_scoping}, in which both \textit{list\_one} and  \textit{list\_two} are references to the type \textsc{list}[\textsc{integer}], which is considered to be enumerable as it is a part of the standard types defined in the type checker (see section \ref{implementation-standard-types} for details).
+
+But what does it take for a type to be considered enumerable? Any type, even standard types defined by the type checker, is considered to be enumerable if it is defined as a subtype of the type \textsc{enumerable}, which is defined by default along with the other standard types. Hence, If a user wants to define a custom type as being enumerable, it should merely inherit from this class. The type checker does not emit a type error if one tries to use a type in a set expression which does not conform to \textsc{enumerable}, though, as this mechanism is intended to be a help, not a nuisance. Instead, a friendly warning is given, bringing to the user's attention that the semantics of the member range expression might not be as expected.
+
+The type of the variable in a member range expression when using enumerable types should be the same as or an ancestor of the type of the actual type of the first argument of the enumerable type (if the enumerable type is generic). For example, if the enumerable type is \textsc{set}[\textsc{string}], the type of the variable should be \textsc{string}. If an enumerable type is used for which the type of the elements cannot be determined, a warning is emitted. For instance, it might be apparent to a human that the type \textsc{string\_list} is a list of strings, but the type checker will have no idea that this type is composed of elements of type \textsc{string}. Thus, a warning is given, as it cannot be determined for certain that a type rule has been violated.
 % getting the type of an expression
 % Feature pre- and postconditions vs. invariants
 \subsubsubsection{Resolving the Type of an Expression}
+In all of the preceding sections on formal assertions, it has been assumed that the type of an expression is always available. While this is correct, no magic has been involved -- every time, the feature \textit{type\_of\_expression} has been invoked.
+
+The types of all manifest constants naturally map to the standard value types defined in \bon{} \cite[p.~51]{walden1995}: \textsc{boolean}, \textsc{character}, \textsc{integer}, \textsc{real}, and \textsc{string}. These are also defined as standard types in the type checker, as described in section \ref{implementation-standard-types}. Also, because a quantification is a logical expression, it always has type \textsc{boolean}.
+
+Because both calls and operator expressions (by virtue of prefix and infix features) are modeled as instances of \textsc{tbon\_tc\_feature}, the type of one of these is resolved by calling the \textit{type} attribute of its corresponding \textsc{tbon\_tc\_feature} instance, naturally assuming that the call or operator expression is well-typed.
+
+For the \textit{Result} keyword, the type is always the type of the current feature. The current feature is known at any time when checking formal assertions, except when there is no current feature, i.e. when checking invariants. If \textit{Result} is used anywhere but in a postcondition of a feature, a type error occurs. The situation for the keyword \textit{Current} is analogous to the situation for \textit{Result}: its type is always the type of the enclosing class, which is always known by the type checker. Contrary to the \textit{Result} keyword, \textit{Current} can be used wherever a type is expected. The type of a \textit{Void} constant should be self-explanatory. 
 % boolean types and quantifications
 \subsubsubsection{Quantifications and Boolean Types}
 \label{implementation-def-boolean-type}
+The previous section briefly mentioned that a quantification always has boolean type. However, looking only at the grammar in \cite{walden1995}, restrictions and proposition of a quantification could have any type, seeing that calls, operator expressions, and constants of arbitrary type are all allowed for these. As such, as also stated in section \ref{design-type-system}, the type checker restricts restrictions and propositions to be one of the following:
+\begin{itemize}
+\item A boolean constant; \textit{True} or \textit{False}
+\item Another quantification
+\item An operator expression with \textsc{boolean} type, e.g. a comparison
+\item A call with \textsc{boolean} type
+\end{itemize}
+Considering that the above items are the only elements that can have boolean type in a formal assertion, this restriction does not remove any expressive power from quantifications. Rather, they ensure that a quantification makes sense. In the actual implementation, what happens is that \textit{type\_of\_expression} is called on the expression of both the restriction (if present) and the proposition of a given quantification. The type checker then makes sure that the resolved type is \textsc{boolean}.

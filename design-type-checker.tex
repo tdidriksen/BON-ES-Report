@@ -1,10 +1,12 @@
 \section{Type Checker}
 [Introduction to type checker]
 \subsection{Parsing and Lexing}
+\label{design-parsing}
 The parser and lexer upon which the type checker has been built is based on the textual \textsc{bon} lexer and parser created by Joseph Kiniry for the Extended \textsc{bon} Tool Suite \cite{ebon} (henceforth denoted \textsc{ebon}). At the outset of this project, the rule part of the parser was already finished (although some minor alterations were made to it to fit the implementation of the type checker), while the semantic actions were partially implemented. The implementation of these actions have now been completed. No alterations were made to the lexer.
 
 \paragraph{}
 [short high level description of parser/lexer]
+%Remember to mention that the parser mostly corresponds to the grammar
 \paragraph{} The parser generating the abstract syntax tree is a tree parser, creating a model object graph of textual \textsc{bon} elements (or a parse error) as a result. Like the parser, these model classes were also partially implemented initially, but have now been completed.
 
 %Add paragraph with a more design-oriented view on the parser
@@ -27,6 +29,7 @@ As this situation cannot be modeled due to circular inheritance, a \textit{Paren
 \subsection{Design Decisions}
 This section discusses the overall design decisions of the textual \textsc{bon} type checker, both with regards to the high-level structure of the system and the more low-level implications of specifying the underspecified grammar.
 \subsubsection{Type Checking Patterns}
+\label{design-tc-patterns}
 When discussing the overall structure and design of the type checker, two patterns were considered; the visitor pattern, and a procedural pattern inspired by a more functional approach.
 \subsubsubsection{The Visitor Pattern} %The visitor pattern
 The visitor pattern provides a way to add a new feature to a hierarchy of classes without having to implement the feature in the class itself \cite{martin2002}. Instead, the functionality is implemented in a feature in a visitor class, the content of which is unknown to the visited object. The main idea of the pattern is the technique called \textit{dual dispatch}, called as such due to the two polymorphic dispatches happening when executing the visitor: 
@@ -88,7 +91,7 @@ As specified in \cite[p.~65]{walden1995}, single, multiple, and repeated inherit
 \subsubsubsection{Assertions}
 Due to the non-restrictive nature of the assertion grammar presented in \cite{walden1995}, some restrictions have to be made in order for the assertion grammar to type check.
 \paragraph{} Firstly, the original grammar allows for a restriction or a proposition in a quantification to be a constant, calls, or operator expression of arbitrary type. The type checker enforces these to have boolean type; the definition of boolean type in this respect is defined in section \ref{implementation-def-boolean-type}.
-\paragraph{} Secondly,  the grammar defines a set expression to be an operator expression or a call of arbitrary type, or an enumerated set with elements of possibly unrelated types. To type check a set expression, the type checker enforces it to be an expression of an enumerable type (no matter if it is an operator expression or a call), or to be an enumerated set in which all of the elements conform to at least one of the elements in the set. Implementation details of these restrictions are presented in section \ref{implementation-set-expressions}.
+\paragraph{} Secondly,  the grammar defines a set expression to be an operator expression or a call of arbitrary type, or an enumerated set with elements of possibly unrelated types. To type check a set expression, the type checker checks if it is an expression of an enumerable type (no matter if it is an operator expression or a call), or to be an enumerated set in which all of the elements conform to at least one of the elements in the set. Implementation details of these restrictions are presented in section \ref{implementation-set-expressions}.
 
 
 

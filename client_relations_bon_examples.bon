@@ -1,0 +1,10 @@
+static_diagram CLIENT_RELATIONS
+component
+  CITIZEN client { drive, cruise, pick_up } CAR "Example 1"
+  
+  class CAR_OWNER[E] inherit CITIZEN
+  CAR_OWNER client { make: E } CAR "Example 2"
+  
+  GARAGE_NUMBER inherit INTEGER
+  CELEBRITY client { cars: MAP[GARAGE_NUMBER, ...] } CAR "Example 3"
+end

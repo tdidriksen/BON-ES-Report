@@ -1,0 +1,50 @@
+static_diagram
+component
+  class A
+    feature
+      list_one: LIST[INTEGER]
+      list_two: LIST[INTEGER]
+    invariant
+      for_all i member_of list_one such_that i: INTEGER it_holds 
+        exists i member_of list_two such_that i: INTEGER it_holds i = i;
+      
+      exists i member_of list_one such_that i: INTEGER it_holds i = 7
+end
+
+static_diagram
+component
+  class A
+    feature
+      infix "+": INTEGER
+        -> other: B  
+      b: B
+    invariant
+      (Current + b) > 0;-- OK;
+      (b + Current) <= 10; -- Type error!;
+  end
+  
+  class B
+end
+
+static_diagram
+component
+  class A
+    feature
+      infix "+": B
+        -> other: B
+        require
+          other /= Void
+        ensure
+          Result.id = 10
+        end
+      b: B
+    invariant
+      b /= Void;
+      (Current + b).id > 5
+  end
+  
+  class B
+    feature
+      id: INTEGER
+  end
+end

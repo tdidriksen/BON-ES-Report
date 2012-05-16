@@ -1,18 +1,21 @@
-\newcommand{\tbontype}{\textsc{tbon}\textunderscore \textsc{tc}\textunderscore  \textsc{type}}
-\newcommand{\tbonclasstype}{\textsc{tbon}\textunderscore \textsc{tc}\textunderscore \textsc{class}\textunderscore  \textsc{type}}
-\newcommand{\tbonclustertype}{\textsc{tbon}\textunderscore \textsc{tc}\textunderscore \textsc{cluster}\textunderscore  \textsc{type}}
-\newcommand{\tbonfeature}{\textsc{tbon}\textunderscore \textsc{tc}\textunderscore \textsc{feature}}
-\newcommand{\tbongeneric}{\textsc{tbon}\textunderscore \textsc{tc}\textunderscore \textsc{generic}}
-
 \section{Type Checker}
 \subsection{Parsing and Lexing}
+Before any semantic analysis of a textual \bon{} specification can take place, the lexer and parser has to process it into abstract syntax on which the type checker can operate. Already mentioned in section \ref{design-parsing} is the aspect that the structure of the parser grammar closely resembles the grammar presented in \cite[pp.~352-359]{walden1995}, aside from the previously explained deviations.
+
+After successful syntactic analysis, the parser hands over the parse tree or model object graph (\textsc{mog}) to the type checker. The model object graph represents the syntax of the analyzed specification as a hierarchy of objects.
 \begin{figure}[H]
     \centerline{\scalebox{0.75}{\includegraphics{images/mog2.png}}}
     \caption[MOG hierarchy]{First three levels of the inheritance hierarchy of the MOG}
     \label{fig:mog-hierarchy}
 \end{figure}
-
 %explain what a bon element is
+To give an impression of the structure, figure \ref{fig:mog-hierarchy} shows the first three levels of the inheritance hierarchy of the \textsc{mog}. Needless to say, the actual object graph has a quite a few more levels. Each of these objects represent what in this report is called a \textit{BON element}. Most of these are composed of multiple other \bon{} elements, in effect creating a graph of inheritance and client-supplier links between all the model objects. Hence the name ''model object graph''.
+\paragraph{}
+Considering the procedural structure of the type checker outlined in section \ref{design-tc-patterns} and the \textsc{mog} presented here, the connection between the type checker and the abstract syntax should become evident: For each object in the object graph, a corresponding checking feature checking the well-typedness of the \bon{} element it represents is created in the type checker. In particular, this means that the type checker has features such as \textit{check\_informal\_chart}, \textit{check\_class\_chart}, and \textit{check\_static\_diagram}.
+
+Because \bon{} elements are defined in terms of each other, the consequence of this structure is that the checking feature for a given \bon{} element returns \textit{True} only if all the (present) elements of which the element is composed are well-typed. As will be shown in section \ref{implementation-unresolved-elements}, though, resolving the correctness of all the subelements when the checking feature for a \bon{} element is called is not always possible. In these cases, auxiliary contexts are used to gather these unresolved \bon{} elements for checking later. Having these unresolved elements do not have any influence on the final verdict of the type checker, which is returned as the result when the feature \textit{check\_bon\_specification} terminates.
+\paragraph{}
+\textit{check\_bon\_specification} is the entry point into the type checker, as a type \textsc{bon\_specification} is the top-most element of the object graph created by the parser. When this element is not shown in figure \ref{fig:mog-hierarchy}, it is because it primarily consists of a set of \textsc{specification\_element}, and therefore it is not a very interesting object in its own right. Thus, all type checking begins and ends in this feature. What happens in between is elaborated upon in section \ref{implementation-phases}. Prior to this, however, the translation between the abstract syntax and the type contexts of the type checker is explained.
 
 \subsection{Building the Context}
 \label{implementation-context-class-structure}
@@ -22,33 +25,35 @@ The type contexts for type checking of both informal and formal specifications a
     \caption[Context classes]{Hierarchy of classes used to build the type contexts}
     \label{fig:context-classes}
 \end{figure}
-A context, be it informal or formal, is built as a set of instances of \tbonclasstype   and \tbonclustertype   (declared as a set of \tbontype ). Due to the naming restrictions discussed in section \ref{design-type-names}, classes and clusters are kept in the same context for convenience and easy detection of name clashes. At any time, the instances in the context represent the defined types currently known at that point.
-\paragraph{} Mapping from classes to features (in formal specifications) happens through association with a set of \tbonfeature . An instance of \tbonclasstype  is never associated with an undefined feature, but can be associated with an inconsistent or ill-typed feature (elaboration on this is found in section \ref{implementation-unresolved-elements}). Accordingly, the type of a feature is merely an association to an instance of \tbonclasstype .
-\paragraph{} Analogous to the mapping from classes to features, mapping from classes to generics is done through association with a sequence of \tbongeneric  (generics cannot be stored in a set, as the order of the type parameters matters). A generic type has both a bounding and an actual class type. The association between these is explained in section \ref{implementation-generics}.
+A type context, be it informal or formal, is built as a set of instances of \textsc{tbon\_tc\_class\_type}  and \textsc{tbon\_tc\_cluster\_type}  (declared as a set of \textsc{tbon\_tc\_type}). Due to the naming restrictions discussed in section \ref{design-type-names}, classes and clusters are kept in the same context for convenience and easy detection of name clashes. At any time, the instances in the context represent the defined types currently known at that point. Only four \bon{} elements define types in the context. For informal specifications, these are class charts and cluster charts, while class specifications and cluster specifications define types for formal specifications.
+\paragraph{} Mapping from classes to features (in formal specifications) happens through association with a set of \textsc{tbon\_tc\_feature}. This type is instantiated every time a feature specification is encountered. An instance of \textsc{tbon\_tc\_class\_type} is never associated with an undefined feature, but can be associated with an inconsistent or ill-typed feature (elaboration on this is found in section \ref{implementation-unresolved-elements}). Accordingly, the type of a feature is merely an association to an instance of \textsc{tbon\_tc\_class\_type}.
+\paragraph{} Analogous to the mapping from classes to features, mapping from classes to generics is done through association with a sequence of \textsc{tbon\_tc\_generic}  (generics cannot be stored in a set, as the order of the type parameters matters). A generic type has both a bounding and an actual class type. The association between these is explained in section \ref{implementation-generics}.
 
 %Transitional paragraph about phases and contexts here
 \paragraph{}
 Types defined in the abstract syntax is primarily added to the context in the first phase of the type checker, whereas most of the relations between the types in the context are established and checked in the second phase. The idea and implementation of the phases is elaborated upon in the next section.
 
 \subsection{Going Through the Phases}
+\label{implementation-phases}
 As presented in section \ref{design-phases}, the type checker operates in two phases; in the first phase, the context is built from the abstract syntax obtained from the parser, and in the second phase, the abstract syntax is checked against the context and the rules of the type system (for a specification of the type system, see appendix \ref{appendix-type-system}).
 \paragraph{} %order does not matter
 The need for implementing a two-phased type checking algorithm arises from 1) the fact that classes in textual \textsc{bon} are mutually recursive and 2) the design decision that the order in which the \textsc{bon} elements from the abstract syntax are traversed and type checked does not matter for the final output of the algorithm. This decision was made to ensure that no logical errors would occur due to incorrect ordering of the \textsc{bon} elements.
 % Phases as boolean flags
-The phases are implemented using two simple boolean flags, respectively \textit{first\textunderscore phase} and \textit{second\textunderscore phase}, indicating the current phase of execution of the type checker. The invariant of the type checking class ensures that the two flags can never have equivalent values.
+The phases are implemented using two simple boolean flags, respectively \textit{first\_phase} and \textit{second\textunderscore phase}, indicating the current phase of execution of the type checker. The invariant of the type checking class ensures that the two flags can never have equivalent values.
 
 \paragraph{}
-In the point of entry, the feature \textit{check\textunderscore bon\textunderscore specification}, the transition between the two phases is handled by a recursive call, ensuring that the abstract syntax is traversed once for each phase, and that transitional code between the phases is run at the appropriate time. This is realized by performing type checking in the following steps:
+In the point of entry, the feature \textit{check\_bon\_specification}, the transition between the two phases is handled by a recursive call, ensuring that the abstract syntax is traversed once for each phase, and that transitional code between the phases is run at the appropriate time. This is realized by performing type checking in the following steps:
 
 % Steps of the type checker
 \begin{enumerate}
-\item Type checking begins in the first phase by a call to \textit{check$\textunderscore$bon$\textunderscore$specification}
+\item Type checking begins in the first phase by a call to \textit{check\_bon\_specification}
 \item The abstract syntax is traversed for the first phase
 \item Unresolved elements for the first phase are resolved
 \item The current phase is switched from first phase to second phase
 \item The abstract syntax is traversed (again) for the second phase
 \item Unresolved elements for the second phase are resolved
 \item Error messages and warnings, if any, are output
+\item The correctness (\textit{True}/\textit{False}) of the specification is returned to the caller as \textit{check\_bon\_specification} terminates
 \end{enumerate}
 
 Traversing the abstract syntax more than once means that the type checking features for each of the elements in the abstract syntax must implement the notion of the phases as well (otherwise, the exact same code would be run twice). This notion is implemented by a conditional statement, checking against the current phase of execution.
@@ -56,6 +61,7 @@ Traversing the abstract syntax more than once means that the type checking featu
 % Type checker is optimistic
 In cases where a type checking feature is called, but has no checking to do for the current phase, \textsc{true} is returned. As the type checker can be characterized as being \textit{optimistic}, a textual \textsc{bon} element is determined to be well-typed until it violates one of the rules pertaining to it (at which point an error message is emitted and \textsc{false} is returned). However, there are cases for which the well-typedness of a \textsc{bon} element cannot be determined at the time of the call to the checking feature; for these cases, the element in question is marked as unresolved. The element is then resolved at the end of the current phase (if possible).
 \subsubsection{Unresolved Elements}
+\label{implementation-unresolved-elements}
 \label{implementation-unresolved-elements}
 Unresolved elements are textual \textsc{bon} elements which are gathered and stored in an appropriate data structure during either the first or the second traversal of the abstract syntax, because their types cannot be resolved at the time they are encountered. The unresolved \textsc{bon} elements are then resolved at the appropriate time by iterating through the gathered elements.
 \subsubsubsection{Features} %features
