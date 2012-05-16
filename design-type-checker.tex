@@ -11,6 +11,7 @@ The parser and lexer upon which the type checker has been built is based on the 
 
 \paragraph{} The parser and lexer used for the type checker has been done using the \textit{Gobo} tools \textit{gelex} and \textit{geyacc} \cite{gobo}.
 \subsubsection{Deviations from the Grammar}
+\label{design-grammar-deviations}
 The grammar for the parser deviates from the grammar in \cite{walden1995} in a few places. Most of these were already present in the \textsc{ebon} grammar file.
 %Result token
 \paragraph{} A \textit{Result} token was added for use in feature contracts in formal specifications. It represents the resulting value of its enclosing feature, just like its Eiffel counterpart.
