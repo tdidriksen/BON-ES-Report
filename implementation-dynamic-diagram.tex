@@ -1,0 +1,70 @@
+\subsection{Dynamic diagram}
+A dynamic diagram can either be a scenario description, object group, object stack, object or message relation. In this section, how this is represented in the \textsc{mog} and type checked will be explained.
+
+The object representation is build up around a deferred \textsc{tbon$\_$tc$\_$dynamic$\_$object} class. All dynamic diagram objects inherits this class. Not all the afore mentioned kinds of dynamic diagrams are represented directly as objects in the \textsc{mog}. Since an object and an object\_stack essentially are the same, except for the keyword itself, they do not need separate representations. They are both represented by the \textsc{tbon$\_$tc$\_$object} class. Lastly message relations are not represented, since they only consists of dynamic references. With this simple structure of message relations, checking them only require checking the dynamic references, and as such it is not needed to have a dedicated object for this.
+
+\begin{figure}[h]
+\centerline{
+\includegraphics[scale=0.7]{images/dynamic-diagram.png}
+}
+\caption{Inheritance structure for dynamic diagrams.}
+\label{fig:dynamic-diagram}
+\end{figure}
+
+\paragraph{}
+When checking dynamic diagrams, because of the object based nature of the diagrams, two new contexts are introduced. The object context keeps track of the objects in a dynamic diagram. Objects mentioned by message relations must be defined by objects or object stacks. The object context is used for this. Similar, any scenario mentioned by a message relation must be defined by a scenario description. When seeing new scenarios, the type checker adds them to the context, in which it can then check if they are present when mentioned in message relations.
+
+\paragraph{}
+Even though some elements are not represented by the \textsc{mog}, they still need to be type checked as separate entities. When checking a dynamic diagram the type checker first identifies which of the five different types it is. In order for a scenario description to be well-typed its name must be unique. Having more than one scenario with the same name would ruin the semantic value of describing a scenario. Scenarios are strings, however the parser does support integer ranges (as seen on\cite[pp. 379-380]{walden1995}). When parsing integer ranges, of the structure \textsc{integer} "-" \textsc{integer}, the parser will split up the range and create multiple scenarios. The example in figure \ref{fig:integer_range} would therefore result in nine different scenarios. Everything other than integer ranges are just parsed directly as strings. Only the scenario label (i.e. "1-3") is interesting for the type checker as the description only contains semantics.
+
+\begin{figure}[H]
+{\footnotesize
+\begin{verbatim}
+ 1| dynamic_diagram Start_car
+ 2| component
+ 3|    scenario "Scenario 1: Start the car"
+ 4|    action
+ 5|       "1-3"     "Put key in keyhole"
+ 6|       "4-5"     "Turn key"
+ 7|       "7-9"     "Drive"
+ 8|     end
+ 9| end
+\end{verbatim}
+}
+\caption{Example of use of integer ranges in scenario descriptions.}
+\label{fig:integer_range}
+\end{figure}
+
+Similar to scenarios, object groups must have unique names, or be nameless. Furthermore all its contained elements (dynamic components) must also be well-typed, in order for the object group to be well-typed. In second phase all contained components and type checked.
+
+Due to their similarity, objects and object stacks are checked in the same way, however not by the same feature. Had they been in the same feature it would have meant complications when expanding the system. Having separate features also gives cleaner code when giving the two types different error messages. Well-typed objects and object stacks must be unique.
+
+A message relation consists of two dynamic references and a scenario, which both must be well-typed. Both dynamic references must be mentioned by an object or object stack, and as such must be in the object context. Scenarios are compared directly to the content of the scenario content, and must therefore be identical with this in order to be well-typed. The example seen on \cite[p. 380]{walden1995} are therefore not considered well-typed by the type checker.
+
+\begin{figure}[H]
+{\footnotesize
+\begin{verbatim}
+ 1| dynamic_diagram open_fridge
+ 2| component
+ 3|    scenario "Scenario 2: Open fridge"
+ 4|    action
+ 5|       "1"       "Grab handle"
+ 6|       "2-3"     "Pull door"
+ 7|       "4"       "Look at the food"
+ 8|     end
+ 9|     object FRIDGE.door_handle 
+10|     object HAND
+11|     object EYES
+12|     object FRIDGE.content
+13|     HAND calls FRIDGE.door_handle "1"
+14|     HAND calls FRIDGE.door_handle "2-3"
+15|     EYES calls FRIDGE.content "4: Is there any bacon?"
+16| end
+\end{verbatim}
+}
+\caption{Example a scenario chart that is not well-typed.}
+\label{fig:not_well_typed}
+\end{figure}
+
+\paragraph{}
+The example in figure \ref{fig:not_well_typed} is not well-typed due to two reasons. In line 14 the scenario mentioned is labelled "2-3". While this is identical to the string in line 6, the parser has passed this into two different scenarios with labels "2" and "3". To references these labels one would therefore have to use strings "2" and "3" and not "2-3". Other ways of expressing sets such as "2, 3" or "[2; 3]" are not considered to be well-typed either. The other reason can be found in line 15. While it is suggested by Wald\'{e}n and Nerson in \cite{walden1995} that this structure is allowed it has not been included in this implementation.
