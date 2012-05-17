@@ -1,8 +1,17 @@
 \chapter{Introduction}
 \label{sec:introduction}
-\section{Problem definition}
-\section{Ongoing work}
+When designing systems, most developers face challenges finding a common fashion of expressing the system so that it is both understandable for people outside the software engineering world, and at the same time gives both a low- and high-level description of the system for the purpose of development. Many methods have been designed to solve this, one of which is the \bon{ } method. \bon{ } bestow on both graphical and textual elements to reach this two folded challenge. When developing Eiffel using its main \textsc{ide} EiffelStudio, the user has a graphical \bon{ } tool available, that he can quickly open for a graphical overview of inheritance and client relations of a given class. There is, however, no tool for inspecting the textual aspect of \bon. If one wants a textual representation they must write it by hand themselves.
 \section{The product}
-Writing specifications can be a lot of work. A lot of developers want to shortcut this work by generating the specification with tools of different sorts. However, there are no tools to extract \textsc{bon} from Eiffel, even with these two being very alike. This is exactly what the product of this project is. A tool to extract Eiffel from \textsc{bon}, in the main Eiffel development environment, EiffelStudio. The idea is that a user at any given time can switch from writing Eiffel code, to reading a textual \bon{ } specification for his work. But the extracted \bon{ } shouldn't just be blindly based on one class, but also give an overview of other relations of the class.
+Writing specifications can be a lot of work, thus a lot of developers want to shortcut this work by generating the specification with tools of different sorts. However, as mentioned above, there are no tools to extract \textsc{bon} from Eiffel, even with these two being very alike. This is exactly what the product of this project is. A tool to extract Eiffel from \textsc{bon}, in the main Eiffel development environment, EiffelStudio. The idea is that a user at any given time can switch from writing Eiffel code, to reading a textual \bon{ } specification for his work. Still, the extracted \bon{ } shouldn't be blindly based on one class. It should also give an overview of other relations of the class.
 
 To ensure that the extracted textual \bon{ } is accurate a type checker is also implemented. This type checker will receive the \bon{ } through an extended version of the \textsc{ebon} parser/lexer (\cite{ebon}). A this point this type checker is not yet integrated in EiffelStudio, but as it is fully implemented in Eiffel it is the next logical step. 
+\section{Problem definition}
+To fulfill its purpose this project must provide a way to statically extract textual \bon{ } from Eiffel within the EiffelStudio environment. It should be easy to quickly switch from editing Eiffel source code to viewing textual \bon. Furthermore, a textual \bon{ } type checker must be able to check the well-typedness of the \bon{ } and give appropriate error message when it is not well-typed. It should be implemented in such a way that it in the future can be inserted into EiffelStudio. \newline\newline In short the final product must be able to:
+\begin{itemize}
+ 
+  \item Provide a way to extract textual \bon{ } in EiffelStudio
+  \item Type check textual \bon{ } and provide meaningful feedback
+ 
+\end{itemize}
+
+\section{Ongoing work}

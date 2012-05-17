@@ -1,16 +1,17 @@
 \section{EiffelStudio}
 EiffelStudio is a full-featured, commercial grade IDE for the Eiffel Programming Language (\cite[Quote from Origo website]{eiffel2006}). It has many tools to ease designing systems with Eiffel and is focused on providing an "all-in-one" package for the user, such that no outside software is needed.
 
-\subsection{The system}
-EiffelStudio is consists of three main sections; libraries, framework, application (as seen in figure \ref{fig:eiffelstudio_structure}). This project mainly focuses on the \textsc{ui} subsection of Application, more specifically, the Tools part.
-
-\begin{figure}[H]
+\begin{figure}[h]
 \centerline{
 \includegraphics[scale=0.7]{images/eiffelstudio-structure-full.png}
 }
-\caption[Overview of the EiffelStudio structure]{Overview of the EiffelStudio structure (source: EiffelStudio presentation by Emmanuel Stapf).}
+\caption[Overview of the EiffelStudio structure]{Overview of the EiffelStudio structure.}
 \label{fig:eiffelstudio_structure}
 \end{figure}
+
+
+\subsection{The system}
+EiffelStudio is consists of three main sections; libraries, framework, application (as seen in figure \ref{fig:eiffelstudio_structure}). This project mainly focuses on the \textsc{ui} subsection of Application, more specifically, the Tools part.
 
 \paragraph{}
 The \textsc{ui} consists of bars, tools and a window. The window shows the user the currently viewed context in the desired fashion, which can be i.e. the pure source code or a specific perspective on the source code, but also a visual representation. The bars and tools allows the user to switch what is currently being showed in the window without altering the source. When a user wants to change this, he will select the appropriate perspective and the window will be informed by this by the bar or tool in being utilized. When showing text, the window uses different formatters to translate the underlying source to the desired perspective on the code. The specific formatters does this by having a specialized output strategy define the text shown in the window based on an abstract Eiffel syntax. Figure \ref{fig:eiffelstudio_view_change} shows an overview of this. This is a description of how this works conceptually, and therefore might differ slightly from the actual implementation. A more precise description can be found in section \ref{implementation_eiffelstudio}
