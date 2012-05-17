@@ -348,7 +348,7 @@ Set expressions are introduced in the grammar in member range expressions of qua
 Enumerated sets are explicitly defined sets in which all the elements are explicitly listed. An example of such is shown below.
 {\footnotesize
 \begin{center}
-\{ 7.5,  10, 117, 3.14159 \}
+\{ 7.5,  10, 117, 3.14159 \}	
 \end{center}}
 To check the type correctness of such a set, the type checker enforces that the all the types represented by the elements of the set must conform to the same common type. This common type has to be the type of an element in the set. To clarify, all of the elements in the example set above must conform to the same type, \textsc{real} in this instance, assuming that numbers with a decimal component are represented by this type. Further assuming that \textsc{integer} is a subtype of \textsc{real}, the rule holds for the example, as the first and the last element are of type \textsc{real} (which trivially conforms to itself), and the second and third element are of type \textsc{integer}. Thus, all the elements conform to \textsc{real}, and the enumerated set is well-typed.
 

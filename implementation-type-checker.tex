@@ -50,7 +50,7 @@ In the point of entry, the feature \textit{check\_bon\_specification}, the trans
 \item The abstract syntax is traversed for the first phase
 \item Unresolved elements for the first phase are resolved
 \item The current phase is switched from first phase to second phase
-\item The abstract syntax is traversed (again) for the second phase
+\item If no type errors were found in the first phase, the abstract syntax is traversed (again) for the second phase
 \item Unresolved elements for the second phase are resolved
 \item Error messages and warnings, if any, are output
 \item The correctness (\textit{True}/\textit{False}) of the specification is returned to the caller as \textit{check\_bon\_specification} terminates
@@ -112,12 +112,45 @@ In the first iteration \textit{main}\textunderscore\textit{class} and \textit{cu
 In figure \ref{fig:eiffel_check_ancestors} the actual implementation in Eiffel is shown. The most notable difference between the implementation and the pseudocode is that when the it is iterating through the ancestors to call \textit{check}\textunderscore\textit{ancestors} on the ancestors, it is \textbf{and}'ed with \textbf{Result}. This does not change how the program works, due to the conditional statement ensuring that \textbf{Result} always is \textbf{True} at that point. It is done to express that the value of \textbf{Result} does not only depend on the returned value of the expression, but also on the previous evaluation of the direct ancestors. This means that the conditional statement could have been excluded, but as it stops the algorithm from further unnecessary iterations when a type error has been found, it is included.
 
 Lastly, the error handling is done by the type checker's error handling section. This will be further described in section \ref{implementation-error-handling}.
+
 \import{./}{implementation-informal-bon}
 
 \import{./}{implementation-formal-bon}
 
+\import{./}{implementation-dynamic-diagram}
+
 \subsection{Error Handling}
 \label{implementation-error-handling}
+Whenever a type error occurs during type checking, an error is emitted by the type checker. Such an error consists of two elements, an error code and an error message. Accordingly, the error system of the type checker is composed of two classes: \textsc{tbon\_tc\_error} and \textsc{tbon\_tc\_text\_items}. \textsc{tbon\_tc\_error} is the main error class, which provides a creation procedure for creating new errors and lists the error codes, while \textsc{tbon\_tc\_text\_items} contains the error messages. Error codes are mainly needed for the purpose of testing, which should not rely on checking the value of a manifest string. The errors are accumulated as a list of  \textsc{tbon\_tc\_error} instances, where an error is added by a call to \textit{add\_error}, e.g.: 
+{\footnotesize
+\begin{center}
+\textit{add\_error(err\_code\_class\_does\_not\_exist, err\_class\_does\_not\_exist (class\_name))}
+\end{center}}
+The error messages are output at the end of each phase. Thus, if the type checker already in the first phase determines that the specification is not well-typed, it does not continue with the second phase. Instead, it stops checking and prints the accumulated error messages. This means that the list of errors returned by each execution of the type checker is not necessarily comprehensive, as solving one error might lead to another. The reason for this is that solving one type error may allow the type checker to check an aspect of the specification that was not previously checkable.
+\paragraph{}
+The type checker succeeds silently, meaning that printing error messages is the only way the type checker communicates that the specification analyzed was not well-typed. Therefore, if no errors occur/are printed, the analyzed specification is well-typed. A well-typed specification can have have elements for which the type checker cannot be sure that a type error has not been violated, though. At these occasions, warnings are emitted. Warnings bring to the user's attention that some aspects of the specification might not be as expected. For instance, a warning is emitted if a type that is not marked as \textsc{enumerable} as used in a set expression. While this is not a type error per se, it cannot be determined whether it is not a type error. At other occasions, e.g. if two scenarios with identical names are found in a scenario chart, the warning functions as a reminder that something might be wrong.
 
 \subsection{Standard Types}
 \label{implementation-standard-types}
+To ease the creation of well-typed specifications, an array of standard types are defined by default by the type checker. The consequence of type checking is that all classes used in a specification must be defined in either a class chart or a class specification in order for the specification to type check. But this also means that standard types such as the ones listed below must be defined \emph{every} time a new specification is made -- otherwise, the type checker will complain about undefined types. Hence, the motivation for defining these types is that it enables the user to focus on his own specification, without having to worry about pleasing the type checker by defining standard types which for any specific system are not very interesting. The following standard types are defined by the type checker:
+\begin{itemize}
+\item \textsc{any}
+\item \textsc{none}
+\item \textsc{boolean}
+\item \textsc{character}
+\item \textsc{integer}
+\item \textsc{real}
+\item \textsc{string}
+\item \textsc{enumerable} (deferred)
+\item \textsc{container}[\textsc{e}] (deferred)
+\item \textsc{list}[\textsc{e}]
+\item \textsc{set}[\textsc{e}]
+\item \textsc{table}[\textsc{k}, \textsc{v}]
+\item \textsc{array}[\textsc{e}]
+\item \textsc{tuple}
+\end{itemize}
+A textual \bon{} specification of these is found in appendix \ref{appendix-standard-types}. The implication of defining these types, though, is that the user \emph{cannot} define types with these names himself, even if he so desired, as this would lead to a situation where a type is defined more than once (which leads to a type error). While this might be considered restrictive, this rule exists to ensure integrity of the type context. For instance, if the type \textsc{boolean} is overwritten by the user, the type checker has no way of knowing whether that type still represents a true or false value. Consequently, all use of boolean values in assertions would lead to undefined behaviour. This is true for the other standard values as well. Also, it is always possible to inherit from one of the standard types, in effect extending its behaviour (although it still has to be under another name).
+\paragraph{}
+As discussed when set expressions were explained, all enumerable types inherit from type \textsc{enumerable}. Of the other standard types, \textsc{list}, \textsc{set}, and \textsc{array} inherit from this class. A type \textsc{table} has a set of keys and a set of values, and these are individually enumerable as well.
+\paragraph{}
+In practice, the standard types behave just as if the specification in appendix \ref{appendix-standard-types} was parsed and type checked at the beginning of every execution of the type checker. Doing this in each execution would incur unnecessary overhead, though, and therefore these are added directly to the type context at the beginning of an execution of the type checker. This can be seen in the feature \textit{initialize\_contexts} in the type checker. 
