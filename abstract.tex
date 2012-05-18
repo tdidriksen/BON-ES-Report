@@ -1,13 +1,9 @@
 \begin{abstract}
-In the world of object-oriented programming there are tools to analyze and design a system. One of these is the Business Object Notation (BON). The key concepts of BON are seamlessness, reversibility, and software contracting. Software contracting is an idea that is also fundamental in the Eiffel language, and as such the two goes well together.
- 
-EiffelStudio is the main IDE of Eiffel. It has many tools to ease the development of Eiffel systems, one of which is the view feature. With this you are able to view the code from different perspectives, such as contract view that will show you the code from a contract point of view, or the interface view that allows you to inspect the inherited features of a class.
- 
-There is, however, no way of linking Eiffel code to textual BON in EiffelStudio. We want to bridge this gap between these two closely related worlds. This report analyzes how to do this through adding an extra view to the already existing views that allows the user to see his Eiffel code from a textual BON perspective, (and also generate Eiffel code from textual BON). To ensure the quality of the extracted (or hand-written) textual BON, we discuss the implementation of a type checker.
- 
-Result
-What’s the result of the project? This section should be written by the end of the project.
- 
-Conclusion
-What’s the conclusion of the project? This section should be written by the end of the project.
+The purpose of this project is to bridge the gap between the textual \bon{} world and the Eiffel world. There is already support for the graphical aspect of \bon{} in the main Eiffel \textsc{ide}, EiffelStudio, and as such involving the textual aspect seems like a natural step. A support for textual \bon{} in EiffelStudio should ease up getting an overview of Eiffel systems, and give a higher level description than the code itself.
+
+To achieve this, support for textual \bon{} has been implemented directly into EiffelStudio. It allows for seamless switching between Eiffel source code and extracted textual \bon. Furthermore, this tool also performs static analysis upon the inheritance, in order to accomplish a high level description of the system. To  provide a way verify the validity of the extracted \bon{} a general purpose type checker was developed. The idea is that this type checker at some point can be implemented into EiffelStudio and aid in \bon{ } development in an Eiffel environment.
+
+This has resulted in a tool in EiffelStudio that extract textual \bon{} from a class written in Eiffel. To also provide an overview of a system, textual \bon{} for all descendants is also extracted. In addition a general purpose type checker has been build upon an already existing parser and lexer. This type checker is not yet integrated in EiffelStudio.
+
+With this option in EiffelStudio it is now possible to get an overview of a system using \bon{}. This however does not mean that this area is fully explored. There are many interesting features to be added, in example fully implement the type checker into EiffelStudio or a full system textual \bon{} view in EiffelStudio. This project has been a starting point for hopefully many other projects that can continue the work on integrating textual \bon{} into EiffelStudio and finally bridge the cap between these two worlds.
 \end{abstract}
