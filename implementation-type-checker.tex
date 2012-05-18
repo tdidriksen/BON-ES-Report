@@ -1,5 +1,6 @@
 \section{Type Checker}
 \subsection{Parsing and Lexing}
+\label{implementation-parser}
 Before any semantic analysis of a textual \bon{} specification can take place, the lexer and parser has to process it into abstract syntax on which the type checker can operate. Already mentioned in section \ref{design-parsing} is the aspect that the structure of the parser grammar closely resembles the grammar presented in \cite[pp.~352-359]{walden1995}, aside from the previously explained deviations.
 
 After successful syntactic analysis, the parser hands over the parse tree or model object graph (\textsc{mog}) to the type checker. The model object graph represents the syntax of the analyzed specification as a hierarchy of objects.

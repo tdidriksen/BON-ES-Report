@@ -14,4 +14,25 @@ To fulfill its purpose this project must provide a way to statically extract tex
  
 \end{itemize}
 
-\section{Ongoing work}
+\section{Related Work}
+
+\subsection{Extended BON}
+The Extended \bon{} Tool Suite (\textsc{ebon}) is a project whose objective is to add semantic properties into the \bon{} standard. Extended \bon{} is developed by Joseph Kiniry. The textual \bon{} parser and lexer used for the work described in this report is based on the parser and lexer from \textsc{ebon}, as well the abstract syntax as a meta object graph.
+
+\subsection{BONc}
+\bon{c} is a command-line textual \bon{} parser and type checker implemented in Java \cite{bonc}. The tool is developed and maintained by Fintan Fairmichael. \bon{c} provides support for generating graphical representations of a \bon{} specification, namely through generation of informal charts in HTML format and graphical \bon{} diagrams. The standard types defined in the type checker described in the report is based in the built-in types in \bon{c}.
+
+\subsection{BON IDE}
+The \bon{} Integrated Development Environment is a tool which puts emphasis on the graphical aspect of \bon{} \cite{bonide}. It provides tool for visualizing a \bon{} specification as a graphical diagram, and bases its work on the Ecore model of \bon{}.
+
+\subsection{The BON CASE Tool}
+The BON CASE Tool is a CASE (Computer-Aided Software Engineering) tool that supports the creation of \bon{} models and the formal reasoning of such \cite{boncase}. It supports integration of \bon{} with \textsc{jml} in order to be able to utilize the formal techniques and tools of \textsc{jml}. The BON CASE Tool is developed by Paige, Kaminskaya, Ostroff, and Lancaric.
+
+\subsection{Other Papers}
+\cite{ostroff2001} formulates a metamodel for \bon{} using PVS, which expresses the syntactic constraints that all models using \bon{} must obey. Some of the rules defined here have been implemented in the type checker described in this report.
+
+\paragraph{}
+\cite{ostroff1999} describes how the properties of \bon{} make the language a well suited tool for formal specifications and algorithm refinement.
+
+\paragraph{}
+\cite{ostroff1998} shows how a transition from the \textsc{z} formal notation to \bon{} can be made. Furthermore, Paige and Ostroff show how \bon{} has the expressive power of \textsc{z} with the added value of an object-oriented approach.

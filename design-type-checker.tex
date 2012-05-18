@@ -2,16 +2,17 @@
 [Introduction to type checker]
 \subsection{Parsing and Lexing}
 \label{design-parsing}
-The parser and lexer upon which the type checker has been built is based on the textual \textsc{bon} lexer and parser created by Joseph Kiniry for the Extended \textsc{bon} Tool Suite \cite{ebon} (henceforth denoted \textsc{ebon}). At the outset of this project, the rule part of the parser was already finished (although some minor alterations were made to it to fit the implementation of the type checker), while the semantic actions were partially implemented. The implementation of these actions have now been completed. No alterations were made to the lexer.
+Syntactic analysis, performed by parsing and lexing a textual \bon{} specification, is a necessary prerequisite for performing any semantic analysis on a specification (in this case, type checking). Parsing and lexing results in an abstract representation of the specification, an abstract syntax, which is understood by a type checker. Notably, an abstract syntax and a type checker are quite tightly coupled, as the type checker has to check every corner of the abstract syntax to make sure that no violations of type rules go unnoticed.
+\paragraph{}
+The parser and lexer specifications upon which the type checker has been built is based on the textual \textsc{bon} lexer and parser created by Joseph Kiniry for the Extended \textsc{bon} Tool Suite \cite{ebon} (henceforth denoted \textsc{ebon}). At the outset of this project, the rule part of the parser was already finished (although some minor alterations were made to it to fit the implementation of the type checker), while the semantic actions were partially implemented. The implementation of these actions have now been completed. No alterations were made to the lexer.
 
 \paragraph{}
-[short high level description of parser/lexer]
-%Remember to mention that the parser mostly corresponds to the grammar
-\paragraph{} The parser generating the abstract syntax tree is a tree parser, creating a model object graph of textual \textsc{bon} elements (or a parse error) as a result. Like the parser, these model classes were also partially implemented initially, but have now been completed.
+%[short high level description of parser/lexer]
+ %Remember to mention that the parser mostly corresponds to the grammar
+%Add paragraph with a more design-oriented view on the parser -- DONE
+The parser specification is designed such that it mostly corresponds to the textual \bon{} grammar presented in \cite{walden1995}. For each of the elements in the grammar, the parser has a corresponding production rule, making sure that the entire language is parsed. The result of successful parsing is a model object graph, in which each of the syntactic elements of the grammar is represented by an object. In effect, the resulting abstract syntax is a hierarchy of objects represented as a graph, enabling a type checker to check a \bon{} specification by traversing this graph and checking each element (represented by an object) against the rules defined for it. These rules are defined in appendix \ref{appendix-type-system}. A detailed description of the model object graph is found in section \ref{implementation-parser}.
 
-%Add paragraph with a more design-oriented view on the parser
-
-\paragraph{} The parser and lexer used for the type checker has been done using the \textit{Gobo} tools \textit{gelex} and \textit{geyacc} \cite{gobo}.
+\paragraph{} The syntactic analysis of the textual \bon{} grammar has been done using the \textit{Gobo} tools \textit{gelex} and \textit{geyacc} \cite{gobo}.
 \subsubsection{Deviations from the Grammar}
 \label{design-grammar-deviations}
 The grammar for the parser deviates from the grammar in \cite{walden1995} in a few places. Most of these were already present in the \textsc{ebon} grammar file.
