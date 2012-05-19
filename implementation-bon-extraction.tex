@@ -26,6 +26,13 @@ The output strategies inherits a feature called \textit{process$\_$class$\_$as}.
 To keep the \textsc{bon} formatters and output strategies both similar, yet distinct at the same time, they both inherit from a shared deferred class, as it can be seen in figures \ref{fig:textual_bon_formatter} and \ref{fig:bon-extraction-output-strategy}. This gives them a polymorphic characteristic, which makes handling these classes easier as it is not always needed know whether you are in formal or informal context at a given point in time. This is not utilized by this project, but is done to make future development more seamless. 
 
 \subsection{The Internal BON Representation}
+\begin{figure}[H]
+\centerline{
+\includegraphics[scale=0.7]{images/bon-extractor-mog-overview.png}
+}
+\caption{An excerpt of the classes created for the internal representation of textual \bon{} in EiffelStudio.}
+\label{fig:textual_bon_formatter}
+\end{figure}
 A series of classes has been created to represent the elements of the \bon{} grammar in \cite{walden1995}. Each of these classes store the information required about the represented grammar element in order to be able to generate textual \bon{}. The presence of mandatory elements of the grammar, such as a class name in a class chart, is ensured through the use of  \textit{attached} features\footnote{In the world of Eiffel, the \textit{attached} keyword ensures that a reference cannot be \textit{Void}. Thus, it must refer to an object.} and contracts (invariants and pre- and postconditions). A class represent a grammar element knows how to process itself, and itself only. If it contains other elements, such as a class containing features, the class will have a collection of features, and then delegate the processing of features to the class representing features. Any nested relations are processed this way.
 
 \paragraph{}
