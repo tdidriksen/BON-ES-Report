@@ -10,22 +10,22 @@ The parser and lexer specifications upon which the type checker has been built i
 %[short high level description of parser/lexer]
  %Remember to mention that the parser mostly corresponds to the grammar
 %Add paragraph with a more design-oriented view on the parser -- DONE
-The parser specification is designed such that it mostly corresponds to the textual \bon{} grammar presented in \cite{walden1995}. For each of the elements in the grammar, the parser has a corresponding production rule, making sure that the entire language is parsed. The result of successful parsing is a model object graph, in which each of the syntactic elements of the grammar is represented by an object. In effect, the resulting abstract syntax is a hierarchy of objects represented as a graph, enabling a type checker to check a \bon{} specification by traversing this graph and checking each element (represented by an object) against the rules defined for it. These rules are defined in appendix \ref{appendix-type-system}. A detailed description of the model object graph is found in section \ref{implementation-parser}.
+The specification of the parser is designed such that it mostly corresponds to the textual \bon{} grammar presented in \cite{walden1995}. For each of the elements in the grammar, the parser has a corresponding production rule, making sure that the entire language is parsed. The result of successful parsing is a model object graph, in which each of the syntactic elements of the grammar is represented by an object. In effect, the resulting abstract syntax is a hierarchy of objects represented as a graph, enabling a type checker to check a \bon{} specification by traversing this graph and checking each element (represented by an object) against the rules defined for it. These rules are defined in appendix \ref{appendix-type-system}. A detailed description of the model object graph is found in section \ref{implementation-parser}.
 
-\paragraph{} The syntactic analysis of the textual \bon{} grammar has been done using the \textit{Gobo} tools \textit{gelex} and \textit{geyacc} \cite{gobo}.
+The syntactic analysis of the textual \bon{} grammar has been done using the \textit{Gobo} tools \textit{gelex} and \textit{geyacc} \cite{gobo}.
 \subsubsection{Deviations from the Grammar}
 \label{design-grammar-deviations}
 The grammar for the parser deviates from the grammar in \cite{walden1995} in a few places. Most of these were already present in the \textsc{ebon} grammar file.
-%Result token
-\paragraph{} A \textit{Result} token was added for use in feature contracts in formal specifications. It represents the resulting value of its enclosing feature, just like its Eiffel counterpart.
-%Expressions
-\paragraph{} In order to be able to express the grammar in a proper type hierarchy, some alterations regarding the formal assertions were made. In particular, the original grammar implies the following relationship \cite[p.~357]{walden1995}:
+
+A \textit{Result} token was added for use in feature contracts in formal specifications. It represents the resulting value of its enclosing feature, just like its Eiffel counterpart.
+
+In order to be able to express the grammar in a proper type hierarchy, some alterations regarding the formal assertions were made. In particular, the original grammar implies the following relationship \cite[p.~357]{walden1995}:
 \begin{center}
 \textit{Expression} \textless : \textit{Operator\textunderscore expression} \textless : \textit{Parenthesized} \textless : \textit{Expression}
 \end{center}
 As this situation cannot be modeled due to circular inheritance, a \textit{Parenthesized} element is treated as a boolean expression instead of an operator expression. Changes have been made to \textit{Set\textunderscore expression} accordingly, as it refers to \textit{Operator\textunderscore expression}.
-%Named indirection - indirection lists
-\paragraph{} The class name in a named indirection has been made optional in order to allow for situations such as the one described in \cite[p.~372]{walden1995}, example in figure B.9. Contrary to the \textsc{ebon} grammar, the indirection list has not been made optional, as this would create ambiguity between a formal generic name and a named indirection; when confronted with a generic indirection, the parser needs to be able to disambiguate between these.
+
+The class name in a named indirection has been made optional in order to allow for situations such as the one described in \cite[p.~372]{walden1995}, example in figure B.9. Contrary to the \textsc{ebon} grammar, the indirection list has not been made optional, as this would create ambiguity between a formal generic name and a named indirection; when confronted with a generic indirection, the parser needs to be able to disambiguate between these.
 
 \subsection{Design Decisions}
 This section discusses the overall design decisions of the textual \textsc{bon} type checker, both with regards to the high-level structure of the system and the more low-level implications of specifying the underspecified grammar.
@@ -61,8 +61,10 @@ Each of these features takes a \textsc{bon} element as argument and produces a \
 %We don't have to implement a visit feature in all the MOG classes.
 %Context argument
 In both approaches, all of the type checking code is placed in a single class. The great benefit of the visitor pattern is its generality and object-oriented nature. But this comes at a cost. For the \textit{accept} feature to be sufficiently general, it cannot return a specific type, and consequently the information about the well-typedness of an element must be saved in the state of the visitor. Accordingly, the object-oriented nature of the visitor pattern means that the \textit{accept} feature would have to be implemented in every class of the model object graph, only to redirect the call back to the visitor.
-\paragraph{} The functional nature of the procedural approach means that information about the well-typedness of an element can be propagated through the type checker as results of feature calls. Also, as the type checker is called as a function on an element, and not on the element itself, no additions have to be made to the classes of the model object graph. But this also means a loss of generality, which is the main drawback of this approach; no interface is provided for easy traversal of the object graph for reasons other than type checking.
-\paragraph{} For the structure of the type checker, the procedural approach has been chosen, as the lack of generality seems acceptable when compared to the drawbacks of the visitor pattern. The added generality of the visitor pattern does not justify the extra overhead it would impose on the implementation of the type checker.
+
+The functional nature of the procedural approach means that information about the well-typedness of an element can be propagated through the type checker as results of feature calls. Also, as the type checker is called as a function on an element, and not on the element itself, no additions have to be made to the classes of the model object graph. But this also means a loss of generality, which is the main drawback of this approach; no interface is provided for easy traversal of the object graph for reasons other than type checking.
+
+For the structure of the type checker, the procedural approach has been chosen, as the lack of generality seems acceptable when compared to the drawbacks of the visitor pattern. The added generality of the visitor pattern does not justify the extra overhead it would impose on the implementation of the type checker.
 
 \subsubsection	{Phases of the Type Checker}
 \label{design-phases}
