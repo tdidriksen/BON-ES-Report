@@ -1,12 +1,12 @@
 \subsection{Informal BON}
-One could wonder why type checking of informal textual \textsc{bon} is interesting, since many parts of it does not have types, such as features, and all logical expressions are expressed through the semantics of strings. There are however some interesting elements to inspect to ensure the integrity of the system.
+One could wonder why type checking of informal textual \textsc{bon} is interesting, since many parts of it does not have types, such as features, and all logical expressions are expressed through the semantics of strings. There are, however, some interesting elements to inspect to ensure the integrity of the system.
 
 \paragraph{}
-Creation charts are checked by making sure that all creators and created classes exist in the context. Furthermore it will also warn the user of possible duplicate entries in the creation chart. This was decided to not be an error as it is not outright faulty type usage, but rather unnecessary clutter. The user however could be having a reason to keep these duplicate entries for semantic reasons, and not passing the entire specification because of this seemed pedantic. Similar to creation charts, scenario charts are also checked for duplicate entries, but again it was decided to express it as a warning instead of an error. 
+Creation charts are checked by making sure that all creators and created classes exist in the context. Furthermore it will also warn the user of possible duplicate entries in the creation chart. This was decided to not be an error as it is not outright faulty type usage, but rather unnecessary. The user as such could have a reason for keeping these duplicate entries for semantic reasons, and as such raising a type efforbecause of this seems pedantic. Similar to creation charts, scenario charts, and event charts are also checked for duplicate entries by name, but again this is expressed a warning instead of an error. Errors and warnings are further explained in section \ref{implementation-error-handling}.
 
 \subsubsection{Structure}
 \label{implementation-informal-structure}
-First off, any cluster must be in exactly one system chart or in exactly one cluster chart. The type checker does this by checking that the cluster is not in more than one chart, and that it is mentioned in at least one chart. If cluster occurrences is the number of times a cluster is mentioned in another cluster chart or in a system chart this can be expressed as such: 
+Most importantly, any cluster must be in exactly one system chart or in exactly one cluster chart. The type checker ensures this by checking that the cluster is not in more than one chart, and that it is mentioned in at least one chart. If \textit{cluster occurrences} is the number of times a cluster is mentioned in another cluster chart or in a system chart this can be expressed as such: 
 {\footnotesize\begin{center} $\neg$\textit{(cluster occurrences $\textgreater$ 1)} $\wedge$ \textit{cluster occurrences $\neq$ 0} \textit{} $\equiv$  \textit{cluster occurrences = 1}
 \end{center}}
 \paragraph{}

@@ -3,35 +3,36 @@
 \label{implementation-parser}
 Before any semantic analysis of a textual \bon{} specification can take place, the lexer and parser has to process it into abstract syntax on which the type checker can operate. Already mentioned in section \ref{design-parsing} is the aspect that the structure of the parser grammar closely resembles the grammar presented in \cite[pp.~352-359]{walden1995}, aside from the previously explained deviations.
 
-After successful syntactic analysis, the parser hands over the parse tree or model object graph (\textsc{mog}) to the type checker. The model object graph represents the syntax of the analyzed specification as a hierarchy of objects.
+After successful syntactic analysis, the parser hands over the parse tree or meta object graph (\textsc{mog}) to the type checker. The meta object graph represents the syntax of the analyzed specification as a hierarchy of objects.
 \begin{figure}[H]
     \centerline{\scalebox{0.75}{\includegraphics{images/mog2.png}}}
     \caption[MOG hierarchy]{First three levels of the inheritance hierarchy of the MOG}
     \label{fig:mog-hierarchy}
 \end{figure}
 %explain what a bon element is
-To give an impression of the structure, figure \ref{fig:mog-hierarchy} shows the first three levels of the inheritance hierarchy of the \textsc{mog}. Needless to say, the actual object graph has a quite a few more levels. Each of these objects represent what in this report is called a \textit{BON element}. Most of these are composed of multiple other \bon{} elements, in effect creating a graph of inheritance and client-supplier links between all the model objects. Hence the name ''model object graph''.
+To give an impression of the structure, figure \ref{fig:mog-hierarchy} shows the first three levels of the inheritance hierarchy of the \textsc{mog}. As one would expect, the actual object graph has a quite a few more levels. Each of these objects represent what in this report is called a \textit{BON element}. Most of these are composed of multiple other \bon{} elements, in effect creating a graph of inheritance and client-supplier links between all the meta objects.
 \paragraph{}
 Considering the procedural structure of the type checker outlined in section \ref{design-tc-patterns} and the \textsc{mog} presented here, the connection between the type checker and the abstract syntax should become evident: For each object in the object graph, a corresponding checking feature checking the well-typedness of the \bon{} element it represents is created in the type checker. In particular, this means that the type checker has features such as \textit{check\_informal\_chart}, \textit{check\_class\_chart}, and \textit{check\_static\_diagram}.
 
 Because \bon{} elements are defined in terms of each other, the consequence of this structure is that the checking feature for a given \bon{} element returns \textit{True} only if all the (present) elements of which the element is composed are well-typed. As will be shown in section \ref{implementation-unresolved-elements}, though, resolving the correctness of all the subelements when the checking feature for a \bon{} element is called is not always possible. In these cases, auxiliary contexts are used to gather these unresolved \bon{} elements for checking later. Having these unresolved elements do not have any influence on the final verdict of the type checker, which is returned as the result when the feature \textit{check\_bon\_specification} terminates.
 \paragraph{}
-\textit{check\_bon\_specification} is the entry point into the type checker, as a type \textsc{bon\_specification} is the top-most element of the object graph created by the parser. When this element is not shown in figure \ref{fig:mog-hierarchy}, it is because it primarily consists of a set of \textsc{specification\_element}, and therefore it is not a very interesting object in its own right. Thus, all type checking begins and ends in this feature. What happens in between is elaborated upon in section \ref{implementation-phases}. Prior to this, however, the translation between the abstract syntax and the type contexts of the type checker is explained.
+The top-most element of the object graph created by the parser is a type \textsc{bon\_specification}, and as such the entry point into the type checker is \textit{check\_bon\_specification}. When this element is not shown in figure \ref{fig:mog-hierarchy}, it is because it primarily consists of a set of \textsc{specification\_element}, and therefore it is not a very interesting object in its own right. Thus, all type checking begins and ends in this feature. What happens in between is elaborated upon in section \ref{implementation-phases}. Prior to this, however, the translation between the abstract syntax and the type contexts of the type checker is explained.
 
 \subsection{Building the Context}
 \label{implementation-context-class-structure}
-The type contexts for type checking of both informal and formal specifications are built using a hierarchy of types. This hierarchy is shown in figure \ref{fig:context-classes}.
+The type contexts for type checking of both informal and formal specifications are built using a hierarchy of types. This hierarchy is pictured in \ref{fig:context-classes}.
 \begin{figure}[H]
     \centerline{\scalebox{0.6}{\includegraphics{images/context_classes3.png}}}
     \caption[Context classes]{Hierarchy of classes used to build the type contexts}
     \label{fig:context-classes}
 \end{figure}
 A type context, be it informal or formal, is built as a set of instances of \textsc{tbon\_tc\_class\_type}  and \textsc{tbon\_tc\_cluster\_type}  (declared as a set of \textsc{tbon\_tc\_type}). Due to the naming restrictions discussed in section \ref{design-type-names}, classes and clusters are kept in the same context for convenience and easy detection of name clashes. At any time, the instances in the context represent the defined types currently known at that point. Only four \bon{} elements define types in the context. For informal specifications, these are class charts and cluster charts, while class specifications and cluster specifications define types for formal specifications.
-\paragraph{} In formal specifications, mapping from classes to features happens through association with a set of \textsc{tbon\_tc\_feature}. This type is instantiated every time a feature specification is encountered. An instance of \textsc{tbon\_tc\_class\_type} is never associated with an undefined feature, but can be associated with an inconsistent or ill-typed feature. This is elaborated in section \ref{implementation-unresolved-elements}. Accordingly, the type of a feature is merely an association to an instance of \textsc{tbon\_tc\_class\_type}.
-\paragraph{} Analogous to the mapping from classes to features, mapping from classes to generics is done through association with a sequence of \textsc{tbon\_tc\_generic}. As the order of the type parameters matters, generics cannot be stored in a set. A generic type has both a bounding and an actual class type. The association between these is explained in section \ref{implementation-generics}.
+
+In formal specifications, mapping from classes to features happens through association with a set of \textsc{tbon\_tc\_feature}. This type is instantiated every time a feature specification is encountered. An instance of \textsc{tbon\_tc\_class\_type} is never associated with an undefined feature, but can be associated with an inconsistent or ill-typed feature. This is elaborated in section \ref{implementation-unresolved-elements}. Accordingly, the type of a feature is merely an association to an instance of \textsc{tbon\_tc\_class\_type}.
+
+Analogous to the mapping from classes to features, mapping from classes to generics is done through association with a sequence of \textsc{tbon\_tc\_generic}. As the order of the type parameters matters, generics cannot be stored in a set. A generic type has both a bounding and an actual class type. The association between these is explained in section \ref{implementation-generics}.
 
 %Transitional paragraph about phases and contexts here
-\paragraph{}
 Types defined in the abstract syntax is primarily added to the context in the first phase of the type checker, whereas most of the relations between the types in the context are established and checked in the second phase. The idea and implementation of the phases is elaborated upon in the next section.
 
 \subsection{Going Through the Phases}
@@ -70,36 +71,16 @@ Features of a class specification, along with their arguments, are marked as unr
 \subsubsubsection{Generics} %generics
 The formal generics 	of a class specification cannot be resolved during the first traversal, as they might refer to unknown types, that are yet to be added to the type context. The resolution of the formal generics cannot be deferred to the second phase, however, as other elements such as features and feature arguments need to be able to refer to instances of the generic classes. Furthermore, it should be possible to check the validity of these instances according to the bounding types of the type parameters in the class specification in the second traversal. Thus, the formal generics of a class specification are resolved in the first phase, after the first traversal, in which the bounding types to which the type parameters refer are coupled with type instances from the context.
 \subsubsubsection{Inheritance Relations} %inheritance relations
-Inheritance relations are checked at the end of the second phase (after the traversal of the abstract syntax). Such relations cannot be resolved prior to this point, for the reason that not all relations between a class and its ancestors in the context can be expected to be known earlier than after the second traversal.
+Inheritance relations are checked at the end of the second phase. Such relations cannot be resolved prior to this point, for the reason that not all relations between a class and its ancestors in the context can be expected to be known earlier than after the second traversal.
 \subsubsubsection{Static References} %static references
 Static references used in client relations cannot be resolved in either the first or the second traversal of the abstract syntax, as the entire cluster structure has to be known before a static reference can be determined to be well-typed. The relations between a cluster and its classes and subclusters is not known until the second phase, and consequently, static references must be checked at the end of the second phase, when all of these relations have been established in the context.
 \subsubsubsection{Dynamic References}%dynamic references
 Comparable to the situation for static references, all the defined object groups and the relations between object groups and objects and other object groups must be known before a dynamic reference can be type checked. As these relations are explored in the second phase, a dynamic reference cannot be type checked before the end of the second phase.
 
 \subsection{Inheritance}
-An important part of type checking textual \textsc{bon} is checking the inheritance hierarchy. Apart from the obvious things such as checking whether an ancestor class actually exists, it is also important to check for circular inheritance. A class cannot inherit from itself, even through other classes. This means that the type checker has to check not only the direct ancestors of the class in question, but also all their direct ancestors and so. This is implemented with a recursive algorithm. Before implementing it the algorithm was written in pseudocode, as seen in figure \ref{fig:check_ancestors_pseudocode}.
-\begin{figure}[h]
-{\footnotesize
-\begin{verbatim}
- 1| check_ancestors(main_class, current_class): BOOLEAN
- 2|      do
- 3|           Result := current_class.ancestors.for_all(ancestor /= main_class)
- 4|           if Result then
- 5|                Result := current_class.ancestors.for_all(
- 6|                                            check_ancestors(main_class, ancestor)
- 7|                                            )
- 8|           else
- 9|                Result := False
-10|                error_msg("circular inheritance")
-11|           end
-12|      end
-\end{verbatim}
-}
-\caption{Pseudo-code for check\textunderscore ancestors}
-\label{fig:check_ancestors_pseudocode}
-\end{figure}
+An important part of type checking textual \textsc{bon} is checking the inheritance hierarchy. Apart from checking whether an ancestor class actually exists, it is also important to check for circular inheritance. A class cannot inherit from itself, even through other classes. This means that the type checker has to check not only the direct ancestors of the class in question, but also all other ancestors and in the inheritance hierarchy. This is done with a recursive algorithm presented in figure \ref{fig:eiffel_check_ancestors}
 
-In the first iteration \textit{main}\textunderscore\textit{class} and \textit{current}\textunderscore\textit{class} are both the root class. First the direct ancestors of the \textit{current}\textunderscore\textit{class}  is checked for presences of the \textit{main}\textunderscore\textit{class}. If this does not pass an error message is created and the algorithm terminates. If it does pass the algorithm will continue to check all ancestors of \textit{current}\textunderscore\textit{class}. This is done by recursively calling the feature with each ancestor as \textit{current}\textunderscore\textit{class}. It is important to note that \textit{main}\textunderscore\textit{class} does not change through out the recursive iterations. It is always checking in relation to the same class.
+In the first iteration, \textit{a$\_$main}\textunderscore\textit{class} and \textit{an$\_$ancestor$\_$class} are both the root class. First the direct ancestors of the \textit{an$\_$ancestor$\_$class}   is checked for presences of the \textit{a$\_$main}\textunderscore\textit{class}. If this does not pass an error message is created and the algorithm terminates. If it does pass the algorithm will continue to check all ancestors of \textit{an$\_$ancestor$\_$class}. This is done by recursively calling the feature with each ancestor of \textit{an$\_$ancestor$\_$class}. It is important to note that \textit{a$\_$main}\textunderscore\textit{class} does not change through out the recursive iterations. It is always checking in relation to the same class.
 
 \begin{figure}
 \centerline{
@@ -109,10 +90,8 @@ In the first iteration \textit{main}\textunderscore\textit{class} and \textit{cu
 \label{fig:eiffel_check_ancestors}
 \end{figure}
 
-\paragraph{}
-In figure \ref{fig:eiffel_check_ancestors} the actual implementation in Eiffel is shown. The most notable difference between the implementation and the pseudocode is that when the it is iterating through the ancestors to call \textit{check}\textunderscore\textit{ancestors} on the ancestors, it is \textbf{and}'ed with \textbf{Result}. This does not change how the program works, due to the conditional statement ensuring that \textbf{Result} always is \textbf{True} at that point. It is done to express that the value of \textbf{Result} does not only depend on the returned value of the expression, but also on the previous evaluation of the direct ancestors. This means that the conditional statement could have been excluded, but as it stops the algorithm from further unnecessary iterations when a type error has been found, it is included.
-
-Lastly, the error handling is done by the type checker's error handling section. This will be further described in section \ref{implementation-error-handling}.
+One thing interesting to note is that \textit{Result} is expressed as a conjunction of itself and the result of further recursive calls. This does not change how the algorithm works, due to the conditional statement ensuring that \textit{Result} always is \textit{True} at that point. It is done to express that the value of \textit{Result} does not only depend on the returned value of the expression, but also on the previous evaluation of the direct ancestors. This means that the conditional statement could have been excluded, but as it stops the algorithm from further unnecessary iterations when a type error has been found, it is included.
+Lastly, the error handling is done by the error handling section of the type checker, which will be described further in section \ref{implementation-error-handling}.
 
 \import{./}{implementation-informal-bon}
 
