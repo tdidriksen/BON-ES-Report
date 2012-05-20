@@ -1,5 +1,5 @@
-\subsection{Formal BON}
-\subsubsection{Structure}
+\section{Formal BON}
+\subsection{Structure}
 Contrary to the structure of the informal specifications described in section \ref{implementation-informal-structure}, the structure imposed on formal specifications is less restrictive. In fact, there are only two restrictions, which will be elaborated upon in the following paragraphs. The reason for this, as already pointed out in section \ref{design-type-system}, is that formal specifications may be used to to give detailed descriptions of a system on the micro-scale, at which point the user probably does not want to recreate the entire system structure.
 \paragraph{}
 The first restriction is that a class or cluster can be declared as being a part of at most one cluster (zero is allowed). To ensure consistency of the formal specification, checking the cluster structure happens in the same way as for the informal structure: by emitting a type error if the \textit{parent} attribute of a cluster (\textsc{tbon\_tc\_cluster\_type}) or the \textit{cluster} attribute of a class (\textsc{tbon\_tc\_class\_type}) is assigned to more than once.
@@ -18,15 +18,15 @@ The second restriction is that any cluster structure implied by a static referen
 \label{fig:structure_static_references}
 \end{figure}
 In figure \ref{fig:structure_static_references}, an example of static references used in an inheritance relation is shown. For this example to be well-typed, the second restriction says that somewhere in the formal specification, the class \textsc{list} must be defined in a cluster \textsc{containers}, which in turn must be defined as a subcluster of a cluster \textsc{collections}. Interestingly, the static reference on the right, \textsc{sequence}, implies no structure of the system, and could be defined anywhere in the system structure. It would have to be defined somewhere, though.
-\subsubsection{Static Relations}
+\subsection{Static Relations}
 In continuation of the above discussion of static references, static relations constitute a valuable tool for emphasizing or make explicit important relations of the system. As the properties of static references (of which static relations are comprised) have already been attended to, these will not be addressed here. Instead, the specifics of inheritance and client relations, respectively, will be elaborated upon.
-\subsubsubsection{Inheritance Relations}
+\subsubsection{Inheritance Relations}
 An important thing to note about inheritance relations is that they do not define any previously unknown relations in the system. Their purpose is to emphasize and give more detail to already existing relations. Consequently, any inheritance relation stated in a static diagram must also be expressed in the \textbf{inherit} clause of the class specification of the child class. If it is not stated here, then the parent class must an ancestor to the child class through explicitly stated links. An example of such a relation is seen in figure \ref{fig:structure_static_references}.
 
 Pertaining to inheritance relations is also an optional multiplicity marker, with which the user can underline the number of times the child class inherits from the parent class. As it does not make sense to state an inheritance relation in which the child class inherits less than once from the parent class, this marker is checked to always be greater than zero.
 \paragraph{}
 Previously mentioned in section \ref{implementation-unresolved-elements} is the aspect that inheritance relations are marked as unresolved, and checked at the end of the second phase of type checking. Thus, provided that the static references of the inheritance relation is well-typed, determining if the relation is well-typed is a matter of checking that the child class exists in the context, and that the parent class is indeed an ancestor to the class through direct inheritance links. This is checked by a call to the feature \textit{conforms\_to} on the child class with the parent class as input. This feature is discussed in the next section concerning the implementation of variance. 
-\subsubsubsection{Client Relations}
+\subsubsection{Client Relations}
 A client relation between two classes tells a different and possibly more complex story than an inheritance relation. Because \bon{} is a specification language with no knowledge of the actual implementations of the body of a feature, there may very well exist a client relation between to classes in the actual implementation of a system that is not made explicit (e.g. through feature types or feature arguments) in the textual \bon{} specification. Accordingly, the well-typedness of a client relation is not determined on the basis of an explicit client-supplier relation in the specification. In fact, the type checker does not check this aspect at all.
 \paragraph{}
 Other aspects of a client relation can and should be checked, though. As a consequence of the above, all of these aspects pertain to the client class, as nothing can be said about the supplier, besides that it must be defined.
@@ -56,7 +56,7 @@ Accordingly, any formal generic names mentioned as a client entity must exist in
 
 %named indirection - type parameters must conform
 If named indirections are specified as client entities, things become a little more involved. Naturally, every celebrity needs to keep track of his or her cars, even when they are distributed over multiple garages. Example 3 in figure \ref{fig:client_relations} shows how this could be expressed. For this relation to be well-typed, a class \textsc{map} must exist, and it must have two type parameters. Furthermore, \textsc{garage\_number} must conform (covariantly) to the bounding type of the first of these parameters. And because the ellipses refer to the supplier type of the relation \cite[p.~371]{walden1995}, the supplier type must conform to the bounding type of the second parameter. These conformance checks are implemented by calls to the feature \textit{conforms\_to}, the semantics of which are explained next.
-\subsubsection{Variance}
+\subsection{Variance}
 \label{implementation-variance}
 As described previously in section \ref{design-type-system}, the type checker implements covariant conformance for feature types and feature argument types. Furthermore, as will be seen shortly when generics are discussed, this also holds for instantiation of generic classes with respect to bounding types of generic parameters.
 \begin{figure}[H]
@@ -108,9 +108,9 @@ As a consequence of the above, one need only to change the logic of \textit{conf
 
 Instance equality is implemented in the feature \textit{is\_instance\_equal} in \textsc{tbon\_ tc\_class\_type}. To implement a conformance relation between two instances of the same generic class, one would only need to change the logic of this feature (provided that the implementation of \textit{conforms\_to} remains unchanged). Hence, the logic  for creating a relation between \textsc{list}[\textsc{integer}] and \textsc{list}[\textsc{real}] could be placed here.
 
-\subsubsection{Features}
+\subsection{Features}
 At the heart of a class specification are its features, the relations of which are discussed in this section. Features are represented in the type checker by the class \textsc{tbon\_tc\_feature}. As mentioned in section \ref{implementation-context-class-structure}, a class in the type context is associated with a set of instances of these. In turn, a feature is associated with its arguments through a list of instances of \textsc{tbon\_tc\_feature\_argument}. 
-\subsubsubsection{Feature Status}
+\subsubsection{Feature Status}
 Whenever a feature exists in a class specification in which ancestors are specified, it can potentially have a precursor. Luckily, because features repeatedly effect, undefine, and redefine each other all the way down the inheritance hierarchy, only the nearest precursor feature needs to be considered when determining whether a feature specification is well-typed. The status of a feature is implemented by simple boolean flags in \textsc{tbon\_tc\_feature}; and as specified in the grammar in \cite{walden1995}, only one (or none) of these can be set at any given time.
 \begin{figure}[H]
     \centerline{\scalebox{0.75}{\includegraphics{images/feature_status.png}}}
@@ -124,12 +124,12 @@ As for the \textit{effective} status, the restrictions for it may seem overly co
 The \textit{redefined} status is defined as one would expect from the definition in \cite[p.~40]{walden1995}. The only noteworthy aspect is that if a precursor is \textit{deferred}, the current feature must be marked as \textit{effective}, as conceptually, one cannot redefine something that has yet to be defined.
 
 For unclassified features, the definition is straightforward: an unclassified feature defined in the current class can never have a precursor. An unclassified feature inherited from an ancestor can be redefined and undefined as expected, though.
-\subsubsubsection{Aggregation}
+\subsubsection{Aggregation}
 As specified in \cite{ostroff2001}, a feature cannot introduce aggregation with its enclosing class. Allowing this would lead to an infinitely recursive definition of the class in question, making the class specification inconsistent. Also, such a specification would never be able to run as intended when converted into actual code, as a compile-time or run-time error would most likely occur. Checking this aspect is quite simple: whenever aggregation is used, the type checker makes sure that the feature type is not equal to the enclosing class.
-\subsubsubsection{Prefix and Infix Features}
+\subsubsection{Prefix and Infix Features}
 For regular features, having two features with identical names in the same class (either directly defined in the class or inherited) is not allowed; this is not true for prefix and infix features. For instance, it should be possible to define the operator ''+'' as both a unary and a binary operator on an object, e.g. an integer. The really interesting aspects of prefix and infix features arises when they are used, though, which will be described in the Formal Assertions subsection of the section.
 
-\subsubsection{Generics}
+\subsection{Generics}
 \label{implementation-generics}
 In textual \textsc{bon}, formal specifications can involve generics in several different ways:
 \begin{itemize}
@@ -139,7 +139,7 @@ In textual \textsc{bon}, formal specifications can involve generics in several d
 \item Generic class specifications instantiated with formal generic names of enclosing class, e.g.  \textit{element\_list}: \textsc{list}[\textsc{e}]
 \end{itemize}
 Note that the first and the last example both refer to \textsc{list}[\textsc{e}], but in very different respects: the former is a specification of a new class \textsc{list} with one (unbounded) type parameter \textsc{e}, while the latter is an instantiation of the same class, in which it is assumed that the enclosing class of the feature \textit{element\_list} has a (possibly bounded) type parameter \textsc{e}. How each of these types of generics are handled by the type checker is explored in this section.
-\subsubsubsection{Generics in Class Specifications}
+\subsubsection{Generics in Class Specifications}
 %Generics - explain association between bounding type and actual type.
 As mentioned in section \ref{implementation-context-class-structure}, classes in the context are associated with type parameters through a sequence of instances of \textsc{tbon}\_\textsc{tc}\_\textsc{generic}. The class \textsc{tbon}\_\textsc{tc}\_\textsc{generic} has two notable attributes: \textit{bounding\_type} and \textit{actual\_type}. The attribute \textit{bounding\_type} represents the type bound of the formal generic name of the type parameter. Accordingly, the \textit{actual\_type} represents the concrete type associated with the formal generic name.
 
@@ -159,7 +159,7 @@ As mentioned in section \ref{implementation-context-class-structure}, classes in
 In the type context, no generic class specifications have any actual types associated with any of its type parameters; these are only present in instances of these, which will be discussed next. To exemplify, consider the case presented in figure \ref{fig:generic_class_specification_bounded}. Here, the class \textsc{number\_list} would exist in the type context, and have a single type parameter with a formal generic name \textsc{e} and a \textit{bounding\_type} attribute pointing to the type \textsc{real} (which would also exist in the type context in order for the specification to be well-typed). The \textit{actual\_type} attribute of the type parameter would point to \textit{Void}, as this example is not an instantiation of the type in question, but a specification.
 
 As a result of this, and to differentiate between them, there is no equivalence relation between a class specification (without any actual types) and an instance of this class (with actual types), as they in practice are two different types. They are not unrelated, however, as will be explained next.
-\subsubsubsection{Instantiation of Generic Types}
+\subsubsection{Instantiation of Generic Types}
 Because a generic class specification only specifies a family of concrete classes that have a common base type,  it has to be instantiated with concrete types to be of any practical use.  One could say that a generic class specification merely acts as a template for such concrete instances (in some languages, such as C++, generic classes are explicitly denoted \textit{templates} \cite{stroustrup1997}), and therefore it is not possible to refer directly to a generic class specification in places where a concrete type is expected; in textual \textsc{bon}, these places include feature types, feature argument types, formal assertions, and interestingly, type bounds in generic class specifications. In order to instantiate a generic type, a mechanism that ambiguates between the generic class specification and an instantiation of it is needed, while still ensuring that the instantiated type has all the same attributes (e.g. features) of the generic class specification.
 \paragraph{} All types eligible for participation in the instantiation of a generic type are found in the type context after the first phase. Whenever an instantiation of such a type occurs, for instance as a feature type, the type checker [...]:
 \begin{enumerate}
@@ -169,7 +169,7 @@ Because a generic class specification only specifies a family of concrete classe
 \end{enumerate}
 In practice, the first two steps happen as a single call to the \textit{new\_instance} feature of the generic class, the specification of which is found in the type context. As such, the individual instantiations of a generic class are not added directly to the type context. Instead, each generic class keeps track of all the instantiations that have been made of it. The benefit of this approach is that whenever the generic class is updated, i.e. an ancestor or a feature is added in the second phase, the generic class can update all of the instantiations of it accordingly. Consequently, when an instance is registered as an instance (step 2 in the above enumeration), one can think of it as an observer observing the generic class, which then notifies/updates the instantiations whenever a change occurs.
 \paragraph{} In step 1 above, it is noted that a \emph{deep} copy is created. This is an important aspect because, as previously explained, type parameters of a class are implemented by associating a type with a sequence of instances of \textsc{tbon}\_\textsc{tc}\_\textsc{generic}. If only a shallow copy was created, the copy would refer to the exact same type parameters as the original. This would make it impossible to add individual concrete actual types to each of these parameters for each instance without affecting the original generic specification.
-\subsubsubsection{References to Generic Types}
+\subsubsection{References to Generic Types}
 The instantiation of generic classes explained above happens every time a reference to a concrete type is expected and a generic type is provided in the abstract syntax.
 \begin{figure}[H]
 {\footnotesize
@@ -192,7 +192,7 @@ In the example in figure \ref{fig:ref_generic_type}, an instantiation of the gen
 \paragraph{} In order for this new instance to be well-typed, the type of the first concrete parameter type must conform covariantly to the bounding type of the first parameter of the class specification, \textsc{k} (just as defined for feature types and feature argument types in section \ref{design-type-system}). Textual \textsc{bon} has no construct for differentiating between different types of variance for type parameters, which is known from languages such as Java and C\#, and enforcing covariant conformance is thus a design decision on the part of the type checker. This decision mainly based upon the fact that the Eiffel language also enforces covariant conformance of type parameters \cite[Constrained~genericity]{meyer2001}. Future versions could include a switch to fine-tune this aspect of type checking.
 
 As described in section \ref{implementation-variance}, this conformance check also happens through the feature \textit{conforms\_to}. In the presented example, the concrete type trivially conforms to the bounding type, as they are both \textsc{integer}. Some non-trivial situations, however, require a little more consideration.
-\subsubsubsection{Solutions to Non-trivial Generics Situations}
+\subsubsection{Solutions to Non-trivial Generics Situations}
 The first non-trivial situation considered is presented in figure \ref{fig:non_conforming_type_bounds}.
 \begin{figure}[H]
 {\footnotesize
@@ -232,11 +232,11 @@ Firstly, the differences between the three instantiations of the class \textsc{s
 
 What happens in this case is that \textsc{m} is considered to be a sequence of \textsc{integer}, while the type parameter of \textsc{a} is bounded by a sequence of {real}. At the time of the instantiation of class \textsc{a} for the bound of type parameter \textsc{n}, the bounding type of \textsc{m} has to conform to the bounding type of \textsc{a} in order for the instantiation to be well-typed. But, as already defined in section \ref{design-type-system}, the type checker does not consider a sequence of \textsc{real} to conform to a sequence of \textsc{integer}, even though \textsc{integer} might be a subtype of \textsc{real}. Consequently, to make this situation well-typed, one would have to change the bounding type of either type parameter \textsc{e} or \textsc{m}, such that they become equal.
 
-\subsubsection{Formal Assertions}
+\subsection{Formal Assertions}
 With formal assertions, an vast amount of expressive power is added to the textual \bon{} language. They make detailed specifications and contracts possible, adding extra formality to formal specifications. Interestingly, this part of the language is very underspecified, making it impossible to type check without imposing quite an amount of restrictions on it. While some of these have already been presented in section \ref{design-type-system}, other are presented for the first time here, as they need to be accompanied by detailed explanations.
 \label{implementation-formal-assertions}
 % variable context 
-\subsubsubsection{Variable Context and Scope}
+\subsubsection{Variable Context and Scope}
 For keeping track of the variables introduced in a quantification, a variable context is introduced. This context is implemented as a hash table mapping a variable name to an instance of \textsc{tbon\_tc\_class\_type}.
 
 For the reason that the grammar in \cite{walden1995} specifies that variables can only be introduced in member  or type range expressions in a quantification, discussing variable scope is only relevant for these. The implemented scoping rules for quantifications defines all variables in the same assertion clause to have the same scope. Hence, two boolean expressions in two distinct assertion clauses have distinct scopes.
@@ -263,7 +263,7 @@ For the reason that the grammar in \cite{walden1995} specifies that variables ca
 \end{figure}
 The consequence of this definition is that no local scope exists for individual quantification expressions within the same assertion clause. Allowing local scope would mean that the first assertion clause (lines 8-9) in the invariant in figure \ref{fig:variable_scoping} would be well-typed. However, the proposition of the existential quantification of the first assertion clause leaves ambiguity between the origin of the two occurrences of the variable \textit{i}. Do they both represent the inner \textit{i}, in which case the proposition is a tautology? Or does one of them represent the outer \textit{i}? Disambiguation is impossible. Although it could have been decided to implement hiding, in which the second definition of \textit{i} would hide the first definition, this is deemed unnecessary and thus disallowed. There is rarely a reason for insisting on having identical variable names in a nested quantification, especially if the consequence is less expressive power due to the loss of access to hidden variables. Also, as seen on line 11 in the example, it is quite possible to use the same variable again in one of the other assertion clauses of the invariant.
 % operator expressions
-\subsubsubsection{Operator Expressions}
+\subsubsection{Operator Expressions}
 Operator expressions are expressions involving unary or binary operators. Although the grammar in \cite{walden1995} specifies than an operator can also be an arbitrary parenthesized boolean expression, this specification has been reworked as described in section \ref{design-grammar-deviations} in order for the grammar to type check. 
 \paragraph{}
 As previously mentioned in the Features subsection, unary/prefix and binary/infix operators are implemented as instances of \textsc{tbon\_tc\_feature} with either the \textit{is\_prefix} or \textit{is\_infix} flag set (but never both). In consequence, for any operator expression in a formal assertion to be well-typed, a prefix or infix feature for the types involved in the expression must be defined in the system. This is true even for default types (described in section \ref{implementation-standard-types}), for which all operators are implicitly defined in the type context. For unary operators, this (quite obviously) means that the operator must be defined as a prefix feature in the class specification of the operand. For binary expressions, it means that the operator must be defined as an infix feature in the class specification of the \emph{left} operand, and the feature must take a single argument of the type of the \emph{right} operand. This is illustrated in the following example:
@@ -292,7 +292,7 @@ The example in figure \ref{fig:operator_expressions} shows that because the infi
 \paragraph{}
 Checking that a binary operator expression is well-typed is implemented by finding the corresponding infix feature in the interface of the class of the left operand and checking that the type of the right operand conforms to the type of the feature argument (by a call to \textit{conforms\_to}). For unary expressions, the prefix feature corresponding to the operator must merely be present in the interface of the type of the operand. 
 % calls
-\subsubsubsection{Calls}
+\subsubsection{Calls}
 Determining which calls are allowed to be made in an assertion clause depends on where the assertion clause is placed. The first call in a call chain of a call in a feature contract can be to any feature in the interface of the enclosing class (aside from the current feature itself) or to any of the arguments of the current feature. If in a class invariant, only the features in the interface of the current class can be called as the first call in the call chain. These are the rules for calls without a parenthezised qualifier. Is a parenthesized qualifier present, only the features in the interface of the type of the parenthesized qualifier expression can be invoked as the first call.
 
 Beyond the first call in the call chain, the general rule is that a feature that is called as call \textit{n} in the call chain must be in the interface of the type of call \textit{n-1}. This is clarified by the following example:
@@ -332,7 +332,7 @@ Type checking calls is done by resolving the type of the call or the parenthesiz
 \paragraph{}
 Besides the uses that have already been shown, calls can also participate in set expressions, at which point an extra layer of checking is added to them. This, amongst other issues of type checking set expressions, is discussed next.
 % set expressions
-\subsubsubsection{Set Expressions}
+\subsubsection{Set Expressions}
 \label{implementation-set-expressions}
 Set expressions are introduced in the grammar in member range expressions of quantifications, an example of which is shown in figure \ref{fig:variable_scoping} as the right operand of the \textit{member\_of} operator. Basically, two types of sets can appear in set expressions in textual \bon{}: enumerated sets and enumerable types.
 \paragraph{Enumerated sets}
@@ -352,7 +352,7 @@ But what does it take for a type to be considered enumerable? Any type, even sta
 The type of the variable in a member range expression when using enumerable types should be the same as or an ancestor of the type of the actual type of the first argument of the enumerable type (if the enumerable type is generic). For example, if the enumerable type is \textsc{set}[\textsc{string}], the type of the variable should be \textsc{string}. If an enumerable type is used for which the type of the elements cannot be determined, a warning is emitted. For instance, it might be apparent to a human that the type \textsc{string\_list} is a list of strings, but the type checker will have no idea that this type is composed of elements of type \textsc{string}. Thus, a warning is given, as it cannot be determined for certain that a type rule has been violated.
 % getting the type of an expression
 % Feature pre- and postconditions vs. invariants
-\subsubsubsection{Resolving the Type of an Expression}
+\subsubsection{Resolving the Type of an Expression}
 In all of the preceding sections on formal assertions, it has been assumed that the type of an expression is always available. While this is correct, no magic has been involved -- every time, the feature \textit{type\_of\_expression} has been invoked.
 
 The types of all manifest constants naturally map to the standard value types defined in \bon{} \cite[p.~51]{walden1995}: \textsc{boolean}, \textsc{character}, \textsc{integer}, \textsc{real}, and \textsc{string}. These are also defined as standard types in the type checker, as described in section \ref{implementation-standard-types}. Also, because a quantification is a logical expression, it always has type \textsc{boolean}.
@@ -361,7 +361,7 @@ Because both calls and operator expressions (by virtue of prefix and infix featu
 
 For the \textit{Result} keyword, the type is always the type of the current feature. The current feature is known at any time when checking formal assertions, except when there is no current feature, i.e. when checking invariants. If \textit{Result} is used anywhere but in a postcondition of a feature, a type error occurs. The situation for the keyword \textit{Current} is analogous to the situation for \textit{Result}: its type is always the type of the enclosing class, which is always known by the type checker. Contrary to the \textit{Result} keyword, \textit{Current} can be used wherever a type is expected. The type of a \textit{Void} constant should be self-explanatory. 
 % boolean types and quantifications
-\subsubsubsection{Quantifications and Boolean Types}
+\subsubsection{Quantifications and Boolean Types}
 \label{implementation-def-boolean-type}
 The previous section briefly mentioned that a quantification always has boolean type. However, looking only at the grammar in \cite{walden1995}, restrictions and proposition of a quantification could have any type, seeing that calls, operator expressions, and constants of arbitrary type are all allowed for these. As such, as also stated in section \ref{design-type-system}, the type checker restricts restrictions and propositions to be one of the following:
 \begin{itemize}
