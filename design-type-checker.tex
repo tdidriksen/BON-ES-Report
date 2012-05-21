@@ -35,7 +35,7 @@ When discussing the overall structure and design of the type checker, two patter
 \subsubsubsection{The Visitor Pattern} %The visitor pattern
 The visitor pattern provides a way to add a new feature to a hierarchy of classes without having to implement the feature in the class itself \cite{martin2002}. Instead, the functionality is implemented in a feature in a visitor class, the content of which is unknown to the visited object. The main idea of the pattern is the technique called \textit{dual dispatch}, called as such due to the two polymorphic dispatches happening when executing the visitor: 
 \begin{figure}[H]
-    \scalebox{0.7}{\includegraphics{images/Visitor.png}}
+\centerline{\scalebox{0.7}{\includegraphics{images/Visitor.png}}}
     \caption[Visitor pattern]{Visitor pattern (source: http://en.wikipedia.org/wiki/Visitor\textunderscore pattern)}
     \label{fig:visitor-pattern}
 \end{figure}
