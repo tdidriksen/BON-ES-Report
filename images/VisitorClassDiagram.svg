@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="514.85712"
+   height="457.71429"
+   id="svg2">
+  <defs
+     id="defs4">
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="TriangleOutL"
+       style="overflow:visible">
+      <path
+         d="M 5.77,0 L -2.88,5 L -2.88,-5 L 5.77,0 z"
+         transform="scale(0.8,0.8)"
+         id="path3455"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         id="path3321"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         id="path3312"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         id="path3315"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow2Send"
+       style="overflow:visible">
+      <path
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.97309,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         id="path3345"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="EmptyTriangleOutL"
+       style="overflow:visible">
+      <path
+         d="M 5.77,0 L -2.88,5 L -2.88,-5 L 5.77,0 z"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)"
+         id="path3473"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" />
+    </marker>
+  </defs>
+  <g
+     transform="translate(12.428572,-84.219322)"
+     id="layer1"
+     style="opacity:1;display:inline">
+    <g
+       transform="translate(0,3.1022518)"
+       id="g4602">
+      <rect
+         width="127.27927"
+         height="90.913742"
+         ry="0"
+         x="11.364195"
+         y="100.79848"
+         id="rect2400"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="55.099529"
+         y="121.93047"
+         id="text3174"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:bold;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"><tspan
+           x="55.099529"
+           y="121.93047"
+           id="tspan3176">Client</tspan></text>
+      <path
+         d="M 11.364216,134.38606 L 138.64344,134.38606"
+         id="path3178"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 11.364216,164.38606 L 138.64344,164.38606"
+         id="path3182"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       transform="translate(-24.544004,-82.47069)"
+       id="g4609">
+      <rect
+         width="150.76532"
+         height="93.186584"
+         ry="0"
+         x="24.165173"
+         y="349.29599"
+         id="rect3184"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="71.434555"
+         y="370.42798"
+         id="text3186"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:bold;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"><tspan
+           x="71.434555"
+           y="370.42798"
+           id="tspan3188">Element</tspan></text>
+      <path
+         d="M 24.711733,382.92504 L 174.38393,382.92504"
+         id="path3190"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 24.711733,412.84214 L 174.38393,412.84214"
+         id="path3192"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         x="30.553692"
+         y="432.25696"
+         id="text3201"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans"><tspan
+           x="30.553692"
+           y="432.25696"
+           id="tspan3203">accept(Visitor : Object)</tspan></text>
+    </g>
+    <g
+       transform="translate(-24.03891,-74.85714)"
+       id="g4618">
+      <rect
+         width="150.76532"
+         height="93.186584"
+         ry="0"
+         x="23.660078"
+         y="505.74338"
+         id="rect3205"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="40.841568"
+         y="526.87537"
+         id="text3207"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:bold;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"><tspan
+           x="40.841568"
+           y="526.87537"
+           id="tspan3209">ConcreteElement</tspan></text>
+      <path
+         d="M 24.206636,539.37243 L 173.87884,539.37243"
+         id="path3211"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+      <path
+         d="M 24.206636,569.28953 L 173.87884,569.28953"
+         id="path3213"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+      <text
+         x="30.048597"
+         y="588.70435"
+         id="text3215"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans"><tspan
+           x="30.048597"
+           y="588.70435"
+           id="tspan3217">accept(Visitor : Object)</tspan></text>
+    </g>
+    <g
+       transform="translate(-235.18492,-14.365492)"
+       id="g4627">
+      <rect
+         width="199.11392"
+         height="93.030052"
+         ry="0"
+         x="519.4859"
+         y="302.78101"
+         id="rect3239"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="566.2323"
+         y="323.83472"
+         id="text3241"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:bold;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"><tspan
+           x="566.2323"
+           y="323.83472"
+           id="tspan3243">ConcreteVisitor</tspan></text>
+      <path
+         d="M 520.20772,336.35355 L 717.87798,336.35355"
+         id="path3245"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+      <path
+         d="M 520.20772,366.22039 L 717.87798,366.22039"
+         id="path3247"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+      <text
+         x="525.02332"
+         y="385.6637"
+         id="text3249"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans"><tspan
+           x="525.02332"
+           y="385.6637"
+           id="tspan3251">visit(ConcreteElement : Object)</tspan></text>
+    </g>
+    <g
+       transform="translate(-186.87822,17.244384)"
+       id="g4636">
+      <rect
+         width="199.11392"
+         height="93.030052"
+         ry="0"
+         x="471.1792"
+         y="85.59819"
+         id="rect3279"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="570.73621"
+         y="98.651901"
+         id="text3281"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:bold;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"><tspan
+           x="570.73621"
+           y="98.651901"
+           id="tspan3283">&lt;&lt;interface&gt;&gt;</tspan><tspan
+           x="570.73621"
+           y="113.6519"
+           id="tspan3293">Visitor</tspan></text>
+      <path
+         d="M 471.90105,119.17073 L 669.57131,119.17073"
+         id="path3285"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+      <path
+         d="M 471.90105,149.03757 L 669.57131,149.03757"
+         id="path3287"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+      <text
+         x="476.71664"
+         y="168.48087"
+         id="text3289"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans"><tspan
+           x="476.71664"
+           y="168.48087"
+           id="tspan3291">visit(ConcreteElement : Object)</tspan></text>
+    </g>
+    <text
+       x="391.08063"
+       y="238.61226"
+       id="text3295"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans"><tspan
+         x="391.08063"
+         y="238.61226"
+         id="tspan3297">&lt;&lt;realize&gt;&gt;</tspan></text>
+    <g
+       id="g9032">
+      <path
+         d="M 139.3125,148.34375 L 139.3125,150.34375 L 271.8125,150.34375 L 271.8125,148.34375 L 139.3125,148.34375 z"
+         id="path3301"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 281.04503,149.3576 L 267.20503,157.3576 L 267.20503,141.3576 L 281.04503,149.3576 z"
+         id="path9038"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.6pt;marker-start:none" />
+    </g>
+    <g
+       id="g9016">
+      <path
+         d="M 70.21875,195.25 L 70.21875,254.84375 L 72.21875,254.84375 L 72.21875,195.25 L 70.21875,195.25 z"
+         id="path3303"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 71.215755,264.07875 L 63.215755,250.23875 L 79.215755,250.23875 L 71.215755,264.07875 z"
+         id="path9022"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.6pt;marker-start:none" />
+    </g>
+    <g
+       id="g9024">
+      <path
+         d="M 70.21875,360.15625 L 70.21875,430.53125 L 72.21875,430.53125 L 72.21875,360.15625 L 70.21875,360.15625 z"
+         id="path3305"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 71.215755,360.53584 L 79.215755,374.37584 L 63.215755,374.37584 L 71.215755,360.53584 z"
+         id="path9030"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1.6pt;marker-start:none" />
+    </g>
+    <g
+       id="g9040">
+      <path
+         d="M 381.84375,209.625 L 383.84375,209.625 L 383.84375,197.78125 L 381.84375,197.78125 L 381.84375,209.625 z M 381.84375,233.625 L 383.84375,233.625 L 383.84375,221.625 L 381.84375,221.625 L 381.84375,233.625 z M 381.84375,257.625 L 383.84375,257.625 L 383.84375,245.625 L 381.84375,245.625 L 381.84375,257.625 z M 381.84375,281.625 L 383.84375,281.625 L 383.84375,269.625 L 381.84375,269.625 L 381.84375,281.625 z"
+         id="path3307"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:12, 12;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         d="M 382.84781,198.14113 L 390.84781,211.98113 L 374.84781,211.98113 L 382.84781,198.14113 z"
+         id="path9046"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1.6pt;marker-start:none" />
+    </g>
+  </g>
+</svg>

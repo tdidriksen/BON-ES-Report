@@ -1,5 +1,5 @@
 \section{Type Checker}
-[Introduction to type checker]
+A type checker is a piece of software that determines if the semantics of a syntax is alright based on a collection of rules defined for the grammar. Contrary to syntactic analysis, in which it is determined whether the syntax itself is well-formed, a type checker checks whether the semantics implied by the syntax violates any of these rules. For the textual \bon{} type checker, these rules are defined in appendix \ref{appendix-type-system}. This subsection describes the syntactic analysis of the textual \bon{} syntax done through lexing and parsing as well as the structure of the type checker, which performs the semantic analysis. In continuation of these, several aspects of the type system are discussed.
 \subsection{Parsing and Lexing}
 \label{design-parsing}
 Syntactic analysis, performed by parsing and lexing a textual \bon{} specification, is a necessary prerequisite for performing any semantic analysis on a specification (in this case, type checking). Parsing and lexing results in an abstract representation of the specification, an abstract syntax, which is understood by a type checker. Notably, an abstract syntax and a type checker are quite tightly coupled, as the type checker has to check every corner of the abstract syntax to make sure that no violations of type rules go unnoticed.
@@ -35,7 +35,7 @@ When discussing the overall structure and design of the type checker, two patter
 \subsubsubsection{The Visitor Pattern} %The visitor pattern
 The visitor pattern provides a way to add a new feature to a hierarchy of classes without having to implement the feature in the class itself \cite{martin2002}. Instead, the functionality is implemented in a feature in a visitor class, the content of which is unknown to the visited object. The main idea of the pattern is the technique called \textit{dual dispatch}, called as such due to the two polymorphic dispatches happening when executing the visitor: 
 \begin{figure}[H]
-    \scalebox{0.7}{\includegraphics{images/Visitor.png}}
+\centerline{\scalebox{0.7}{\includegraphics{images/Visitor.png}}}
     \caption[Visitor pattern]{Visitor pattern (source: http://en.wikipedia.org/wiki/Visitor\textunderscore pattern)}
     \label{fig:visitor-pattern}
 \end{figure}
@@ -64,7 +64,7 @@ In both approaches, all of the type checking code is placed in a single class. T
 
 The functional nature of the procedural approach means that information about the well-typedness of an element propagates through the type checker as results of feature calls. Also, as the type checker is called as a function on an element, and not on the element itself, no additions are made to the classes of the model object graph. But this also means a loss of generality, which is the main drawback of this approach; no interface is provided for easy traversal of the object graph for reasons other than type checking.
 
-For the structure of the type checker, the procedural approach has been chosen, as the lack of generality seems acceptable when compared to the drawbacks of the visitor pattern. The added generality of the visitor pattern does not justify the extra overhead it would impose on the implementation of the type checker.
+For the structure of the type checker, the procedural approach has been chosen, as the lack of generality seems acceptable when compared to the drawbacks of the visitor pattern. The added generality of the visitor pattern does not justify the extra overhead it would impose on the implementation of the type checker. Also, as the syntax of \bon{} is fixed, meaning that it does not continually evolve (such as the syntax of most programming languages), it makes sense to define the well-typedness of a grammar component as a function of the well-typedness of all its subcomponents.
 
 \subsubsection	{Phases of the Type Checker}
 \label{design-phases}
@@ -92,7 +92,18 @@ Unlike the structure of informal specifications, a class does not have to be spe
 When type checking features and feature arguments, the legal types of variance has to be implemented in the type checker in order to determine the well-typedness of these elements. Seeing as Eiffel implements covariance for both feature types and feature argument types  \cite[the~Covariance~rule]{meyer2001}, the same is supported in the type checker for feature types and feature argument types in formal specifications of textual \textsc{bon}. This is mainly due to the fact that the primary objective of the textual \textsc{bon} type checker is to type check specifications extracted from Eiffel source code in EiffelStudio.
 \paragraph{} However, in a future version of the type checker, it might be desirable to be able to customize the legal types of variance during type checking, in order to consistently type check bon specifications extracted from other programming languages than Eiffel. This is left as an option for further development, and is not prohibited by the current design of the type checker.
 \subsubsubsection{Inheritance}
-As specified in \cite[p.~65]{walden1995}, single, multiple, and repeated inheritance are all allowed. Circular inheritance (a class inheriting from itself) is not allowed, though, and is enforced by the type checker. Conformance between generic types is not considered; thus, there is no conformance between \textsc{list}[\textsc{integer}] and \textsc{list}[\textsc{real}], even though \textsc{integer} inherits from \textsc{real}.
+As specified in \cite[p.~65]{walden1995}, single, multiple, and repeated inheritance are all allowed. Circular inheritance (a class inheriting from itself) is not allowed, though, and is enforced by the type checker. Conformance between generic types is not considered; thus, no conformance between \textsc{list}[\textsc{integer}] and \textsc{list}[\textsc{real}] is considered by the type checker, even though \textsc{integer} inherits from \textsc{real}.
+
+However, in practice there is in fact a conformance relation between a generic type  \textsc{c}[\textsc{integer}] and \textsc{c}[\textsc{real}], assuming that \textsc{integer} conforms to \textsc{real} (\textsc{c} could be substituted for any generic type with one type parameter). If \textsc{c}[\textsc{real}] is defined as a function \textit{f} and \textsc{c}[\textsc{integer}] as a function \textit{g}, the following is known:
+\newline\newline
+\centerline{
+\footnotesize{
+(1) \textit{f} : \textsc{real} $\rightarrow$ ()\newline
+(2) \textit{g} : \textsc{integer} $\rightarrow$ ()\newline
+(3) \textsc{c}[\textsc{real}] \textless : \textsc{c}[\textsc{integer}]
+}}
+\newline\newline
+\textit{f} is a function that takes a type \textsc{real} as argument and \textit{g} is a function that takes an \textsc{integer} as argument. Now consider a scenario where the integer 7 is passed as argument to \textit{g}. As the argument type of \textit{g} is \textsc{integer}, this is allowed. Passing the same integer as an argument to \textit{f} is also allowed, as 7 trivially translates into 7.0. Next, consider a scenario where 7.5, a real number, but not an integer, is passed to \textit{f}. This is still allowed, as \textit{f} accepts a type \textsc{real}. However, passing 7.5 to \textit{g} is not allowed, as \textit{g} only accepts integers. Accordingly, \textit{f} will accept any argument passed to \textit{g}, but \textit{g} will not accept any argument passed to \textit{f}. As a consequence, one can conclude what is stated in (3), that  \textsc{c}[\textsc{real}] must be a subtype of \textsc{c}[\textsc{integer}], because one can always pass an \textsc{integer} as type parameter when a \textsc{real} is expected, but not the other way around.
 \subsubsubsection{Assertions}
 Due to the non-restrictive nature of the assertion grammar presented in \cite{walden1995}, some restrictions have to be made in order for the assertion grammar to type check.
 
