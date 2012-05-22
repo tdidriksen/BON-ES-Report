@@ -18,7 +18,7 @@ Cluster chart:
 	Cluster name must be unique
 	Cluster must not be subcluster of itself
 	Cluster must not be a subcluster of any of its subclusters (nested)
-
+	
 Class entry:
 	Class must exist
 
@@ -30,6 +30,7 @@ Class chart:
 Structure:
 	A defined class must only be in one cluster
 	A defined cluster must only be in one cluster or system chart
+	A defined cluster must not be subcluster of itself
 
 Event chart:
 	Event entry:
@@ -42,9 +43,7 @@ Scenario chart:
 Creation chart:
 	Creation entry:
 		Created class must exist
-		Creator classes must exist
-	
-	
+		Creator classes must exist	
 
 Feature specification:
 	Feature type in context
@@ -52,8 +51,8 @@ Feature specification:
 	infix feature => exactly one argument
 
 Static references:
-Cluster structure must be OK.
+	Cluster structure must be OK.
 
 Inheritance relations:
-Child class must have parent class specified in the inherit clause of its class specification
-Multiplicity must be greater than zero
+	Child class must have parent class specified in the inherit clause of its class specification
+	Multiplicity must be greater than zero

@@ -127,7 +127,7 @@ To ease the creation of well-typed specifications, an array of standard types ar
 \item \textsc{set}[\textsc{e}]
 \item \textsc{table}[\textsc{k}, \textsc{v}]
 \item \textsc{array}[\textsc{e}]
-\item \textsc{tuple}
+\item \textsc{tuple}[\textsc{G}, \textsc{H}]
 \end{itemize}
 A textual \bon{} specification of these is found in appendix \ref{appendix-standard-types}. The implication of defining these types, though, is that the user \emph{cannot} define types with these names himself, even if he so desired, as this would lead to a situation where a type is defined more than once (which leads to a type error). While this might be considered restrictive, this rule exists to ensure integrity of the type context. For instance, if the type \textsc{boolean} is overwritten by the user, the type checker has no way of knowing whether that type still represents a true or false value. Consequently, all use of boolean values in assertions would lead to undefined behaviour. This is true for the other standard values as well. Also, it is always possible to inherit from one of the standard types, in effect extending its behaviour (although it still has to be under another name).
 \paragraph{}
