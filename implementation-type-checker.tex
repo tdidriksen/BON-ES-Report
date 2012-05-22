@@ -1,4 +1,5 @@
 \chapter{General Purpose Type Checker}
+To give the reader an full understanding of the textual \bon{} type checker implementation, this chapter will describe how the type checker is structured and how it deals with certain rules. How known and unresolved types are kept track of using contexts is furthermore explained. For additional study of the type checker see the semi-formal specification of the type rules in appendix \ref{appendix-type-system}.
 \section{Parsing and Lexing}
 \label{implementation-parser}
 Before any semantic analysis of a textual \bon{} specification can take place, the lexer and parser has to process it into abstract syntax on which the type checker can operate. Already mentioned in section \ref{design-parsing} is the aspect that the structure of the parser grammar closely resembles the grammar presented in \cite[pp.~352-359]{walden1995}, aside from the previously explained deviations.

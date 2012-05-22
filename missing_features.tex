@@ -1,4 +1,5 @@
 \chapter{Further development}
+As mentioned in the introduction this project is suppose to build a fundament for more \bon{} related work on EiffelStudio. This chapter will go over some suggestions for future projects that could be in continuation of this project. This, however, is but a segment of all possible project, but this chapters purpose is to give developers an idea of what could be done.
 \section{BON Extractor}
 If the \bon{} extractor is to be developed further, there are a number of interesting features that could be added. 
 
@@ -50,6 +51,7 @@ Defining all the ancestors of a class in a system as extensive as EiffelStudio i
 
 \section{Bugs and missing features}
 \subsection{BON Extractor}
+\label{bugs_bon_extractors}
 The \bon{} extraction tool has a few flaws. The most notable one has to do with feature calls. At the time of writing feature calls are not translated properly into textual \bon{} from Eiffel. Only the first feature of the call chain is extracted, not any following features, nor arguments. The missing information is put in a comment if the contract has no tag. Else, a tag is put in the comment instead of the missing information. A call \textit{x} on feature \textit{y} with a parameter \textit{z} it would translate as such:
 \begin{center}
 \textit{y.x(z)} $\rightarrow$ \textit{y.} -\-- \textit{y.x(z)}

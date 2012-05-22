@@ -50,3 +50,20 @@ To create an overview from the point of view of the current class, a specificati
 \subsubsection{The meta-object}
 \label{tbon_class}
 When the output strategy receives the abstract Eiffel syntax, the internal \bon{} representation is created. As previously mentioned, this is done through a meta object. This object is called \textsc{tbon$\_$class}. \textsc{tbon$\_$class} takes a \textsc{class$\_$as} object and instantiates the internal representation of the \bon{}. It does this by inspecting the abstract syntax of the class and giving the needed information to the textual \bon{} objects.
+bon-representation
+\begin{figure}[H]
+\centerline{
+\includegraphics[scale=0.7]{images/abstract-syntax.png}
+}
+\caption{An example of the abstract Eiffel syntax.}
+\label{fig:abstract-syntax}
+\end{figure}
+
+In figure \ref{fig:abstract-syntax} is an example of a part of the abstract Eiffel syntax tree. In translation to the \bon{} internal representation (seen in figure \ref{fig:bon-rep}) one will notice a few differences or alterations. In the example is shown the representation of informal \bon. Since a class chart does not have the notion of feature clauses, but rather the idea of queries and commands, a class chart has a direct reference to a feature, rather than one going through a feature clause. The parent has been replaced by a reference to a class type which represents the notion of a class. Since all informal charts have indexing clauses, the class chart inherits its from the deferred informal chart class.
+\begin{figure}[H]
+\centerline{
+\includegraphics[scale=0.7]{images/bon-representation.png}
+}
+\caption{Part the result of the meta-object extracting information from the abstract Eiffel syntax in figure \ref{fig:abstract-syntax}.}
+\label{fig:bon-rep}
+\end{figure}

@@ -1,59 +1,234 @@
 \chapter{Specification of the Implemented Type System}
 \label{appendix-type-system}
-No rules have been implemented for components that are not mentioned
+No rules have been implemented for components that are not mentioned\newline\newline
+\footnotesize \textbf{Contexts:}\newline
+\indent Informal\_type\_context\newline
+\indent Formal\_type\_context\newline
+\indent Variable\_context\newline
+\textbf{Class dictionary}\newline
+\indent $\exists$ Dictionary\_entry $\in$ Class\_dictionary\newline
+\indent\textbf{Dictionary entry}\newline
+\indent\indent For a given class \textit{cla}:\newline
+\indent\indent\indent $\exists$ \textit{c} $\in$ Informal\_type\_context (\textit{c.Class\_name = cla.Class\_name)}\newline
+\indent\indent For a given cluster \textit{clu}:\newline
+\indent\indent\indent $\exists$ \textit{c} $\in$ Informal\_type\_context (\textit{c.Cluster\_name = clu.Cluster\_name)}
 
-Class dictionary
-	Must have at least one dictionary entry
-Dictionary entry
-	Class exists
-	Cluster exists
+\noindent\textbf{System chart}\newline
+\indent For a given system chart \textit{sys}:\newline
+\indent\indent$\forall$ \textit{c} $\in$ \textit{sys} ($\exists$ \textit{clu} $\in$ Informal\_type\_context (\textit{c.Cluster\_name = clu.Cluster\_name}))
 
-System chart:
-All clusters must exist
+\noindent\textbf{Cluster entry} \newline
+\indent For a given cluster entry \textit{ce}:\newline
+\indent\indent$\exists$ \textit{c} $\in$ Informal\_type\_context (\textit{c.Cluster\_name = ce.Cluster\_name})
 
-Cluster entry:
-	Cluster must exist
+\noindent\textbf{Cluster chart} \newline
+\indent For a given Cluster chart \textit{cc}\newline
+\indent\indent $\exists !$  \textit{c} $\in$ Informal\_type\_context $\bullet$ \textit{c.Cluster\_name = cc.Cluster\_name}\newline
+\indent\indent $\neg$ $\exists$ c $\in$ cc.Cluster\_entries $\bullet$ \textit{c.Cluster\_name = cc.Cluster\_name}\newline
+\indent If \textit{n} is all nested clusters of \textit{cc} then:\newline
+\indent\indent $\neg$ $\exists$ c $\in$ n.Cluster\_entries $\bullet$ \textit{c.Cluster\_name = cc.Cluster\_name}
 
-Cluster chart:
-	Cluster name must be unique
-	Cluster must not be subcluster of itself
-	Cluster must not be a subcluster of any of its subclusters (nested)
+\noindent\textbf{Class entry} \newline
+\indent For a given class entry \textit{ce}\newline
+\indent\indent $\exists !$  \textit{c} $\in$ Informal\_type\_context $\bullet$ \textit{c.Class\_name = ce.Class\_name}
 
-Class entry:
-	Class must exist
+\noindent\textbf{Class chart} \newline
+\indent For a given class chart \textit{cc}\newline
+\indent\indent $\exists !$  \textit{c} $\in$ Informal\_type\_context $\bullet$ \textit{c.Class\_name = cc.Class\_name}\newline
+\indent\indent $\forall$ \textit{a} $\in$ cc.Ancestors $\bullet$ \textit{a.Class\_name $\neq$ cc.Class\_name}\newline
+\indent\indent $\forall$ \textit{a} $\in$ cc.Ancestors $\bullet$ $\exists$ \textit{c} $\in$ Informal\_type\_context $\bullet$ \textit{a.Class\_name = c.Class\_name}
 
-Class chart:
-	Class name must be unique
-	Class must not inherit from itself
-	Ancestors must exist
+\noindent\textbf{Structure} \newline
+\indent If a given class is \textit{cla}\newline
+\indent\indent $\exists !$ \textit{clu} $\in$ Informal\_type\_context $\bullet$ $\exists !$ \textit{c} $\in$ \textit{clu} $\bullet$ \textit{c.Class\_name = cla.Class\_name}\newline
+\indent If a given cluster is \textit{clu}\newline
+\indent\indent $\exists !$ \textit{clu} $\in$ Informal\_type\_context $\bullet$ $\exists !$ \textit{c} $\in$ \textit{clu} $\bullet$ \textit{c.Cluster\_name = clu.Cluster\_name}
 
-Structure:
-	A defined class must only be in one cluster
-	A defined cluster must only be in one cluster or system chart
+\noindent\textbf{Event chart}\newline
+\indent \textbf{Event entry}\newline
+\indent\indent For an event entry \textit{ee}\newline
+\indent\indent\indent $\forall$ \textit{e} $\in$ \textit{ee.Class\_name\_list} $\bullet$ $\exists$ \textit{c} $\in$ Informal\_type\_context $\bullet$ \textit{c.Class\_name = e.Class\_name)}
 
-Event chart:
-	Event entry:
-		All involved classes must exist
+\noindent\textbf{Event chart}\newline
+\indent \textbf{Event entry}\newline
+\indent\indent Warning for duplicate scenarios
 
-Scenario chart:
-	Scenario entry:
-		Warning for duplicate scenarios
-
-Creation chart:
-	Creation entry:
-		Created class must exist
-		Creator classes must exist
-	
-	
-
-Feature specification:
-	Feature type in context
-	prefix feature => no arguments
-	infix feature => exactly one argument
-
-Static references:
-Cluster structure must be OK.
-
-Inheritance relations:
-Child class must have parent class specified in the inherit clause of its class specification
-Multiplicity must be greater than zero
+\noindent\textbf{Creation chart}\newline
+\indent \textbf{Creation entry}\newline
+\indent\indent For a creation entry \textit{ce}\newline
+\indent\indent \indent $\exists$ \textit{c} $\in$ Informal\_type\_context $\bullet$ \textit{c.Class\_name = ce.Class\_name}\newline
+\indent\indent\indent $\forall$ \textit{e} $\in$ \textit{ce.Class\_name\_list} $\bullet$ $\exists$ \textit{c} $\in$ Informal\_type\_context $\bullet$ \textit{c.Class\_name = e.Class\_name)}\newline
+\textbf{Static\_diagram}\newline
+\indent \textbf{Static\_block}\newline
+\indent \indent \textbf{Cluster}\newline
+\indent \indent \indent For a given cluster component named \textit{clu}:\newline
+\indent \indent \indent \indent $\exists$ ! c $\in$ Formal\_type\_context (c.name = clu.Cluster\_name)\newline
+\indent \indent \textbf{Class}\newline
+\indent \indent \indent For a given class component named \textit{class}:\newline
+\indent \indent \indent \indent $\exists$ f $\in$ features $\mid$ f is deferred $\bullet$ class is deferred\newline
+\indent \indent \indent \indent $\exists$ ! c $\in$ Formal\_type\_context (c.name = class.Class\_name)\newline
+\indent \indent \indent \textbf{Formal\_generics}\newline
+\indent \indent \indent \indent For a given Formal\_generic \textit{gen}:\newline
+\indent \indent \indent \indent \indent $\exists$ ! g $\in$ Formal\_generics of \textit{class} (g.Formal\_generic\_name = gen.Formal\_generic\_name)\newline
+\indent \indent \indent \indent \indent \textit{gen} has Class\_type $\Rightarrow$ $\exists$ c $\in$ Formal\_type\_context (c.name = gen.Class\_type.Class\_name)\newline\newline
+\indent \indent \indent \indent \indent \textit{gen} has Class\_type $\Rightarrow$ number of actual generics of Class\_type must be equal to \newline 
+\indent\indent\indent\indent\indent number of Formal\_generics in corresponding defined class in Formal\_type\_context\newline
+\indent \indent \indent \textbf{Actual\_generics}\newline
+\indent \indent \indent \indent The i'th Type, \textit{t}, in the list of Actual\_generics in Class\_type of \textit{gen} must conform \newline
+\indent \indent \indent \indent to the bounding Class\_type, \textit{u} of the i'th Formal\_generic in the corresponding\newline
+\indent \indent \indent \indent  defined class in Formal\_type\_context.\newline\newline
+\indent \indent \indent \indent If \textit{t} is a Formal\_generic\_name:\newline
+\indent \indent \indent \indent \indent The Class\_type of the Formal\_generic corresponding to \textit{t} must conform to \text{u}. If no \newline 
+\indent \indent \indent \indent \indent Class\_type is present for \textit{t}, it is considered to be \textsc{any}.\newline
+\indent \indent \indent \indent \textit{t} must be defined. \textit{t} is defined if its definition appears before \textit{gen} (left-to-right)\newline
+\indent \indent \indent \indent If \textit{t} is a Class\_type:\newline
+\indent \indent \indent \indent \textit{t} must conform covariantly to \textit{u}\newline
+\textbf{Static\_relation}\newline
+\indent \textbf{Static ref}\newline
+\indent \indent For a static reference \textit{sta} with class \textit{cl} and Cluster\_prefix \textit{cp}:\newline
+\indent \indent \indent $\exists$ \textit{s} $\in$ Formal\_type\_context (\textit{s.Class\_name = sta.Class\_name})\newline
+\indent \indent \indent If \textit{cp} has \textit{n} clusters, \textit{cl} must be in cluster \textit{n}, cluster \textit{n} must be in cluster \textit{n-1}, cluster \textit{n-1} \newline
+\indent\indent\indent must be in cluster \textit{n-2} etc.\newline
+\indent \textbf{Inheritance\_relation}\newline
+\indent \indent \indent For a relation between Child \textit{chi} and Parent \textit{par}:\newline
+\indent \indent \indent \textit{chi} conforms to \textit{par}\newline
+\indent \indent \indent Multiplicity $>$ 0\newline
+\indent \textbf{Client\_relation}\newline
+\indent \indent \textbf{Client\_entity}\newline
+\indent \indent \indent \textbf{Feature\_name}\newline
+\indent \indent \indent \indent For a client relation with client class \textit{c} feature name client entity \textit{fn}:\newline
+\indent \indent \indent \indent \indent $\exists$ f $\in$ features of \textit{c} $\bullet$ \textit{f.Feature\_name} = \textit{fn}\newline
+\indent \indent \indent \textbf{Indirection\_feature\_list}\newline
+\indent \indent \indent \indent For a given Indirection\_feature\_list \textit{ifl} with client class \textit{cl}\newline
+\indent \indent \indent \indent $\forall$ \textit{f} $\in$ ifl $\bullet$ $\exists$ \textit{fe} $\in$ features of \textit{cl} $\bullet$ \textit{f = fe.Feature\_name}\newline
+\indent \indent \indent \textbf{Generic\_indirection}\newline
+\indent \indent \indent \indent For a given Generic\_indirection \textit{gi} with client class \textit{cl}:\newline
+\indent \indent \indent \indent If \textit{gi} is Formal\_generic\_name:\newline
+\indent \indent \indent \indent \indent $\exists$ fgn $\in$ formal generic names of \textit{cl} $\bullet$ fgn = gi\newline
+\indent \indent \indent \indent If \textit{gi} is Named\_indirection:\newline
+\indent \indent \indent \indent \indent $\exists$ \textit{c} $\in$ Formal\_type\_context $\bullet$ (\textit{c.Class\_name = gi.Class\_name})\newline\newline
+\indent \indent \indent \indent \indent \textit{gi} has Indirection\_list $\wedge$ \textit{gi} has Class\_name $\Rightarrow$ the number of type arguments in \newline 
+\indent \indent \indent \indent \indent the corresponding defined type in the Formal\_type\_context must be equal to the \newline
+\indent \indent \indent \indent \indent number of Indirection\_elements in the Indirection\_list of \textit{gi} \newline\newline
+\indent \indent \indent \indent \indent \textit{gi} has Indirection\_list $\wedge$ \textit{gi} has Class\_name $\Rightarrow$ The type of the \textit{i}'th Indirection\_element \newline
+\indent \indent \indent \indent \indent in the Indirection\_list must conform to the type bounding Class\_type of the \textit{i}'th type \newline
+\indent \indent \indent \indent \indent parameter in class corresponding to the Class\_name of \textit{gi}.\newline
+\textbf{Class\_interface}\newline
+\indent $\forall$ p $\in$ Parent\_class\_list $\bullet$ p $\in$ Formal\_type\_context\newline
+\indent \textbf{Feature\_clause}\newline
+\indent \indent \textbf{Selective\_export}\newline
+\indent \indent \indent $\forall$ \textit{c} $in$ Class\_name\_list $\bullet$ ($\exists$ t $\in$ Formal\_type\_context $bullet$ c = t.name)\newline
+\indent \textbf{Feature\_specification}\newline
+\indent \indent Status:\newline
+\indent For a given Feature \textit{feat} with precursor {pre}:\newline
+\indent \indent \textit{pre} is \textit{deferred} $\Rightarrow$ \textit{feat} status is \textit{deferred} or \textit{effective}\newline
+\indent \indent \textit{pre} is \textit{effective} $\Rightarrow$ \textit{feat} status is \textit{deferred} or \textit{redefined} \newline
+\indent \indent \textit{pre} is \textit{redefined} $\Rightarrow$ \textit{feat} status is \textit{deferred} or \textit{redefined}\newline
+\indent \indent \textit{pre} is unclassified $\Rightarrow$ \textit{feat} status is \textit{deferred} or \textit{redefined}\newline
+\textbf{Type}\newline
+\indent For a given Feature \textit{feat} with Type \textit{t}:\newline
+\indent \indent \textit{t} $\in$ Formal\_type\_context\newline
+\indent If \textit{feat} has precursor \textit{pre}:\newline
+\indent \indent Type of \textit{feat} must conform covariantly to type of \textit{pre}\newline
+\indent \indent \textbf{Type\_mark}\newline
+\indent \indent \indent For a given Feature \textit{feat} with Type \textit{t} and Type\_mark \textit{tm} in class \textit{cl}:\newline
+\indent \indent \indent \indent \textit{tm} is aggregation $\Rightarrow$ \textit{t} $\neq$ \textit{cl}\newline
+\indent \indent \textbf{Feature\_argument}\newline
+\indent \indent \indent For a given Feature \textit{feat} in class \textit{cl}\newline
+\indent \indent \indent \indent $\forall$ \textit{arg} $\in$ arguments of \textit{feat} $\bullet$ $\exists$ ! \textit{ark} $\in$ arguments of \textit{feat} (arg.Identifier = ark.Identifier)\newline
+\indent \indent \indent \indent $\forall$ \textit{arg} $\in$ arguments of \textit{feat} $\bullet$ \textit{arg.Identifier} $\neq$ ``Result"\newline
+\indent \indent \indent \indent $\forall$ \textit{arg} $\in$ arguments of \textit{feat} $\bullet$ \textit{arg.Identifier} $\neq$ ``Current"\newline
+\indent \indent \indent \indent $\forall$ \textit{arg} $\in$ arguments of \textit{feat} $\bullet$ \textit{arg.Identifier} $\neq$ ``Void"\newline
+\indent \indent \indent \indent $\forall$ \textit{arg} $\in$ arguments of \textit{feat} $\bullet$ \textit{arg.Identifier} $\neq$ \textit{cl.Class\_name}\newline
+\indent \indent \indent If \textit{feat} has precursor \textit{pre}:\newline
+\indent \indent \indent \indent The number of arguments of \textit{feat} must be equal to the number of arguments \newline 
+\indent \indent \indent \indent of \textit{pre}\newline
+\indent \indent \indent \indent The Type of the i'th argument of \textit{feat} must conform to the Type of the i'th argument \newline 
+\indent \indent \indent \indent of \textit{pre}\newline
+\indent \indent \textbf{Feature\_name}\newline
+\indent \indent \indent For a given Feature\_name \textit{f} of Feature \textit{feat} in class {cl}:\newline
+\indent \indent \indent \indent If \textit{f} is Identifier:\newline
+\indent \indent \indent \indent \indent $\exists$ ! \textit{fn} $\in$ Feature names of \textit{cl} (\textit{fn} = \textit{f}) (where Feature names also include inherited \newline
+\indent \indent \indent \indent \indent names)\newline
+\indent \indent \indent \indent If \textit{f} is prefix:\newline
+\indent \indent \indent \indent \indent $\exists$ ! \textit{fn} $in$ Feature\_names of \textit{cl} (\textit{fn} = \textit{f} and \textit{fn} is prefix)\newline
+\indent \indent \indent \indent \indent \textit{f} is prefix $Rightarrow$ \textit{feat} has exactly zero arguments\newline
+\indent \indent \indent \indent If \textit{f} is infix:\newline
+\indent \indent \indent \indent \indent $\exists$ ! \textit{fn} $in$ Feature\_names of \textit{cl} (\textit{fn} = \textit{f} and \textit{fn} is infix)\newline
+\indent \indent \indent \indent \indent \textit{f} is infix $\Rightarrow$ \textit{feat} has exactly one argument\newline
+\textbf{Assertion}\newline
+\indent \textbf{Quantification}\newline
+\indent \indent Expression of Restriction must have boolean type\newline
+\indent \indent Expression of Proposition must have boolean type\newline
+\textbf{Identifier\_list}\newline
+\indent $\forall$ \textit{id} $\in$ \textit{Identifier\_list} $\bullet$ $\exists$ ! \textit{i} $in$ \textit{Identifier\_list} (id = i)\newline
+\indent Scope rule:\newline
+\indent $\forall$ \textit{var} $\in$ Variable\_context $\bullet$ $\exists$ ! \textit{s} $in$ Variable\_context (variable name of \textit{var} = variable name of \textit{s})\newline
+\textbf{Member\_range}\newline
+\indent $\forall$ \textit{id} $\in$ \textit{Identifier\_list} $\bullet$ id.Type conforms to type of set in Set\_expression\newline
+\indent \textbf{Set\_expression}\newline
+\indent \indent \textbf{Enumerated\_set}\newline
+\indent \indent \indent For a given Enumerated\_set \textit{es}:\newline
+\indent \indent \indent \indent $\forall$ element $in$ \textit{es} $\bullet$ element $\neq$ \textit{Void}\newline
+\indent \indent \indent All elements must conform to one reference element in the set:\newline
+\indent \indent \indent \indent $\exists$ element $in$ \textit{es} $\bullet$ $\forall$ e $in$ \textit{es} $\bullet$ \textit{e} conforms to \textit{element}\newline
+\indent \indent \textbf{Call or Operator\_expression}\newline
+\indent \indent \indent For a given Call or Operator\_expression \textit{ex} with type \textit{tex} appearing in a Set\_expression\newline
+\indent \textbf{Warning if not} \newline
+\indent \indent \textit{tex} conforms to \textsc{enumerable}\newline
+\textbf{Type\_range}\newline
+\indent For a given Type \textit{t} of a Type\_range:\newline
+\indent t $\in$ Formal\_type\_context\newline
+\indent \textbf{Call}\newline
+\indent \indent If parenthesized qualifier \textit{paq} is specified with call chain \textit{ch}:\newline
+\indent \indent First call of \textit{ch} must be a feature in the interface of the type of \textit{paq}\newline\indent \indent 
+\indent \indent If no parenthesized qualifier is specified with call chain \textit{ch}:\newline
+\indent \indent \indent If in invariant in enclosing class \textit{ec}:\newline
+\indent \indent \indent \indent First call of \textit{ch} must be a feature in the interface of \textit{ec}, but not an infix or a prefix\newline
+\indent \indent \indent \indent  feature.\newline
+\indent \indent \indent If in pre- or postcondition of a feature \textit{feat} in enclosing class \textit{ec}:\newline
+\indent \indent \indent \indent First call of \textit{ch} must be an argument to \textit{feat} or another feature in the interface of \textit{ec}, \newline 
+\indent \indent \indent \indent but not \textit{feat} itself and not an infix or a prefix feature.\newline
+\indent \indent For non-first calls in a call chain \textit{ch}:\newline
+\indent \indent \indent Identifier in call \textit{n} of \textit{ch} (\textit{n} \textgreater 1) must exist in the interface of the type of call \textit{n-1} in \textit{ch}.\newline
+\indent \textbf{Unqualified\_call}\newline
+\indent \indent \textbf{Actual\_arguments}\newline
+\indent \indent \indent For a given feature \textit{feat} in enclosing class \textit{ec}:\newline
+\indent \indent \indent \indent The number of arguments of the call must be equal to the number of arguments in the \newline
+\indent \indent \indent \indent specification of \textit{feat}\newline
+\indent \indent \indent The type of the \textit{i}'th argument in the list of Actual\_arguments to \textit{feat} must conform to the \newline
+\indent \indent \indent type of the \textit{i}'th argument in the definition of \textit{feat}\newline
+\indent \textbf{Operator\_expression}\newline
+\indent \indent \textbf{Unary\_expression}\newline
+\indent \indent \indent For a given Unary\_expression with operator \textit{op} and expression \textit{ex}:\newline
+\indent \indent \indent \indent $\exists$ \textit{pf} in Features in Type of \textit{ex} $\bullet$ \textit{pf.Feature\_name} = \textit{op}$\wedge$ \textit{pf} is prefix feature\newline
+\indent \indent \textbf{Binary\_expression}\newline
+\indent \indent \indent For a given Binary\_expression with operator \textit{op} and left expression \textit{lex} and right expression \newline
+\indent \indent \indent \textit{rex}:\newline
+\indent \indent \indent \indent $\exists$ \textit{if} in Features in Type of \textit{lex} $\bullet$ \textit{if.Feature\_name} = \textit{op}$\wedge$ \textit{if} is infix feature$\wedge$ \textit{if.Feature\_arguments.count} \newline
+\indent \indent \indent \indent = 1$\wedge$ Type of \textit{rex} conforms to type of first argument of \textit{if}\newline
+\textbf{Dynamic\_diagram}\newline
+\indent \textbf{Scenario\_description}\newline
+\indent \indent For a given Scenario description \textit{sce}:\newline
+\indent \indent \indent $\exists$ ! \textit{s} $\in$ Dynamic\_object\_context (\textit{s.Scenario\_name = sce.Scenario\_name})\newline
+\indent \indent \textbf{Labeled\_actions}\newline
+\indent \indent \indent For a given Labeled action \textit{lab}:\newline
+\indent \indent \indent \indent $\exists$ ! \textit{l} $\in$ Dynamic\_object\_context (\textit{l.Action\_label = lab.Action\_label})\newline
+\indent \textbf{Object\_group}\newline
+\indent \indent For a given Object group \textit{obg}:\newline
+\indent \indent \indent $\exists$ ! \textit{o} $\in$ Dynamic\_object\_context (\textit{o.Group\_name = obg.Group\_name})\newline
+\indent \textbf{Object\_stack}\newline
+\indent \indent For a given Object stack \textit{obs}:\newline
+\indent \indent $\exists$ ! \textit{o} $\in$ Dynamic\_object\_context (\textit{o.Object\_name = obs.Object\_name})\newline
+\indent \textbf{Object}\newline
+\indent \indent For a given Object \textit{obj}\newline
+\indent \indent \indent $\exists$ ! \textit{o} $\in$ Dynamic\_object\_context (\textit{o.Object\_name = obj.Object\_name})\newline
+\textbf{Message relation}\newline
+\indent \textbf{Dynamic reference}\newline
+\indent \indent For a given Dynamic reference \textit{dyn}:\newline
+\indent \indent \indent $\exists$ \textit{o} $\in$ Dynamic\_object\_context (\textit{o.Object\_name = dyn.Object\_name} $\vee$ \textit{o.Group\_name = dyn.Group\_name})\newline
+\indent \indent \indent \textit{dyn} has Group\_prefix $\Rightarrow$ $\exists$ \textit{og} $\in$ Dynamic\_object\_context ((\textit{dyn.Group\_prefix.Group\_name = \newline
+\indent \indent \indent og.Group\_name}) $\wedge$ $\exists$ \textit{o} $\in$ \textit{og} (\textit{o.Object\_name = dyn.Object\_name}))\newline
+\indent \textbf{Message label}\newline
+\indent \indent For a given Message label \textit{ml}:\newline
+\indent \indent $\exists$ \textit{m} $\in$ Dynamic\_object\_context (\textit{m.Manifest\_string =  ml.Manifest\_string} $\wedge$ \textit{m} is an Action\_label)\newline
