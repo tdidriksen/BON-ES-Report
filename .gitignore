@@ -1,6 +1,6 @@
 *.aux
 *.log
-*.pdf
+master.pdf
 *.synctex.gz
 *.toc
 *.ent
