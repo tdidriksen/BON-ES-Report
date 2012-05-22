@@ -33,10 +33,10 @@ This section discusses the overall design decisions of the textual \textsc{bon} 
 \label{design-tc-patterns}
 When discussing the overall structure and design of the type checker, two patterns were considered; the visitor pattern, and a procedural pattern inspired by a more functional approach.
 \subsubsubsection{The Visitor Pattern} %The visitor pattern
-The visitor pattern provides a way to add a new feature to a hierarchy of classes without having to implement the feature in the class itself \cite{martin2002}. Instead, the functionality is implemented in a feature in a visitor class, the content of which is unknown to the visited object. The main idea of the pattern is the technique called \textit{dual dispatch}, called as such due to the two polymorphic dispatches happening when executing the visitor: 
+The visitor pattern is a general-purpose design pattern used to traverse any kind of object structure. The pattern provides a way to add a new feature to a hierarchy of classes without having to implement the feature in the class itself \cite{martin2002}. Instead, the functionality is implemented in a feature in a visitor class, the content of which is unknown to the visited object. The main idea of the pattern is the technique called \textit{dual dispatch}, called as such due to the two polymorphic dispatches happening when executing the visitor: 
 \begin{figure}[H]
 \centerline{\scalebox{0.7}{\includegraphics{images/Visitor.png}}}
-    \caption[Visitor pattern]{Visitor pattern (source: http://en.wikipedia.org/wiki/Visitor\textunderscore pattern)}
+    \caption[The visitor pattern]{Visitor pattern (source: http://en.wikipedia.org/wiki/Visitor\textunderscore pattern)}
     \label{fig:visitor-pattern}
 \end{figure}
 \begin{enumerate}
