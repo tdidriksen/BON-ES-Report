@@ -1,34 +1,35 @@
-\section{BON extraction}
-The textual \textsc{bon} extractor is a static analysis tool that provides an overview of a program written in Eiffel. Its purpose is to enable the user to benefits from the features of the textual \textsc{bon} language without having to leave an Eiffel development environment. Without having to write the textual \textsc{bon}.
+\section{BON Extraction}
+The textual \textsc{bon} extractor is a static analysis tool that provides an overview of a program written in Eiffel. Its purpose is to enable the user to benefit from the features of the textual \textsc{bon} notation without leaving an Eiffel development environment. 
+
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.8]{images/BON-extraction-model-1.png}
-\caption{BON Extraction Model 1}
+\includegraphics[scale=0.8]{images/BON-extraction-model-1.pdf}
+\caption{\bon{} Extraction Model 1}
 \label{fig:bon_extraction_1}
 \end{figure}
 \label{design-bon-extraction}
 Conceptually, the objective of the extractor is to bridge the gap between the Eiffel universe and the textual \textsc{bon} universe, as shown in figure \ref{fig:bon_extraction_1}. It does so by allowing the user to switch from an Eiffel-related view to either a formal or an informal textual \textsc{bon} view. When switching view, the user is presented to a textual \textsc{bon} representation of the Eiffel code. To add further overview over the system, the extractor also analyzes the descendants of the chosen class.
 
-\subsection{Overall architecture}
-The textual \textsc{bon} extractor has two main parts. One is the interface to EiffelStudio, the other is an internal representation of the \textsc{bon} language. Each of the two parts are independent and changes can be done in one without it having any effect on the other. With the exception of creation calls from the interface that hook into the internal representation.
+\subsection{Overall Architecture}
+The textual \textsc{bon} extractor has two main parts. One is the interface to EiffelStudio, the other is an internal representation of the \textsc{bon} language. The two parts are independent and changes can be done in one without it having any effect on the other. With the exception of creation calls from the interface that hook into the internal representation.
 
 \paragraph{}
-For generating textual \textsc{bon},  an internal representation of \textsc{bon} has been created. This representation has a MOG-like structure with classes representing most of the \textsc{bon} elements defined in the grammar in \cite{walden1995}, with a few exceptions (See section \ref{deviations_from_bon}).  Each of these classes contains meta-information about the element, and knows how itself into format textual \textsc{bon} (both formal and informal) based on this information.
+For generating textual \textsc{bon},  an internal representation of the textual \textsc{bon} syntax has been created. This representation has a MOG-like structure with classes representing most of the \textsc{bon} elements defined in the grammar, with a few exceptions (See section \ref{deviations_from_bon}).  Each of these classes contain metadata about the element, and knows how to format itself into textual \textsc{bon} (both formal and informal) based on these data.
 
 \subsubsection{From EiffelStudio to BON}
 To bridge the aforementioned gap between EiffelStudio and the internal \textsc{bon} representation, an interface linking the two parts is needed. This interface needs be able to take input from EiffelStudio, and hand over the abstract Eiffel syntax to the \textsc{bon} modeling section. Furthermore, it also needs to take care of determining whether the current view is displaying informal or formal textual \textsc{bon}.
 
 \paragraph{}
-With the creation of such an interface there is now a link between Eiffel and \textsc{bon}, however the chain is not complete. There is still a missing link in making an internal representation of \textsc{bon} from the abstract Eiffel syntax. A link between the internal representation and the abstract Eiffel syntax is still missing.
+With the creation of such an interface, a link between Eiffel and \textsc{bon} is established. However, the chain is not complete. A link between the internal representation \bon{} and the abstract Eiffel syntax is still missing.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.8]{images/BON-extraction-model-2.png}
-\caption{BON Extraction Model 2}
+\includegraphics[scale=0.8]{images/BON-extraction-model-2.pdf}
+\caption{\bon{} Extraction Model 2}
 \label{fig:bon_extraction_2}
 \end{figure}
 
 \paragraph{}
-To create the \textsc{bon} representation, a link (the missing link in figure \ref{fig:bon_extraction_2}) between the abstract syntax and the internal representation is needed. Creating a meta-object that instantiates the modeling classes based on the abstract Eiffel syntax provides this functionality. This meta-object will inspect the abstract Eiffel syntax and instantiate the textual \textsc{bon} objects based on the extracted information.
+To create the \textsc{bon} representation, a link (the missing link in figure \ref{fig:bon_extraction_2}) between the abstract syntax and the internal representation is needed. Creating a meta-object that instantiates the modeling classes based on the abstract Eiffel syntax provides this functionality. The meta-object will inspect the abstract Eiffel syntax and instantiate the textual \textsc{bon} objects based on the extracted information.
 
 \begin{figure}[H]
 \centering
@@ -37,24 +38,24 @@ To create the \textsc{bon} representation, a link (the missing link in figure \r
 \label{fig:bon-meta-object}
 \end{figure}
 
-The function of the meta-object is convert the abstract Eiffel syntax given by EiffelStudio into the internal \bon{} representation. As it can be seen in figure \ref{fig:bon-meta-object} the meta object extracts the information out of the abstract Eiffel syntax and turns it into its \bon{} counter parts. The meta-object both creates objects for informal and formal specifications.
+The purpose of the meta-object is to convert the abstract Eiffel syntax created by EiffelStudio into an internal \bon{} representation. As it can be seen in figure \ref{fig:bon-meta-object} the meta object extracts the information out of the abstract Eiffel syntax and turns it into its \bon{} counterparts. The meta-object creates objects for both informal and formal specifications.
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.8]{images/BON-extraction-model-3.png}
-\caption{BON Extraction Model 3}
+\includegraphics[scale=0.8]{images/BON-extraction-model-3.pdf}
+\caption{\bon{} Extraction Model 3}
 \label{fig:bon_extraction_3}
 \end{figure}
 
 \paragraph{}
-Since each of these \textsc{bon} objects are able to generate textual \textsc{bon} from the information given by the meta-object, the system is now ready to generate \textsc{bon}. However, the textual \textsc{bon} still needs to be handed back to EiffelStudio for it to be displayed to the user.
+Since each of the \textsc{bon} objects in the internal representation are able to generate textual \textsc{bon} from the information given by the meta-object, the system is now ready to generate \textsc{bon}.
 
 \subsubsection{From BON to EiffelStudio}
 Next step is for the modeling classes to hand back the formatted textual \textsc{bon} to EiffelStudio for it to be shown to the user. To do so either each step needs a reference back to where the textual \textsc{bon} is needed in order to be displayed, or each step needs to be able to receive the result of the following step and hand it back to its predecessor. In the current implementation it has been decided to pass a reference pointing to a decorating object all the way down the \textsc{bon} object structure, such that it is transparent to the creator of the textual \textsc{bon} that it is writing directly to EiffelStudio.
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.8]{images/BON-extraction-model-4.png}
+\includegraphics[scale=0.8]{images/BON-extraction-model-4.pdf}
 \caption{BON Extraction Model 4}
 \label{fig:bon_extraction_4}
 \end{figure}
