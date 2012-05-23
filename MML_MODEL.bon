@@ -1,0 +1,984 @@
+system_chart SYSTEM_OF_MML_MODEL
+explanation
+	"A description of your system."
+cluster CLUSTER_OF_MML_MODEL
+	"A description of your cluster."
+end
+
+cluster_chart CLUSTER_OF_MML_MODEL
+explanation
+	"A description of your cluster."
+class MML_MODEL
+	"Mathematical models."
+class MML_RELATION
+	"Finite relations."
+class MML_SEQUENCE
+	"Finite sequence."
+class MML_BAG
+	"Finite bags."
+class MML_SET
+	"Finite sets."
+class MML_INTERVAL
+	"Closed integer intervals."
+class MML_MAP
+	"Finite maps."
+end
+
+class_chart MML_MODEL
+indexing
+	author: "Nadia polikarpova.";
+	date: "$Date$";
+	revision: "$Revision$";
+	belongs_to: "CLUSTER_OF_MML_MODEL"
+explanation
+	"Mathematical models."
+query
+	" Is this model mathematically equal to `other'?",
+	" Is this model mathematically equal to `other'?",
+	" Are `v1' and `v2' mathematically equal?\
+	\  If they are models use model equality, otherwise reference equality."
+end
+
+class_chart MML_RELATION
+indexing
+	author: "Nadia Polikarpova";
+	date: "$Date$";
+	revision: "$Revision$";
+	belongs_to: "CLUSTER_OF_MML_MODEL"
+explanation
+	"Finite relations."
+inherit
+	MML_MODEL
+query
+	"has",
+	"is_empty",
+	"domain",
+	"range",
+	"image_of",
+	"image",
+	"count",
+	"is_model_equal",
+	"extended",
+	"removed",
+	"restricted",
+	"inverse",
+	"union",
+	"intersection",
+	"difference",
+	"sym_difference",
+	"lefts",
+	"rights",
+	"meq_left",
+	"meq_right"
+command
+	" Is this model mathematically equal to `other'?",
+	" Are `v1' and `v2' mathematically equal?\
+	\  If they are models use model equality, otherwise reference equality.",
+	"make_from_arrays"
+constraint
+	"lefts_exists", 
+	"rights_exists", 
+	"same_lower", 
+	"same_upper", 
+	"start_from_one"
+end
+
+class_chart MML_SEQUENCE
+indexing
+	author: "Nadia Polikarpova";
+	date: "$Date$";
+	revision: "$Revision$";
+	belongs_to: "CLUSTER_OF_MML_MODEL"
+explanation
+	"Finite sequence."
+inherit
+	MML_MODEL
+query
+	"has",
+	"is_empty",
+	"is_constant",
+	"item",
+	"domain",
+	"range",
+	"to_bag",
+	"count",
+	"occurrences",
+	"is_model_equal",
+	"is_prefix_of",
+	"first",
+	"last",
+	"but_first",
+	"but_last",
+	"front",
+	"tail",
+	"interval",
+	"removed_at",
+	"restricted",
+	"removed",
+	"extended",
+	"extended_at",
+	"prepended",
+	"concatenation",
+	"replaced_at",
+	"inverse",
+	"array",
+	"meq"
+command
+	"default_create",
+	" Are `v1' and `v2' mathematically equal?\
+	\  If they are models use model equality, otherwise reference equality.",
+	"make_from_array"
+constraint
+	"array_exists", 
+	"starts_from_one"
+end
+
+class_chart MML_BAG
+indexing
+	author: "Nadia Polikarpova";
+	date: "$Date$";
+	revision: "$Revision$";
+	belongs_to: "CLUSTER_OF_MML_MODEL"
+explanation
+	"Finite bags."
+inherit
+	MML_MODEL
+query
+	"has",
+	"is_empty",
+	"is_constant",
+	"domain",
+	"occurrences",
+	"count",
+	"is_model_equal",
+	"extended",
+	"extended_multiple",
+	"removed",
+	"removed_multiple",
+	"removed_all",
+	"restricted",
+	"union",
+	"difference",
+	"keys",
+	"values",
+	"meq"
+command
+	" Are `v1' and `v2' mathematically equal?\
+	\  If they are models use model equality, otherwise reference equality.",
+	"singleton",
+	"multiple",
+	"make_from_arrays"
+constraint
+	"keys_exists", 
+	"values_exists", 
+	"same_lower", 
+	"same_upper", 
+	"start_at_one"
+end
+
+class_chart MML_SET
+indexing
+	author: "Nadia Polikarpova";
+	date: "$Date$";
+	revision: "$Revision$";
+	belongs_to: "CLUSTER_OF_MML_MODEL"
+explanation
+	"Finite sets."
+inherit
+	MML_MODEL
+query
+	"has",
+	"is_empty",
+	"for_all",
+	"exists",
+	"any_item",
+	"extremum",
+	"filtered",
+	"count",
+	"is_model_equal",
+	"is_subset_of",
+	"is_superset_of",
+	"disjoint",
+	"extended",
+	"removed",
+	"union",
+	"intersection",
+	"difference",
+	"sym_difference",
+	"array",
+	"meq"
+command
+	"default_create",
+	"singleton",
+	"make_from_array"
+constraint
+	"array_exists", 
+	"starts_from_one"
+end
+
+class_chart MML_INTERVAL
+indexing
+	author: "Nadia Polikarpova";
+	date: "$Date$";
+	revision: "$Revision$";
+	belongs_to: "CLUSTER_OF_MML_MODEL"
+explanation
+	"Closed integer intervals."
+inherit
+	MML_SET
+query
+	"lower",
+	"upper"
+command
+	"from_range",
+	"from_tuple"
+end
+
+class_chart MML_MAP
+indexing
+	author: "Nadia Polikarpova";
+	date: "$Date$";
+	revision: "$Revision$";
+	belongs_to: "CLUSTER_OF_MML_MODEL"
+explanation
+	"Finite maps."
+inherit
+	MML_MODEL
+query
+	"has",
+	"is_empty",
+	"is_constant",
+	"item",
+	"domain",
+	"range",
+	"image",
+	"sequence_image",
+	"to_bag",
+	"count",
+	"is_model_equal",
+	"updated",
+	"removed",
+	"restricted",
+	"override",
+	"inverse",
+	"keys",
+	"values",
+	"meq_key",
+	"meq_value"
+command
+	" Is this model mathematically equal to `other'?",
+	" Are `v1' and `v2' mathematically equal?\
+	\  If they are models use model equality, otherwise reference equality.",
+	"make_from_arrays"
+constraint
+	"keys_exists", 
+	"values_exists", 
+	"same_lower", 
+	"same_upper", 
+	"start_from_one"
+end
+
+static_diagram SYSTEM_OF_MML_MODEL -- This is a comment.
+component
+	cluster CLUSTER_OF_MML_MODEL
+	component
+		class MML_MODEL 
+		indexing
+			description: "Mathematical models.";
+			author: "Nadia polikarpova.";
+			date: "$Date$";
+			revision: "$Revision$";
+			belongs_to: "CLUSTER_OF_MML_MODEL"
+		feature --  Comparison
+			deferred is_model_equal: BOOLEAN
+					--  Is this model mathematically equal to `other'?
+				-> other: MML_MODEL
+
+
+ 			is_model_non_equal: BOOLEAN
+					--  Is this model mathematically equal to `other'?
+				-> other: MML_MODEL
+
+
+ 			model_equals: BOOLEAN
+					--  Are `v1' and `v2' mathematically equal?
+					--  If they are models use model equality, 
+					--  otherwise reference equality.
+				-> v1: ANY
+				-> v2: ANY
+
+		end
+		class MML_RELATION [G, H] 
+		indexing
+			description: "Finite relations.";
+			author: "Nadia Polikarpova";
+			date: "$Date$";
+			revision: "$Revision$";
+			belongs_to: "CLUSTER_OF_MML_MODEL"
+		inherit
+			MML_MODEL
+
+		feature {NONE} 
+ 			default_create
+					--  Is this model mathematically equal to `other'?
+
+
+ 			singleton
+					--  Are `v1' and `v2' mathematically equal?
+					--  If they are models use model equality, 
+					--  otherwise reference equality.
+				-> x: G#1
+				-> y: G#2
+
+		feature 
+ 			has: BOOLEAN
+				-> x: G#1
+				-> y: G#2
+
+ 			is_empty: BOOLEAN
+
+		feature 
+ 			domain: MML_SET [G#1]
+
+ 			range: MML_SET [G#2]
+
+ 			image_of: MML_SET [G#2]
+				-> x: G#1
+
+ 			image: MML_SET [G#2]
+				-> subdomain: MML_SET [G#1]
+				require
+					subdomain /= Void -- subdomain_exists
+				end
+		feature 
+ 			count: INTEGER
+
+		feature 
+ 			is_model_equal: BOOLEAN
+				-> other: MML_MODEL
+
+		feature 
+ 			extended: MML_RELATION [G#1, G#2]
+				-> x: G#1
+				-> y: G#2
+
+ 			removed: MML_RELATION [G#1, G#2]
+				-> x: G#1
+				-> y: G#2
+
+ 			restricted: MML_RELATION [G#1, G#2]
+				-> subdomain: MML_SET [G#1]
+				require
+					subdomain /= Void -- subdomain_exists
+				end
+ 			inverse: MML_RELATION [G#2, G#1]
+
+ 			union: MML_RELATION [G#1, G#2]
+				-> other: MML_RELATION [G#1, G#2]
+				require
+					other /= Void -- other_exists
+				end
+ 			intersection: MML_RELATION [G#1, G#2]
+				-> other: MML_RELATION [G#1, G#2]
+				require
+					other /= Void -- other_exists
+				end
+ 			difference: MML_RELATION [G#1, G#2]
+				-> other: MML_RELATION [G#1, G#2]
+				require
+					other /= Void -- other_exists
+				end
+ 			sym_difference: MML_RELATION [G#1, G#2]
+				-> other: MML_RELATION [G#1, G#2]
+				require
+					other /= Void -- other_exists
+				end
+		feature {MML_MODEL} 
+ 			lefts: V_ARRAY [G#1]
+
+ 			rights: V_ARRAY [G#2]
+
+ 			make_from_arrays
+				-> ls: V_ARRAY [G#1]
+				-> rs: V_ARRAY [G#2]
+				require
+					ls /= Void -- ls_exists
+					rs /= Void -- rs_exists
+					ls. = rs. -- same_lower
+					ls. = rs. -- same_upper
+					ls. = 1 -- start_from_one
+				end
+ 			meq_left: BOOLEAN
+				-> v1: G#1
+				-> v2: G#1
+
+ 			meq_right: BOOLEAN
+				-> v1: G#2
+				-> v2: G#2
+
+		invariant
+			lefts /= Void -- lefts_exists
+			rights /= Void -- rights_exists
+			lefts. = rights. -- same_lower
+			lefts. = rights. -- same_upper
+			lefts. = 1 -- start_from_one
+		end
+		class MML_SEQUENCE [G] 
+		indexing
+			description: "Finite sequence.";
+			author: "Nadia Polikarpova";
+			date: "$Date$";
+			revision: "$Revision$";
+			belongs_to: "CLUSTER_OF_MML_MODEL"
+		inherit
+			MML_MODEL
+
+		feature {NONE} 
+ 			default_create
+
+ 			singleton
+					--  Are `v1' and `v2' mathematically equal?
+					--  If they are models use model equality, 
+					--  otherwise reference equality.
+				-> x: G#1
+
+		feature 
+ 			has: BOOLEAN
+				-> x: G#1
+
+ 			is_empty: BOOLEAN
+
+ 			is_constant: BOOLEAN
+				-> c: G#1
+
+		feature 
+ 			item: G#1
+				-> i: INTEGER
+				require
+					bracket_error -- in_domain
+				end
+		feature 
+ 			domain: MML_INTERVAL
+
+ 			range: MML_SET [G#1]
+
+ 			to_bag: MML_BAG [G#1]
+
+		feature 
+ 			count: INTEGER
+
+ 			occurrences: INTEGER
+				-> x: G#1
+
+		feature 
+ 			is_model_equal: BOOLEAN
+				-> other: MML_MODEL
+
+ 			is_prefix_of: BOOLEAN
+				-> other: MML_SEQUENCE [G#1]
+				require
+					other /= Void -- other_exists
+				end
+		feature 
+ 			first: G#1
+				require
+					not is_empty -- non_empty
+				end
+ 			last: G#1
+				require
+					not is_empty -- non_empty
+				end
+ 			but_first: MML_SEQUENCE [G#1]
+				require
+					not is_empty -- not_empty
+				end
+ 			but_last: MML_SEQUENCE [G#1]
+				require
+					not is_empty -- not_empty
+				end
+ 			front: MML_SEQUENCE [G#1]
+				-> upper: INTEGER
+
+ 			tail: MML_SEQUENCE [G#1]
+				-> lower: INTEGER
+
+ 			interval: MML_SEQUENCE [G#1]
+				-> lower: INTEGER
+				-> upper: INTEGER
+
+ 			removed_at: MML_SEQUENCE [G#1]
+				-> i: INTEGER
+				require
+					bracket_error -- in_domain
+				end
+ 			restricted: MML_SEQUENCE [G#1]
+				-> subdomain: MML_SET [INTEGER]
+				require
+					subdomain /= Void -- subdomain_exists
+				end
+ 			removed: MML_SEQUENCE [G#1]
+				-> subdomain: MML_SET [INTEGER]
+				require
+					subdomain /= Void -- subdomain_exists
+				end
+		feature 
+ 			extended: MML_SEQUENCE [G#1]
+				-> x: G#1
+
+ 			extended_at: MML_SEQUENCE [G#1]
+				-> i: INTEGER
+				-> x: G#1
+				require
+					1 <= i or i <= count + 1 -- valid_position
+				end
+ 			prepended: MML_SEQUENCE [G#1]
+				-> x: G#1
+
+ 			concatenation: MML_SEQUENCE [G#1]
+				-> other: MML_SEQUENCE [G#1]
+				require
+					other /= Void -- other_exists
+				end
+ 			replaced_at: MML_SEQUENCE [G#1]
+				-> i: INTEGER
+				-> x: G#1
+				require
+					bracket_error -- in_domain
+				end
+ 			inverse: MML_RELATION [G#1, INTEGER]
+
+		feature {MML_MODEL} 
+ 			array: V_ARRAY [G#1]
+
+ 			make_from_array
+				-> a: V_ARRAY [G#1]
+				require
+					a /= Void -- a_exists
+					a. = 1 -- starts_from_one
+				end
+ 			meq: BOOLEAN
+				-> v1: G#1
+				-> v2: G#1
+
+		invariant
+			array /= Void -- array_exists
+			array. = 1 -- starts_from_one
+		end
+		class MML_BAG [G] 
+		indexing
+			description: "Finite bags.";
+			author: "Nadia Polikarpova";
+			date: "$Date$";
+			revision: "$Revision$";
+			belongs_to: "CLUSTER_OF_MML_MODEL"
+		inherit
+			MML_MODEL
+
+		feature {NONE} 
+ 			default_create
+					--  Are `v1' and `v2' mathematically equal?
+					--  If they are models use model equality, 
+					--  otherwise reference equality.
+
+
+ 			singleton
+				-> x: G#1
+
+ 			multiple
+				-> x: G#1
+				-> n: INTEGER
+				require
+					n >= 0 -- n_positive
+				end
+		feature 
+ 			has: BOOLEAN
+				-> x: G#1
+
+ 			is_empty: BOOLEAN
+
+ 			is_constant: BOOLEAN
+				-> c: INTEGER
+
+		feature 
+ 			domain: MML_SET [G#1]
+
+		feature 
+ 			occurrences: INTEGER
+				-> x: G#1
+
+ 			count: INTEGER
+
+		feature 
+ 			is_model_equal: BOOLEAN
+				-> other: MML_MODEL
+
+		feature 
+ 			extended: MML_BAG [G#1]
+				-> x: G#1
+
+ 			extended_multiple: MML_BAG [G#1]
+				-> x: G#1
+				-> n: INTEGER
+				require
+					n >= 0 -- n_non_negative
+				end
+ 			removed: MML_BAG [G#1]
+				-> x: G#1
+
+ 			removed_multiple: MML_BAG [G#1]
+				-> x: G#1
+				-> n: INTEGER
+				require
+					n >= 0 -- n_non_negative
+				end
+ 			removed_all: MML_BAG [G#1]
+				-> x: G#1
+
+ 			restricted: MML_BAG [G#1]
+				-> subdomain: MML_SET [G#1]
+				require
+					subdomain /= Void -- subdomain_exists
+				end
+ 			union: MML_BAG [G#1]
+				-> other: MML_BAG [G#1]
+				require
+					other /= Void -- other_exists
+				end
+ 			difference: MML_BAG [G#1]
+				-> other: MML_BAG [G#1]
+				require
+					other /= Void -- other_exists
+				end
+		feature {MML_MODEL} 
+ 			keys: V_ARRAY [G#1]
+
+ 			values: V_ARRAY [INTEGER]
+
+ 			make_from_arrays
+				-> ks: V_ARRAY [G#1]
+				-> vs: V_ARRAY [INTEGER]
+				-> n: INTEGER
+				require
+					ks /= Void -- ks_exists
+					vs /= Void -- vs_exists
+					ks. = vs. -- same_lower
+					ks. = vs. -- same_upper
+					ks. = 1 -- start_at_one
+					ks. -- ks_has_no_duplicates
+					vs. -- vs_positive
+				end
+ 			meq: BOOLEAN
+				-> v1: G#1
+				-> v2: G#1
+
+		invariant
+			keys /= Void -- keys_exists
+			values /= Void -- values_exists
+			keys. = values. -- same_lower
+			keys. = values. -- same_upper
+			keys. = 1 -- start_at_one
+		end
+		class MML_SET [G] 
+		indexing
+			description: "Finite sets.";
+			author: "Nadia Polikarpova";
+			date: "$Date$";
+			revision: "$Revision$";
+			belongs_to: "CLUSTER_OF_MML_MODEL"
+		inherit
+			MML_MODEL
+
+		feature {NONE} 
+ 			default_create
+				ensure
+					is_empty -- empty
+				end
+ 			singleton
+				-> x: G#1
+				ensure
+					count = 1 -- one_element
+					has -- has_x
+				end
+		feature 
+ 			has: BOOLEAN
+				-> x: G#1
+
+ 			is_empty: BOOLEAN
+				ensure
+					Result = (count = 0) -- count_zero
+				end
+ 			for_all: BOOLEAN
+				-> test: PREDICATE [ANY, TUPLE [G#1]]
+				require
+					test /= Void -- test_exists
+					test. = 1 -- test_has_one_arg
+				end
+ 			exists: BOOLEAN
+				-> test: PREDICATE [ANY, TUPLE [G#1]]
+				require
+					test /= Void -- test_exists
+					test. = 1 -- test_has_one_arg
+				end
+		feature 
+ 			any_item: G#1
+				require
+					not is_empty -- not_empty
+				ensure
+					has -- element
+				end
+ 			extremum: G#1
+				-> order: PREDICATE [ANY, TUPLE [G#1, G#1]]
+				require
+					not is_empty -- not_empty
+					order /= Void -- order_exists
+					order. = 2 -- order_has_one_arg
+				ensure
+					has -- element
+					for_all -- extremum
+				end
+		feature 
+ 			filtered: MML_SET [G#1]
+				-> test: PREDICATE [ANY, TUPLE [G#1]]
+				require
+					test /= Void -- test_exists
+					test. = 1 -- test_has_one_arg
+				ensure
+					Result <= Current -- subset
+					Result -- satisfies_test
+					not Current - Result -- maximum
+				end
+		feature 
+ 			count: INTEGER
+
+		feature 
+ 			is_model_equal: BOOLEAN
+				-> other: MML_MODEL
+
+ 			is_subset_of: BOOLEAN
+				-> other: MML_SET [G#1]
+				require
+					other /= Void -- other_exists
+				ensure
+					Result = for_all -- other_has_all
+				end
+ 			is_superset_of: BOOLEAN
+				-> other: MML_SET [G#1]
+				require
+					other /= Void -- other_exists
+				ensure
+					Result = (other <= Current) -- other_is_subset
+				end
+ 			disjoint: BOOLEAN
+				-> other: MML_SET [G#1]
+				require
+					other /= Void -- other_exists
+				ensure
+					Result = not other. -- no_common_elements
+				end
+		feature 
+ 			extended: MML_SET [G#1]
+				-> x: G#1
+				ensure
+					Result ^ (Current +) -- singleton_union
+				end
+ 			removed: MML_SET [G#1]
+				-> x: G#1
+				ensure
+					Result ^ (Current -) -- singleton_difference
+				end
+ 			union: MML_SET [G#1]
+				-> other: MML_SET [G#1]
+				require
+					other /= Void -- other_exists
+				ensure
+					Current <= Result -- contains_current
+					other <= Result -- contains_other
+					Result -- minimal
+				end
+ 			intersection: MML_SET [G#1]
+				-> other: MML_SET [G#1]
+				require
+					other /= Void -- other_exists
+				ensure
+					Result <= Current -- contained_in_current
+					Result <= other -- contained_in_other
+					for_all -- maximal
+				end
+ 			difference: MML_SET [G#1]
+				-> other: MML_SET [G#1]
+				require
+					other /= Void -- other_exists
+				ensure
+					Result <= Current -- contained_in_current
+					Result -- disjoint_from_other
+					for_all -- maximal
+				end
+ 			sym_difference: MML_SET [G#1]
+				-> other: MML_SET [G#1]
+				require
+					other /= Void -- other_exists
+				ensure
+					Result ^ ((Current + other) - (Current * other)) -- definition
+				end
+		feature {MML_MODEL} 
+ 			array: V_ARRAY [G#1]
+
+ 			make_from_array
+				-> a: V_ARRAY [G#1]
+				require
+					a /= Void -- a_exists
+					a. = 1 -- starts_from_one
+					a. -- no_duplicates
+				end
+ 			meq: BOOLEAN
+				-> v1: G#1
+				-> v2: G#1
+
+		invariant
+			array /= Void -- array_exists
+			array. = 1 -- starts_from_one
+		end
+		class MML_INTERVAL 
+		indexing
+			description: "Closed integer intervals.";
+			author: "Nadia Polikarpova";
+			date: "$Date$";
+			revision: "$Revision$";
+			belongs_to: "CLUSTER_OF_MML_MODEL"
+		inherit
+			MML_SET
+
+		feature {NONE} 
+ 			from_range
+				-> l: INTEGER
+				-> u: INTEGER
+
+ 			from_tuple
+				-> t: TUPLE [l: INTEGER; u: INTEGER]
+				require
+					t /= Void -- t_exists
+				end
+		feature 
+ 			lower: INTEGER
+				require
+					not is_empty -- not_empty
+				end
+ 			upper: INTEGER
+				require
+					not is_empty -- not_empty
+				end
+		end
+		class MML_MAP [K, V] 
+		indexing
+			description: "Finite maps.";
+			author: "Nadia Polikarpova";
+			date: "$Date$";
+			revision: "$Revision$";
+			belongs_to: "CLUSTER_OF_MML_MODEL"
+		inherit
+			MML_MODEL
+
+		feature {NONE} 
+ 			default_create
+					--  Is this model mathematically equal to `other'?
+
+
+ 			singleton
+					--  Are `v1' and `v2' mathematically equal?
+					--  If they are models use model equality, 
+					--  otherwise reference equality.
+				-> k: G#1
+				-> x: G#2
+
+		feature 
+ 			has: BOOLEAN
+				-> x: G#2
+
+ 			is_empty: BOOLEAN
+
+ 			is_constant: BOOLEAN
+				-> c: G#2
+
+		feature 
+ 			item: G#2
+				-> k: G#1
+				require
+					bracket_error -- in_domain
+				end
+		feature 
+ 			domain: MML_SET [G#1]
+
+ 			range: MML_SET [G#2]
+
+ 			image: MML_SET [G#2]
+				-> subdomain: MML_SET [G#1]
+				require
+					subdomain /= Void -- subdomain_exists
+				end
+ 			sequence_image: MML_SEQUENCE [G#2]
+				-> s: MML_SEQUENCE [G#1]
+				require
+					s /= Void -- sequence_exists
+				end
+ 			to_bag: MML_BAG [G#2]
+
+		feature 
+ 			count: INTEGER
+
+		feature 
+ 			is_model_equal: BOOLEAN
+				-> other: MML_MODEL
+
+		feature 
+ 			updated: MML_MAP [G#1, G#2]
+				-> k: G#1
+				-> x: G#2
+
+ 			removed: MML_MAP [G#1, G#2]
+				-> k: G#1
+
+ 			restricted: MML_MAP [G#1, G#2]
+				-> subdomain: MML_SET [G#1]
+				require
+					subdomain /= Void -- subdomain_exists
+				end
+ 			override: MML_MAP [G#1, G#2]
+				-> other: MML_MAP [G#1, G#2]
+				require
+					other /= Void -- other_exists
+				end
+ 			inverse: MML_RELATION [G#2, G#1]
+
+		feature {MML_MODEL} 
+ 			keys: V_ARRAY [G#1]
+
+ 			values: V_ARRAY [G#2]
+
+ 			make_from_arrays
+				-> ks: V_ARRAY [G#1]
+				-> vs: V_ARRAY [G#2]
+				require
+					ks /= Void -- ks_exists
+					vs /= Void -- vs_exists
+					ks. = vs. -- same_lower
+					ks. = vs. -- same_upper
+					ks. = 1 -- start_from_one
+					ks. -- ks_has_no_duplicates
+				end
+ 			meq_key: BOOLEAN
+				-> k1: G#1
+				-> k2: G#1
+
+ 			meq_value: BOOLEAN
+				-> v1: G#2
+				-> v2: G#2
+
+		invariant
+			keys /= Void -- keys_exists
+			values /= Void -- values_exists
+			keys. = values. -- same_lower
+			keys. = values. -- same_upper
+			keys. = 1 -- start_from_one
+		end
+	end
+end

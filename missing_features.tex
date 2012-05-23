@@ -1,11 +1,11 @@
 \chapter{Further development}
-As mentioned in the introduction this project is suppose to build a fundament for more \bon{} related work on EiffelStudio. This chapter will go over some suggestions for future projects that could be in continuation of this project. This, however, is but a segment of all possible project, but this chapters purpose is to give developers an idea of what could be done.
+As mentioned in the introduction, the purpose of this project is to provide a foundation for more textual \bon{} related work in EiffelStudio. This chapter will go over some suggestions for future projects that could be in continuation of this project. This, however, is but a segment of all possible project, as such, the purpose of this chapter is to give other developers an idea of what could be done.
 \section{BON Extractor}
 If the \bon{} extractor is to be developed further, there are a number of interesting features that could be added. 
 
 Currently, the \bon{} extraction treats all types the same way. Every type is just mirrored into the generated \bon{} without further analysis. An interesting addition could be to analyze the inheritance of classes to see if they were of a certain kind. For example, if a class inherits from the \textsc{set} class, it is known to have the attributes of a set. The extractor could then transform the type in question into one of the predefined standard type, with the same attributes as a set. This, however, should not be forced upon the user, but rather be implemented as a feature that could be disabled at will.
 
-In continuation of the above, if the extractor was able to recognize certain standard types it would also be able to take use of the quantifications available in the textual \bon{} language. When a feature call such as \textit{for\_all} is encountered in the EIffel source code the extractor could translate this into textual \bon{} using the \textbf{for\_all} keyword. For instance, the quantification in figure \ref{fig:agent-for-all} could be translated into textual \bon{} in figure \ref{fig:bon-for-all}.
+In continuation of the above, if the extractor was able to recognize certain standard types it would also be able to take use of the quantifications available in the textual \bon{} language. When a feature call such as \textit{for\_all} is encountered in the Eiffel source code the extractor could translate this into textual \bon{} using the \textit{for\_all} keyword. For instance, the quantification in figure \ref{fig:agent-for-all} could be translated into textual \bon{} in figure \ref{fig:bon-for-all}.
 \begin{figure}[h]
 \centerline{
 \includegraphics[scale=0.7]{images/agent_example.png} 
@@ -16,29 +16,32 @@ In continuation of the above, if the extractor was able to recognize certain sta
 
 \begin{figure}[h]
 \centerline{
-\footnotesize{\textbf{for\_all} \textit{string} \textbf{member\_of} \textit{descriptions} \textbf{such\_that} \textit{string}:\textsc{string} \textbf{it\_holds not} \textit{string.is\_empty}}
+\footnotesize{\textbf{for\_all} \textit{str}: \textsc{string}; \textit{str} \textbf{member\_of} \textit{descriptions} \textbf{it\_holds not} \textit{string.is\_empty}}
 }
-\caption{How \ref{fig:agent-for-all} could be translated in textual \bon.}
+\caption{How figure \ref{fig:agent-for-all} could be translated in textual \bon.}
 \label{fig:bon-for-all}
 \end{figure}
 This could cause issues when agents are more advanced that in this example. In an assertion, not everything from the agent is interesting to analyze, and as such not everything should be included. The extractor could analyze what the \textit{Result} keyword relies upon and interpret that. This could easily lead to even more currently unknown complications, which is why this feature is not included in this project.
 
-Another interesting feature to add could be the ability to switch to textual \bon{} view when viewing a cluster. In EiffelStudio the user can select a cluster and see meta about it. From this view an option to switch to both formal and informal textual \bon{} should be available. This could extract the textual \bon{} from the classes contained in the cluster, and would add to the extended overview of the code base that the \bon{} view provides.
+Another interesting feature to add could be the ability to switch to textual \bon{} view when viewing a cluster. In EiffelStudio the user can select a cluster and see metadata about it. From this view an option to switch to both formal and informal textual \bon{} should be available. This could extract the textual \bon{} from the classes contained in the cluster, and would add to the extended overview of the code base that the \bon{} view provides.
 
+\paragraph{}
 There is no way of expressing void safety directly in \bon, only through invariants, and pre- and post-conditions. Therefore the \textit{attached} keyword does not translate to textual \bon{} in the current implementation. A possible extension could be to let the project settings from Eiffel be expressed in the extracted textual \bon{} by generating constraints for attached features. An attached feature \textit{f} could then translate into formal and informal \bon{} in the following way:
+\begin{figure}
 \footnotesize
 \begin{verbatim}
           Invariant              Constraint
                f /= Void               "Current must have an f"
 \end{verbatim}
+\end{figure}
 
 \normalsize Last but not least, the textual \bon{} tool could be more interactive. The user could be able to add other classes from a project to a \bon{} view. Furthermore, similar to the diagram tool already in place in EiffelStudio the \bon{} tool could also work as a \textsc{case} tool. The user could add classes through the \bon{} view have them automatically translate into Eiffel source code.
 
 \paragraph{}
-Related to the \bon{} extractor it is obvious to also consider a tool working the opposite way. Generating Eiffel from textual \bon{} would allow the user to specify a full system in textual \bon{} with all features and contracts, generate the related Eiffel and he would have a full skeleton of the system. This would enable seamless interaction between specification and development.
+Related to the \bon{} extractor it is obvious to also consider a tool working the opposite way. Generating Eiffel from textual \bon{} would allow the user to specify a full system in textual \bon{} with all features and contracts, generate the related Eiffel and instantly have a full skeleton of the system. This would enable seamless interaction between specification and development.
 
-\section{Type checker}
-While the type checker on its own is quite complete, it could be improved in a number of places, especially with regards to its interaction with EiffelStudio.
+\section{Type Checker}
+While the type checker on its own is quite complete, it could be improved in a number of places.
 
 First of all, it could be integrated into EiffelStudio. An ideal solution could be that whenever a piece of Eiffel source code is viewed in either the informal \bon{} view or the formal \bon{} view, the ''Compile'' button in the project bar of the EiffelStudio interface is replaced with a ''Type check'' button, running the type checker on the specification in the view. Alternatively, such a button could be placed alongside the ''Compile'' button, such that Eiffel compilation is still available from inside the \bon{} view. This would require adding a corresponding menu item to the project bar, and hooking the type checking functionality into the command executed by the button.
 
@@ -68,9 +71,9 @@ Lastly, anchored types are translated directly into textual \bon. This is not pu
 \subsection{Type checker}
 A few features are missing from the implementation of the type checker.
 
-Primarily, notational tuning as defined on page 359 in \cite{walden1995} has not been implemented in the type checker or in the parser. However, it is still possible to use the keywords and constructs of notational tuning in a specification handed over to the type checker without getting any errors. The parser does nothing but recognize the presence of these constructs (no model object are generated), while the type checker does not check it at all. Accordingly, notational tuning can be used, but support for it is not implemented.
+Primarily, notational tuning as defined on page 359 in \cite{walden1995} has not been implemented in the type checker or in the parser. However, it is still possible to use the keywords and constructs of notational tuning in a specification handed over to the type checker without getting any errors. The parser does nothing but recognize the presence of these constructs (no meta object is generated), while the type checker does not check it at all. Accordingly, notational tuning can be used, but support for it is not implemented.
 \paragraph{}
-In terms of type checking, a few features have not been implemented. Firstly, renaming of features in formal specifications are not checked. Unlike for notational tuning, renaming is implemented in the parser, and as such, the type checker has all the prerequisites for implementing a check for renaming. Secondly, export status is not checked for calls in formal assertions. As a consequence, all features of a type are always available in assertions, even though the specification states an explicit selective export status. Like for renaming, support for implementing a check for this is present, but it has not been done. The reason for omitting these checks in the initial version of the type checker is lack of time and a realization that checking other parts of the grammar would provide support for a wider range of specifications.
+In terms of type checking, a few features have not been implemented. Firstly, renaming of features in formal specifications are not checked. Unlike for notational tuning, renaming is implemented in the parser, and as such, the type checker has all the prerequisites for implementing a check for renaming. Secondly, selective export status is not checked for calls in formal assertions. As a consequence, all features of a type are always available in assertions, even though the specification states an explicit selective export status. Like for renaming, support for implementing a check for this is present, but it has not been done. The reason for omitting these checks in the initial version of the type checker is lack of time and a realization that checking other parts of the grammar would provide support for a wider range of specifications.
 %renaming
 %selective export in queries 
 \subsubsection{Bugs}

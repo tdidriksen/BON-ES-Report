@@ -33,6 +33,27 @@ A window similar to the one in figure \ref{fig:EiffelStudio3} should pop up. In 
 
 \section{Type checker}
 
+The type checker have two dependencies: The \textsc{gobo} library and the EiffelBase2 library. Furthermore the following environment must be set
+\begin{figure}[H]
+\begin{enumerate}
+\item ISE\_PRECOMP - Set by EiffelStudio.
+\item ISE\_LIBRARY - Set by EiffelStudio.
+\item REBON - The location of the rEBON project.
+\item EIFFEL\_BASE\_2 - The location of the EiffelBase2 library.
+\end{enumerate}
+\end{figure}
+To run the type checker, a proper Eiffel environment must be setup. Be sure to have the latest version of the Eiffel compiler and all dependencies. The project can both be compiled through EiffelStudio and command-line. Remember to finalize!
+\paragraph{}\noindent
+To compile from command line first navigate to the ecf file (rEBON\textbackslash src\textbackslash type\_checker\textbackslash). From here run the following:
+\begin{figure}[H]
+\begin{center}{\texttt{ec -config tcb.ecf -clean -finalize -target tcb}}\end{center}
+\end{figure}
+When the project is compiled a "tcb" executable will appear in \newline rEBON\textbackslash src\textbackslash type\_checker\textbackslash EIFGENS\textbackslash tcb\textbackslash W\_code\textbackslash. The tcb binary takes one argument; a bon file\footnote{It will accept more than one bon specification file, but this is untested. Best guess is that it will type check the last file only.}. Thus, to run it simply type (for example for class\_chart.bon): 
+\begin{figure}[H]
+\begin{center}{\texttt{tcb class\_chart.bon}}\end{center}
+\end{figure}
+If the type checker has a precondition violation in \textit{check\_bon\_specification} it means that there has been a parse error. If the type checker finds any errors it will print the appropriate error message. If the type checker does not find any errors it will say nothing. Anything other than the above suggest that something unexpected has happened, possibly a bug. Feel free to report it!
+
 \import{./}{specification-type-system}
 \import{./}{standard-types}
 \chapter{Components not extracted}
@@ -59,3 +80,5 @@ Class dictionaries could have been included to give further overview over a syst
 
 \noindent\textbf{Part}
 The reason for parts omission was discussed in section \ref{part}.
+
+\import{./}{extraction-example}
