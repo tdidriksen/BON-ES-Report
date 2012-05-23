@@ -73,4 +73,12 @@ Primarily, notational tuning as defined on page 359 in \cite{walden1995} has not
 In terms of type checking, a few features have not been implemented. Firstly, renaming of features in formal specifications are not checked. Unlike for notational tuning, renaming is implemented in the parser, and as such, the type checker has all the prerequisites for implementing a check for renaming. Secondly, export status is not checked for calls in formal assertions. As a consequence, all features of a type are always available in assertions, even though the specification states an explicit selective export status. Like for renaming, support for implementing a check for this is present, but it has not been done. The reason for omitting these checks in the initial version of the type checker is lack of time and a realization that checking other parts of the grammar would provide support for a wider range of specifications.
 %renaming
 %selective export in queries 
-[BUGS]
+\subsubsection{Bugs}
+Currently, the type checker has some known bugs. From running the test suite, the following bugs have been detected:
+\begin{itemize}
+\item Using calls with binary operators can lead to a feature call on Void target exception. This is most likely due to a bug in the way the type of a call is determined.
+\item Having indirection lists for a client entity in a client relation currently leads to a parse error. 
+\item Detection of duplicate elements, such as when two classes with the same name are defined simultaneously,  does not currently work as expected, as the parser accumulates these elements in sets. As such, duplicate elements are never sent to the type checker, because they are discarded by the parser. This could quite easily be fixed by accumulating the elements in lists, though.
+\item Detection of duplicate feature names as a result of inheritance is currently not done. This is only an issue when a class \textsc{c} inherits a feature \textit{f} from two parents, e.g. \textsc{a} and \textsc{b}, but \textsc{c} does not itself have a feature \textit{f}
+\item Defining a specification in which a cluster is a subcluster of itself leads to an infinite loop. This almost certainly is a bug in the features \textit{check\_informal\_structure} and \textit{check\_formal\_structure}.
+\end{itemize}
