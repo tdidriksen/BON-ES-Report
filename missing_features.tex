@@ -1,4 +1,4 @@
-\chapter{Further development}
+\chapter{Further Development}
 As mentioned in the introduction, the purpose of this project is to provide a foundation for more textual \bon{} related work in EiffelStudio. This chapter will go over some suggestions for future projects that could be in continuation of this project. This, however, is but a segment of all possible project, as such, the purpose of this chapter is to give other developers an idea of what could be done.
 \section{BON Extractor}
 If the \bon{} extractor is to be developed further, there are a number of interesting features that could be added. 
@@ -52,7 +52,7 @@ Defining the ancestors in the extracted specification is a recursive problem. Th
 \paragraph{}
 Defining all the ancestors of a class in a system as extensive as EiffelStudio is clearly not a viable solution. Accordingly, a possible place for further development would be to make the type checker compatible with the limitations of the extraction tool. This could be done by either creating a new version of the type checker based on the existing version, or by adding an EiffelStudio flag to the type checker, which for instance could make sure that ancestors of the main class are not required to be defined. In either case, there should be a clear distinction between when a type checker is checking the grammar defined in \cite{walden1995}, and when it is checking an extracted specification in EiffelStudio. In the current implementation, the former has been made in order to provide a stepping stone for further development. In other words, the implemented type checker is not tailored to EiffelStudio, but supports further development in this direction.
 
-\section{Bugs and missing features}
+\section{Bugs and Missing Features}
 \subsection{BON Extractor}
 \label{bugs_bon_extractors}
 The \bon{} extraction tool has a few flaws. The most notable one has to do with feature calls. At the time of writing feature calls are not translated properly into textual \bon{} from Eiffel. Only the first feature of the call chain is extracted, not any following features, nor arguments. The missing information is put in a comment if the contract has no tag. Else, a tag is put in the comment instead of the missing information. A call \textit{x} on feature \textit{y} with a parameter \textit{z} it would translate as such:
@@ -68,7 +68,7 @@ All of these bugs most likely ground in a lack of understanding the abstract Eif
 
 Lastly, anchored types are translated directly into textual \bon. This is not purposely done, however a future extension of the type checker and the \bon{} language could be to include anchored types.
 
-\subsection{Type checker}
+\subsection{Type Checker}
 A few features are missing from the implementation of the type checker.
 
 Primarily, notational tuning as defined on page 359 in \cite{walden1995} has not been implemented in the type checker or in the parser. However, it is still possible to use the keywords and constructs of notational tuning in a specification handed over to the type checker without getting any errors. The parser does nothing but recognize the presence of these constructs (no meta object is generated), while the type checker does not check it at all. Accordingly, notational tuning can be used, but support for it is not implemented.

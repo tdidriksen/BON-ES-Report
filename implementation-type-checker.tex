@@ -1,4 +1,4 @@
-\chapter{General Purpose Type Checker}
+\chapter{General-Purpose Type Checker}
 To give the reader an in-depth understanding of the textual \bon{} type checker implementation, this chapter will describe how the type checker is structured and how it deals with certain rules. Furthermore, it is explained how known and unresolved types are stored using contexts. For additional study of the type checker see the semi-formal specification of the type rules in appendix \ref{appendix-type-system}.
 \section{Parsing and Lexing}
 \label{implementation-parser}
@@ -7,7 +7,7 @@ Before any semantic analysis of a textual \bon{} specification can take place, t
 After successful syntactic analysis, the parser hands over the parse tree or meta object graph (\textsc{mog}) to the type checker. The meta object graph represents the syntax of the analyzed specification as a hierarchy of objects.
 \begin{figure}[H]
     \centerline{\scalebox{0.75}{\includegraphics{images/mog2.png}}}
-    \caption[MOG hierarchy]{First three levels of the inheritance hierarchy of the \textsc{mog}}
+    \caption[\textsc{mog} hierarchy]{First three levels of the inheritance hierarchy of the \textsc{mog}}
     \label{fig:mog-hierarchy}
 \end{figure}
 %explain what a bon element is
@@ -17,7 +17,7 @@ Considering the procedural structure of the type checker outlined in section \re
 
 Because \bon{} elements are defined in terms of each other, the consequence of this structure is that the checking feature for a given \bon{} element returns \textit{True} only if all the (present) subelements of the element are well-typed. As will be shown in section \ref{implementation-unresolved-elements}, though, resolving the correctness of all the subelements when the checking feature for a \bon{} element is called is not always possible. In these cases, auxiliary contexts are used to gather these unresolved \bon{} elements for checking later. Having these unresolved elements do not have any influence on the final verdict of the type checker, which is returned as the result when the feature \textit{check\_bon\_specification} terminates.
 \paragraph{}
-The top-most element of the object graph created by the parser is a type \textsc{bon\_specification}, and as such the entry point into the type checker is \textit{check\_bon\_specification}. When this element is not shown in figure \ref{fig:mog-hierarchy}, it is because it primarily consists of a set of \textsc{specification\_element}, and therefore it is not a very interesting object in its own right. Thus, all type checking begins and ends in this feature. What happens in between is elaborated upon in section \ref{implementation-phases}. Prior to this, however, the translation between the abstract syntax and the type contexts of the type checker is explained.
+The top-most element of the object graph created by the parser is a type \textsc{bon\_specifi- cation}, and as such the entry point into the type checker is \textit{check\_bon\_specification}. When this element is not shown in figure \ref{fig:mog-hierarchy}, it is because it primarily consists of a set of \textsc{specification\_element}, and therefore it is not a very interesting object in its own right. Thus, all type checking begins and ends in this feature. What happens in between is elaborated upon in section \ref{implementation-phases}. Prior to this, however, the translation between the abstract syntax and the type contexts of the type checker is explained.
 
 \section{Building the Context}
 \label{implementation-context-class-structure}
@@ -27,7 +27,7 @@ The type contexts for type checking of both informal and formal specifications a
     \caption[Context classes]{Hierarchy of classes used to build the type contexts}
     \label{fig:context-classes}
 \end{figure}
-A type context, be it informal or formal, is built as a set of instances of \textsc{tbon\_tc\_class\_type}  and \textsc{tbon\_tc\_cluster\_type} . Due to the naming restrictions discussed in section \ref{design-type-names}, classes and clusters are kept in the same context for convenience and easy detection of name clashes. At any time, the instances in the context represent the defined types currently known at that point. Only four \bon{} elements define types in the context. For informal specifications, these are class charts and cluster charts, while class specifications and cluster specifications define types for formal specifications.
+A type context, be it informal or formal, is built as a set of instances of \textsc{tbon\_tc\_- class\_type}  and \textsc{tbon\_tc\_cluster\_type} . Due to the naming restrictions discussed in section \ref{design-type-names}, classes and clusters are kept in the same context for convenience and easy detection of name clashes. At any time, the instances in the context represent the defined types currently known at that point. Only four \bon{} elements define types in the context. For informal specifications, these are class charts and cluster charts, while class specifications and cluster specifications define types for formal specifications.
 
 In formal specifications, mapping from classes to features happens through association with a set of \textsc{tbon\_tc\_feature}. This type is instantiated every time a feature specification is encountered. An instance of \textsc{tbon\_tc\_class\_type} is never associated with an undefined feature, but can be associated with an inconsistent or ill-typed feature. This is elaborated in section \ref{implementation-unresolved-elements}. Accordingly, the type of a feature is merely an association to an instance of \textsc{tbon\_tc\_class\_type}.
 
@@ -56,7 +56,7 @@ In the point of entry, the feature \textit{check\_bon\_specification}, the trans
 \item The abstract syntax is traversed (again) for the second phase
 \item Unresolved elements for the second phase are resolved
 \item Error messages and warnings, if any, are output
-\item The correctness (\textit{True}/\textit{False}) of the specification is returned to the caller as \textit{check\_bon\_specification} terminates
+\item The correctness (\textit{True}/\textit{False}) of the specification is returned to the caller as \textit{check\_- bon\_specification} terminates
 \end{enumerate}
 
 Traversing the abstract syntax more than once means that the type checking features for each of the elements in the abstract syntax must implement the notion of the phases as well (otherwise, the exact same code would be run twice). This notion is implemented by a conditional statement, checking against the current phase of execution.

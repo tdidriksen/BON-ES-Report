@@ -86,7 +86,7 @@ As described previously in section \ref{design-type-system}, the type checker im
 \caption{Pseudocode for \textit{conforms\_to}}
 \label{fig:conforms_to}
 \end{figure}
-The conformance check is implemented in the \textit{conforms\_to} feature of \textsc{tbon\_tc\_class\_type}, the pseudocode for which is shown in figure \ref{fig:conforms_to}. Seeing that no other types of variance is implemented anywhere in the type checker, all conformance checks happens through a call to this feature.
+The conformance check is implemented in the \textit{conforms\_to} feature of \textsc{tbon\_tc\_- class\_type}, the pseudocode for which is shown in figure \ref{fig:conforms_to}. Seeing that no other types of variance is implemented anywhere in the type checker, all conformance checks happens through a call to this feature.
 Because all classes conform to \textsc{any}, including \textsc{any} itself, the algorithm first checks whether the input is \textsc{any}. If so, nothing remains to be done. Likewise, if the input is \textsc{none}, the algorithm terminates with the result being \textit{False}.
 
 In all other cases, if the names of the current class and the input are equal, and the number of generics are equal, the algorithms proceeds. If the number of generics are not equal, the two classes can never be equal (even though their names are), because the definition of type parameters is an integral part of the class specification.
@@ -106,7 +106,7 @@ In the end (line 16), if the other class is not \textsc{any} or \textsc{none}, a
 \paragraph{}
 As a consequence of the above, one need only to change the logic of \textit{conforms\_to} in order to implement contravariance for feature types, for instance. It should be noted, however, that the current implementation implements covariance for both feature types and feature argument types. Should the variance for these two be unequal in the future, one would need change the feature calls in the type checker accordingly.
 
-Instance equality is implemented in the feature \textit{is\_instance\_equal} in \textsc{tbon\_ tc\_class\_type}. To implement a conformance relation between two instances of the same generic class, one would only need to change the logic of this feature (provided that the implementation of \textit{conforms\_to} remains unchanged). Hence, the logic  for creating a relation between \textsc{list}[\textsc{integer}] and \textsc{list}[\textsc{real}] could be placed here.
+Instance equality is implemented in the feature \textit{is\_instance\_equal} in \textsc{tbon\_ tc\_class\_- type}. To implement a conformance relation between two instances of the same generic class, one would only need to change the logic of this feature (provided that the implementation of \textit{conforms\_to} remains unchanged). Hence, the logic  for creating a relation between \textsc{list}[\textsc{integer}] and \textsc{list}[\textsc{real}] could be placed here.
 
 \subsection{Features}
 At the heart of a class specification are its features, the relations of which are discussed in this section. Features are represented in the type checker by the class \textsc{tbon\_tc\_feature}. As mentioned in section \ref{implementation-context-class-structure}, a class in the type context is associated with a set of instances of these. In turn, a feature is associated with its arguments through a list of instances of \textsc{tbon\_tc\_feature\_argument}. 
